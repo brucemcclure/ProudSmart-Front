@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class AdminUsers extends Component {
   render() {
-    return <div>AdminUsers</div>;
+    return <h1>This is the AdminUsers</h1>;
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class CoursesDashboard extends Component {
   render() {
-    return <div>CoursesDashboard</div>;
+    return <h1>This is the CoursesDashboard</h1>;
   }
 }
 

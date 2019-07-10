@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class AuthLogin extends Component {
   render() {
-    return <div>AuthLogin</div>;
+    return <h1>This is the AuthLogin</h1>;
   }
 }
 
