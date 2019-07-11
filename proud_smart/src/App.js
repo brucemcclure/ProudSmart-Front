@@ -28,7 +28,7 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <main style={{ marginTop: "56px" }}>
-            <div>
+            {/* <div>
               <Link to="/">LandingPage</Link>
             </div>
             <div>
@@ -77,7 +77,7 @@ class App extends Component {
             </div>
             <div>
               <Link to="/educators/dashboard">EducatorsDashboard</Link>
-            </div>
+            </div> */}
 
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/auth/login" component={AuthLogin} />

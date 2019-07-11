@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "antd";
+import SignedInLinks from "./SignedInLinks";
+import SignedOutLinks from "./SignedOutLinks";
 
 const Navbar = props => {
   return (
@@ -9,6 +11,8 @@ const Navbar = props => {
         <Link to="/" className="brand-logo">
           Learning Platform
         </Link>
+        <SignedOutLinks />
+        <SignedInLinks />
       </div>
     </nav>
   );
