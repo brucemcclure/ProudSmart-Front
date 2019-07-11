@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import LandingPage from "./pages/LandingPage";
 import AuthLogin from "./pages/auth/AuthLogin";
