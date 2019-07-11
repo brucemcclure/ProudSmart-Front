@@ -5,7 +5,7 @@ class LandingPage extends Component {
   render() {
     return (
       <>
-        <h1>This is the LandingPage</h1>
+        <h1>ProudSmart Learning Platform</h1>
         <Link to="/auth/login">
           <button>Log in</button>
         </Link>
@@ -13,6 +13,8 @@ class LandingPage extends Component {
         <Link to="/auth/register">
           <button>Register</button>
         </Link>
+
+        <div />
       </>
     );
   }
