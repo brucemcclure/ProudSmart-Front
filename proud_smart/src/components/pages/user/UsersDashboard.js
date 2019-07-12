@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import SquareCard from "../../cards/SquareCard";
 
 class UsersDashboard extends Component {
   render() {
@@ -9,6 +10,7 @@ class UsersDashboard extends Component {
         <Link to="/courses/show">
           <button>Show Course</button>
         </Link>
+        <SquareCard />
       </>
     );
   }
