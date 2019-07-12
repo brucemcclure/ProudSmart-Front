@@ -27,7 +27,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Navbar />
-          <main style={{ marginTop: "56px" }}>
+          <main>
             {/* <div>
               <Link to="/">LandingPage</Link>
             </div>

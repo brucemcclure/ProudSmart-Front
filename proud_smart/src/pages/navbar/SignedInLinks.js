@@ -9,10 +9,10 @@ const SignedInLinks = props => {
         <NavLink to="/">Shopping Cart</NavLink>
       </li>
       <li>
-        <NavLink to="/">My Courses</NavLink>
+        <NavLink to="/users/dashboard">My Courses</NavLink>
       </li>
       <li>
-        <NavLink to="/">Edit Profile</NavLink>
+        <NavLink to="/users/edit">Edit Profile</NavLink>
       </li>
       <li>
         <NavLink to="/" className="btn btn-floating pink lighten-1">
