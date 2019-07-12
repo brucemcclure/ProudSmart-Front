@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
-import { Layout } from "antd";
+import { Layout },  from "antd";
 
 class CoursesDashboard extends Component {
   componentDidMount() {
@@ -23,7 +23,9 @@ class CoursesDashboard extends Component {
           </div>
           <h3>About This Course</h3>
         </Content>
-        <Sider />
+        <Sider>
+          
+        </Sider>
       </Layout>
     );
   }
