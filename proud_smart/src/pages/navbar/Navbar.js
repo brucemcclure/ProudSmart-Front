@@ -5,6 +5,10 @@ import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 
 const Navbar = props => {
+  const state = {
+    user: "signedOut"
+  };
+
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">

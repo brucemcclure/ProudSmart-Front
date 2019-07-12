@@ -13,14 +13,14 @@ import UsersEdit from "./pages/user/UsersEdit";
 import CoursesIndex from "./pages/course/CoursesIndex";
 import CoursesShow from "./pages/course/CoursesShow";
 import CoursesNew from "./pages/course/CoursesNew";
-import CoursesDashboard from "./pages/course/CoursesDasboard";
+import CoursesDashboard from "./pages/course/CoursesDashboard";
 import CoursesEdit from "./pages/course/CoursesEdit";
 import EducatorsProfile from "./pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./pages/educator/EducatorsDashboard";
 import Navbar from "./pages/navbar/Navbar";
 
 class App extends Component {
-  state = { location: "LandingPage" };
+  // state = { location: "LandingPage" };
 
   render() {
     return (
@@ -96,7 +96,7 @@ class App extends Component {
             <Route exact path="/courses/show" component={CoursesShow} />
             <Route
               exact
-              path="/courses/dasboard"
+              path="/courses/dashboard"
               component={CoursesDashboard}
             />
             <Route exact path="/courses/new" component={CoursesNew} />
