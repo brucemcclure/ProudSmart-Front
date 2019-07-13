@@ -1,18 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD:proud_smart/src/components/pages/navbar/Navbar.js
-//import { Menu } from "antd";
-=======
 import { Menu } from "antd";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
->>>>>>> dev:proud_smart/src/pages/navbar/Navbar.js
+import renderEmpty from "antd/lib/config-provider/renderEmpty";
 
 const Navbar = props => {
-  const state = {
-    user: "signedOut"
-  };
-
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
