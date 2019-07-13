@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
-import LandingPage from "./pages/landing/LandingPage";
-import AuthLogin from "./pages/auth/AuthLogin";
-import AuthRegister from "./pages/auth/AuthRegister";
-import AuthEducatorApplication from "./pages/auth/AuthEducatorApplication";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminTeachers from "./pages/admin/AdminTeachers";
-import AdminUsers from "./pages/admin/AdminUsers";
-import UsersDashboard from "./pages/user/UsersDashboard";
-import UsersEdit from "./pages/user/UsersEdit";
-import CoursesIndex from "./pages/course/CoursesIndex";
-import CoursesShow from "./pages/course/CoursesShow";
-import CoursesNew from "./pages/course/CoursesNew";
-import CoursesDashboard from "./pages/course/CoursesDashboard";
-import CoursesEdit from "./pages/course/CoursesEdit";
-import EducatorsProfile from "./pages/educator/EducatorsProfile";
-import EducatorsDashboard from "./pages/educator/EducatorsDashboard";
-import Navbar from "./pages/navbar/Navbar";
+import LandingPage from "./components/pages/landing/LandingPage";
+import AuthLogin from "./components/pages/auth/AuthLogin";
+import AuthRegister from "./components/pages/auth/AuthRegister";
+import AuthEducatorApplication from "./components/pages/auth/AuthEducatorApplication";
+import AdminDashboard from "./components/pages/admin/AdminDashboard";
+import AdminTeachers from "./components/pages/admin/AdminTeachers";
+import AdminUsers from "./components/pages/admin/AdminUsers";
+import UsersDashboard from "./components/pages/user/UsersDashboard";
+import UsersEdit from "./components/pages/user/UsersEdit";
+import CoursesIndex from "./components/pages/course/CoursesIndex";
+import CoursesShow from "./components/pages/course/CoursesShow";
+import CoursesNew from "./components/pages/course/CoursesNew";
+import CoursesDashboard from "./components/pages/course/CoursesDashboard";
+import CoursesEdit from "./components/pages/course/CoursesEdit";
+import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
+import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
+import Navbar from "./components/pages/navbar/Navbar";
 
 class App extends Component {
   // state = { location: "LandingPage" };

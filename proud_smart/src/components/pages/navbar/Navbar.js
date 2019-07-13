@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import { Menu } from "antd";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
+import renderEmpty from "antd/lib/config-provider/renderEmpty";
 
 const Navbar = props => {
-  const state = {
-    user: "signedOut"
-  };
-
   return (
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
