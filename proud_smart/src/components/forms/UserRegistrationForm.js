@@ -16,6 +16,7 @@ import {
   Checkbox,
   Button,
   AutoComplete,
+  Upload
 } from 'antd';
 
 const { Option } = Select;
@@ -25,6 +26,7 @@ class RegistrationForm extends Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
+    interestTags: ["IoT", "ML", "AI", "Cloud", "Dev Op", "Infrastructure"]
   };
 
   handleSubmit = e => {
@@ -32,6 +34,12 @@ class RegistrationForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        LocalAPI.post(`/auth/register`, {values})
+          .then(response => {
+              this.props.setAuthToken(response.data);
+              this.props.history.push("/users/dashboard");
+              })
+          .catch(err => console.log(err))
       }
     });
   };
@@ -162,6 +170,36 @@ class RegistrationForm extends Component {
               }
             ],
           })(<Input />)}
+        </Form.Item>
+        <Form.Item label="Study Interests">
+          {getFieldDecorator('interestTags', {
+            initialValue: ['A', 'B'],
+          })(
+            <Checkbox.Group style={{ width: '100%' }}>
+              <Row>
+                {this.state.interestTags.map((option) => {
+                  return (
+                    <div key={option}>
+                      <Col span={8} >
+                        <Checkbox value={option}>{option}</Checkbox>
+                      </Col>
+                    </div>
+                  )
+                })}
+              </Row>
+            </Checkbox.Group>,
+          )}
+        </Form.Item>
+        <Form.Item>
+          {getFieldDecorator('photo', {
+          })(
+              <Upload >
+                <Button>
+                  <Icon type="upload" /> Click to Upload
+                </Button>
+              </Upload>,
+            )
+          }
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
