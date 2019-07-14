@@ -80,7 +80,7 @@ class App extends Component {
               <Link to="/educators/dashboard">EducatorsDashboard</Link>
             </div> */}
 
-              
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/auth/login" component={AuthLogin} />
             <Route exact path="/auth/register" component={AuthRegister} />
             <Route
