@@ -15,9 +15,6 @@ class UsersDashboard extends Component {
       <>
         <h1>This is the UsersDashboard</h1>;
         <Link to="/courses/show" className="btn">
-          Show Course
-        </Link>
-        <Link to="/courses/show" className="btn">
           Become a Teacher
         </Link>
         <div style={squareCardHolder} className="container section">

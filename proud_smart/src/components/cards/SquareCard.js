@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
 import Axios from "axios";
 
@@ -29,8 +30,7 @@ const informationSection = {
 };
 
 const priceOrButtons = {
-  backgroundColor: "green",
-  width: "auto"
+  width: "60%"
 };
 
 class SquareCard extends Component {
@@ -55,7 +55,9 @@ class SquareCard extends Component {
               <div style={informationSection}>
                 <h5>{course.title.slice(0, 12) + "..."}</h5>
                 <p>{course.description.slice(0, 60) + "..."}</p>
-                <div style={priceOrButtons}>Price: {course.price}$</div>
+                <Button size="large" style={priceOrButtons}>
+                  Price: {course.price}$
+                </Button>
               </div>
             </div>
           );
