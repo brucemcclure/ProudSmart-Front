@@ -14,7 +14,7 @@ const rectangularCardHolder = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  margin: "5%",
+  margin: "1%",
   padding: "20px"
 };
 
@@ -60,7 +60,7 @@ class RectangularCard extends Component {
                   <p>{course.teacher}</p>
                 </div>
 
-                <div style={priceOrButtons}>Price: {course.price}$</div>
+                <div style={priceOrButtons}>Contact Educator</div>
               </div>
             </div>
           );
