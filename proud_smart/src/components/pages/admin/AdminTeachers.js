@@ -6,7 +6,9 @@ class AdminTeachers extends Component {
     return (
       <>
         <h1>This is the AdminTeachers</h1>
-        <RectangularCard />
+        <div className="container section">
+          <RectangularCard />
+        </div>
       </>
     );
   }

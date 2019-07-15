@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import SquareCard from "../../cards/SquareCard";
+
+const squareCardContainer = {
+  display: "flex",
+  flexDirection: "row",
+  width: "100%",
+  flexWrap: "wrap"
+};
 
 class LandingPage extends Component {
   render() {
@@ -25,28 +33,10 @@ class LandingPage extends Component {
         <div className="container section" style={{ minHeight: "100vh" }}>
           <div className="courses">
             <h1>Featured Courses</h1>
-            <div className="row">
-              <div className="col s3">
-                <div className="card indigo darken-1 small">
-                  <div className="card-content white-text">Course 1</div>
-                </div>
-              </div>
-              <div className="col s3">
-                <div className="card indigo darken-1 small">
-                  <div className="card-content white-text">Course 2</div>
-                </div>
-              </div>
-              <div className="col s3">
-                <div className="card indigo darken-1 small">
-                  <div className="card-content white-text">Course 3</div>
-                </div>
-              </div>
-              <div className="col s3">
-                <div className="card indigo darken-1 small">
-                  <div className="card-content white-text">Course 1</div>
-                </div>
-              </div>
+            <div style={squareCardContainer}>
+              <SquareCard />
             </div>
+
             <div className="row" style={{ display: "flex" }}>
               <div className="col s3">
                 <h3>Heading</h3>

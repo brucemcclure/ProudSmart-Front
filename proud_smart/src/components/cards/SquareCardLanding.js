@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Image from "./../images/GoLang.jpeg";
 import Axios from "axios";
 
@@ -16,7 +15,7 @@ const squareCardHolder = {
   flexDirection: "column",
   alignItems: "center",
   margin: "1%",
-  padding: "0",
+  padding: "20px",
   width: "20%",
   height: "300px"
 };
@@ -33,7 +32,7 @@ const priceOrButtons = {
   width: "auto"
 };
 
-class SquareCard extends Component {
+class SquareCardLanding extends Component {
   state = { courses: [] };
 
   componentDidMount() {
@@ -46,12 +45,10 @@ class SquareCard extends Component {
   render() {
     return (
       <>
-        {this.state.courses.map(course => {
+        {this.state.courses.slice(0, 4).map(course => {
           return (
             <div key={course.title} style={squareCardHolder}>
-              <Link to="/courses/show">
-                <div style={squareBackgroundImage}> </div>
-              </Link>
+              <div style={squareBackgroundImage}> </div>
               <div style={informationSection}>
                 <h5>{course.title.slice(0, 12) + "..."}</h5>
                 <p>{course.description.slice(0, 60) + "..."}</p>
@@ -65,4 +62,4 @@ class SquareCard extends Component {
   }
 }
 
-export default SquareCard;
+export default SquareCardLanding;
