@@ -3,12 +3,19 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
 import Axios from "axios";
+import { blockStatement } from "@babel/types";
+
+const linkStye = {
+  display: "block",
+  width: "100%"
+};
 
 const squareBackgroundImage = {
   backgroundImage: `url(${Image})`,
   height: "150px",
-  width: "150px",
-  backgroundSize: "contain"
+  width: "100%",
+  backgroundSize: "cover"
+  //backgroundRepeat: "no-repeat"
 };
 
 const squareCardHolder = {
@@ -18,7 +25,7 @@ const squareCardHolder = {
   alignItems: "center",
   margin: "1%",
   padding: "0",
-  width: "20%",
+  width: "23%",
   height: "300px"
 };
 
@@ -49,7 +56,7 @@ class SquareCard extends Component {
         {this.state.courses.map(course => {
           return (
             <div key={course.title} style={squareCardHolder}>
-              <Link to="/courses/show">
+              <Link to="/courses/show" style={linkStye}>
                 <div style={squareBackgroundImage}> </div>
               </Link>
               <div style={informationSection}>
