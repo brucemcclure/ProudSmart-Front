@@ -11,11 +11,11 @@ class CoursesDashboard extends Component {
   render() {
     const { Sider, Content } = Layout;
     return (
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout style={{ minHeight: "100vh", width: "100vw" }}>
         <Content>
           <div className="video-container">
             <iframe
-              width="853"
+              width="800"
               height="480"
               src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
               frameborder="0"
