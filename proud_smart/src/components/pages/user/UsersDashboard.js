@@ -7,8 +7,11 @@ class UsersDashboard extends Component {
     return (
       <>
         <h1>This is the UsersDashboard</h1>;
-        <Link to="/courses/show">
-          <button>Show Course</button>
+        <Link to="/courses/show" className="btn">
+          Show Course
+        </Link>
+        <Link to="/courses/show" className="btn">
+          Become a Teacher
         </Link>
         <SquareCard />
       </>
