@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import WrappedLoginForm from "./../../forms/LoginForm";
 
 class AuthLogin extends Component {
   render() {
-    return <h1>This is the AuthLogin</h1>;
+    return (
+      <div> 
+        <h1>Login</h1>;
+        <WrappedLoginForm />
+      </div>
+    )
+    
   }
 }
 

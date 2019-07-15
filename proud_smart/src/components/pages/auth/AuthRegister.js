@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import WrappedRegistrationForm from "./../../forms/UserRegistrationForm";
 
 class AuthRegister extends Component {
   render() {
-    return <h1>This is the AuthRegister</h1>;
+    return (
+      <div>
+        <h1>Register</h1>;
+        <WrappedRegistrationForm />
+      </div>);
   }
 }
 
