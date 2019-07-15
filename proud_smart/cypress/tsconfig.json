@@ -1,0 +1,9 @@
+//This file is for intelligence completetion.
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "../node_modules",
+    "types": ["cypress"]
+  },
+  "include": ["**/*.*"]
+}
