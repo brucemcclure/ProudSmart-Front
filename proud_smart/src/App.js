@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import LocalAPI from "./apis/Local";
 
 import LandingPage from "./components/pages/landing/LandingPage";
 import AuthLogin from "./components/pages/auth/AuthLogin";
@@ -22,7 +23,14 @@ import Navbar from "./components/pages/navbar/Navbar";
 import Footer from "./components/pages/footer/Footer";
 
 class App extends Component {
-  // state = { location: "LandingPage" };
+  constructor (props) {
+    super(props);
+    const token = sessionStorage.getItem("token") || null; 
+    this.state = {token};
+    if (token) {
+      LocalAPI.setAuthHeader(token);
+    }
+  }
 
   render() {
     return (
