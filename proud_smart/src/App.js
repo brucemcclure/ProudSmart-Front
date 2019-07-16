@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 import LandingPage from "./components/pages/landing/LandingPage";
 import AuthLogin from "./components/pages/auth/AuthLogin";
@@ -19,17 +19,19 @@ import CoursesEdit from "./components/pages/course/CoursesEdit";
 import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
+import Footer from "./components/pages/footer/Footer";
 
 class App extends Component {
   // state = { location: "LandingPage" };
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
+      <BrowserRouter>
+        <header>
           <Navbar />
-          <main>
-            {/* <div>
+        </header>
+        <main>
+          {/* <div>
               <Link to="/">LandingPage</Link>
             </div>
             <div>
@@ -80,50 +82,41 @@ class App extends Component {
               <Link to="/educators/dashboard">EducatorsDashboard</Link>
             </div> */}
 
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/auth/login" component={AuthLogin} />
-            <Route exact path="/auth/register" component={AuthRegister} />
-            <Route
-              exact
-              path="/auth/educator_application"
-              component={AuthEducatorApplication}
-            />
-            <Route exact path="/admin/dashboard" component={AdminDashboard} />
-            <Route exact path="/admin/educators" component={AdminTeachers} />
-            <Route exact path="/admin/users" component={AdminUsers} />
-            <Route exact path="/users/dashboard" component={UsersDashboard} />
-            <Route exact path="/users/edit" component={UsersEdit} />
-            <Route exact path="/courses" component={CoursesIndex} />
-            <Route exact path="/courses/show" component={CoursesShow} />
-            <Route
-              exact
-              path="/courses/dashboard"
-              component={CoursesDashboard}
-            />
-            <Route exact path="/courses/new" component={CoursesNew} />
-            <Route exact path="/courses/edit" component={CoursesEdit} />
-            <Route
-              exact
-              path="/educators/profile"
-              component={EducatorsProfile}
-            />
-            <Route
-              exact
-              path="/educators/dashboard"
-              component={EducatorsDashboard}
-            />
-          </main>
-        </BrowserRouter>
-      </div>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/auth/login" component={AuthLogin} />
+          <Route exact path="/auth/register" component={AuthRegister} />
+          <Route
+            exact
+            path="/auth/educator_application"
+            component={AuthEducatorApplication}
+          />
+          <Route exact path="/admin/dashboard" component={AdminDashboard} />
+          <Route exact path="/admin/educators" component={AdminTeachers} />
+          <Route exact path="/admin/users" component={AdminUsers} />
+          <Route exact path="/users/dashboard" component={UsersDashboard} />
+          <Route exact path="/users/edit" component={UsersEdit} />
+          <Route exact path="/courses" component={CoursesIndex} />
+          <Route exact path="/courses/show" component={CoursesShow} />
+          <Route exact path="/courses/dashboard" component={CoursesDashboard} />
+          <Route exact path="/courses/new" component={CoursesNew} />
+          <Route exact path="/courses/edit" component={CoursesEdit} />
+          <Route exact path="/educators/profile" component={EducatorsProfile} />
+          <Route
+            exact
+            path="/educators/dashboard"
+            component={EducatorsDashboard}
+          />
+        </main>
+        <Footer />
+      </BrowserRouter>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     token: state.auth.token
   };
-}
-
+};
 
 export default connect(mapStateToProps)(App);

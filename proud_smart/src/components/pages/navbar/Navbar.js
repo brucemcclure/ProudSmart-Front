@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Menu } from "antd";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
-import renderEmpty from "antd/lib/config-provider/renderEmpty";
 
 const Navbar = props => {
   return (
