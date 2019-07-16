@@ -61,7 +61,7 @@ class SquareCard extends Component {
                 <div style={squareBackgroundImage}> </div>
               </Link>
               <div style={informationSection}>
-                <h5>{course.title.slice(0, 12) + "..."}</h5>
+                <h5>{course.title.slice(0, 10) + "..."}</h5>
                 <p>{course.description.slice(0, 60) + "..."}</p>
                 <Button size="large" style={priceOrButtons}>
                   Price: {course.price}$
