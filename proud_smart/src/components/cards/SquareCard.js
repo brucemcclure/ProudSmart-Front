@@ -19,14 +19,15 @@ const squareBackgroundImage = {
 };
 
 const squareCardHolder = {
-  backgroundColor: "pink",
+  backgroundColor: "#4C9AB3",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   margin: "1%",
   padding: "0",
   width: "23%",
-  height: "300px"
+  height: "300px",
+  boxShadow: "11px 11px 17px -7px rgba(0,0,0,0.67)"
 };
 
 const informationSection = {
