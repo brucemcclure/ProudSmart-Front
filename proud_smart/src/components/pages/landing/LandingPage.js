@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import SquareCard from "../../cards/SquareCard";
 import BackgroundImage from "../../images/landing.jpeg";
 
@@ -24,22 +25,25 @@ class LandingPage extends Component {
   render() {
     return (
       <>
+
         <div style={backgroundImageStyling}>
           <div
-            className="container section"
+            className="container section valign-wrapper"
             style={{ minHeight: "calc(100vh - 64px)" }}
           >
-            <div className="hero">
-              <h1>ProudSmart Learning Platform</h1>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
-                distinctio animi labore. Fugit facere, distinctio nobis cum
-                eveniet eum possimus totam pariatur! Dolore quis accusamus,
-                obcaecati sunt eligendi ut beatae!
-              </p>
-              <Link to="/auth/register" className="btn-large">
-                Register
-              </Link>
+            <div className="hero row">
+              <div className="col s6">
+                <h1 style={{ marginBottom: 5 }}>ProudSmart Learning Platform</h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
+                  distinctio animi labore. Fugit facere, distinctio nobis cum
+                  eveniet eum possimus totam pariatur! Dolore quis accusamus,
+                  obcaecati sunt eligendi ut beatae!
+                </p>
+                <Link to="/auth/register" className="btn-large">
+                  Register
+                </Link>
+              </div>
             </div>
           </div>
         </div>
