@@ -6,7 +6,7 @@ class AuthLogin extends Component {
     return (
       <div> 
         <h1>Login</h1>;
-        <WrappedLoginForm />
+        <WrappedLoginForm history={this.props.history} />
       </div>
     )
     

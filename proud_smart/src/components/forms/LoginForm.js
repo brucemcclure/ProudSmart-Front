@@ -9,10 +9,10 @@ class LoginForm extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       // Pulling the username and password off the submited form data
-      const {username, password} = values;
+      const {email, password} = values;
       // If the user has submitted the form correctly post the data to the server
       if (!err) {
-        LocalAPI.post(`/auth/login`, {username, password})
+        LocalAPI.post(`/auth/login`, {email, password})
             .then(response => {
                 this.props.setAuthToken(response.data);
                 this.props.history.push("/users/dashboard");
@@ -28,12 +28,12 @@ class LoginForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('username', {
+          {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your username!' }],
           })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
+              placeholder="email"
             />,
           )}
         </Form.Item>

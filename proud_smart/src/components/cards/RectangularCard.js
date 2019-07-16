@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import Image from "./../images/GoLang.jpeg";
+import { Link } from "react-router-dom";
+import { Button } from "antd";
 import Axios from "axios";
+import Image from "./../images/profilepicture.jpeg";
 
 const rectangleBackgroundImage = {
   backgroundImage: `url(${Image})`,
@@ -9,13 +11,18 @@ const rectangleBackgroundImage = {
   backgroundSize: "contain"
 };
 
+const linkStye = {
+  display: "block",
+  height: "100%"
+};
+
 const rectangularCardHolder = {
-  backgroundColor: "pink",
+  backgroundColor: "#4C9AB3",
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  margin: "5%",
-  padding: "20px"
+  margin: "1.75%",
+  boxShadow: "11px 11px 17px -7px rgba(0,0,0,0.67)"
 };
 
 const informationSection = {
@@ -25,7 +32,6 @@ const informationSection = {
 };
 
 const priceOrButtons = {
-  backgroundColor: "green",
   width: "15%"
 };
 
@@ -49,9 +55,9 @@ class RectangularCard extends Component {
                 style={rectangularCardHolder}
                 className="rectangularCardHolder"
               >
-                <div>
+                <Link to="/courses/show" style={linkStye}>
                   <div style={rectangleBackgroundImage}> </div>
-                </div>
+                </Link>
 
                 <div style={informationSection}>
                   <h5>{course.title}</h5>
@@ -60,7 +66,9 @@ class RectangularCard extends Component {
                   <p>{course.teacher}</p>
                 </div>
 
-                <div style={priceOrButtons}>Price: {course.price}$</div>
+                <Button size="large" style={priceOrButtons}>
+                  contact
+                </Button>
               </div>
             </div>
           );
