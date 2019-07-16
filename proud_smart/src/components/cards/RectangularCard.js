@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import Axios from "axios";
-import Image from "./../images/landing.jpeg";
+import Image from "./../images/profilepicture.jpeg";
 
 const rectangleBackgroundImage = {
   backgroundImage: `url(${Image})`,
