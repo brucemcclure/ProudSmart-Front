@@ -1,33 +1,23 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
 import Axios from "axios";
-import { blockStatement } from "@babel/types";
-
-const linkStye = {
-  display: "block",
-  width: "100%"
-};
 
 const squareBackgroundImage = {
   backgroundImage: `url(${Image})`,
   height: "150px",
-  width: "100%",
-  backgroundSize: "cover"
-  //backgroundRepeat: "no-repeat"
+  width: "150px",
+  backgroundSize: "contain"
 };
 
 const squareCardHolder = {
-  backgroundColor: "#4C9AB3",
+  backgroundColor: "pink",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   margin: "1%",
-  padding: "0",
-  width: "23%",
-  height: "300px",
-  boxShadow: "11px 11px 17px -7px rgba(0,0,0,0.67)"
+  padding: "20px",
+  width: "20%",
+  height: "300px"
 };
 
 const informationSection = {
@@ -38,10 +28,11 @@ const informationSection = {
 };
 
 const priceOrButtons = {
-  width: "60%"
+  backgroundColor: "green",
+  width: "auto"
 };
 
-class SquareCard extends Component {
+class SquareCardLanding extends Component {
   state = { courses: [] };
 
   componentDidMount() {
@@ -54,18 +45,14 @@ class SquareCard extends Component {
   render() {
     return (
       <>
-        {this.state.courses.map(course => {
+        {this.state.courses.slice(0, 4).map(course => {
           return (
             <div key={course.title} style={squareCardHolder}>
-              <Link to="/courses/show" style={linkStye}>
-                <div style={squareBackgroundImage}> </div>
-              </Link>
+              <div style={squareBackgroundImage}> </div>
               <div style={informationSection}>
                 <h5>{course.title.slice(0, 12) + "..."}</h5>
                 <p>{course.description.slice(0, 60) + "..."}</p>
-                <Button size="large" style={priceOrButtons}>
-                  Price: {course.price}$
-                </Button>
+                <div style={priceOrButtons}>Price: {course.price}$</div>
               </div>
             </div>
           );
@@ -75,4 +62,4 @@ class SquareCard extends Component {
   }
 }
 
-export default SquareCard;
+export default SquareCardLanding;

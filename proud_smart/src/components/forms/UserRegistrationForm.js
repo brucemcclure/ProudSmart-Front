@@ -8,7 +8,6 @@ import './../../index.css';
 import {
   Form,
   Input,
-  Tooltip,
   Icon,
   Select,
   Row,
@@ -33,8 +32,10 @@ class RegistrationForm extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        LocalAPI.post(`/auth/register`, {values})
+        // console.log('Received values of form: ', values);
+        // console.log(values.photo.file.uid);
+        // console.log(process.env.REACT_APP_API_URL);
+        LocalAPI.post(`/auth/register`, values)
           .then(response => {
               this.props.setAuthToken(response.data);
               this.props.history.push("/users/dashboard");
@@ -43,6 +44,10 @@ class RegistrationForm extends Component {
       }
     });
   };
+
+  componentDidMount = () => {
+    console.log(this.props)
+  }
 
   handleConfirmBlur = e => {
     const { value } = e.target;
@@ -75,6 +80,12 @@ class RegistrationForm extends Component {
     }
     this.setState({ autoCompleteResult });
   };
+
+  dummyRequest({file, onSuccess}) {
+    setTimeout(() => {
+      onSuccess("ok");
+    },0);
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -193,9 +204,9 @@ class RegistrationForm extends Component {
         <Form.Item>
           {getFieldDecorator('photo', {
           })(
-              <Upload >
+              <Upload customRequest={this.dummyRequest}>
                 <Button>
-                  <Icon type="upload" /> Click to Upload
+                  <Icon type="upload" /> Please upload your Avatar photo
                 </Button>
               </Upload>,
             )
