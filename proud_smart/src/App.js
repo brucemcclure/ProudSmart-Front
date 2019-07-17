@@ -22,6 +22,9 @@ import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
 import Footer from "./components/pages/footer/Footer";
 
+// Stripe elements
+import Checkout from "./components/pages/checkout/Checkout";
+
 class App extends Component {
   constructor (props) {
     super(props);
@@ -114,6 +117,7 @@ class App extends Component {
             path="/educators/dashboard"
             component={EducatorsDashboard}
           />
+          <Route exact path="/checkout" component={Checkout} />
         </main>
         <Footer />
       </BrowserRouter>
