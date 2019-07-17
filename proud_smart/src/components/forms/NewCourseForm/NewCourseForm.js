@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import NewCourseFormFirstPage from "./NewCourseFormFirstPage";
 import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
 import NewCourseFormThirdPage from "./NewCourseFormThirdPage";
+import NewCourseFormFourthPage from "./NewCourseFormFourthPage";
 
 class NewCourseForm extends Component {
   constructor(props) {
@@ -35,6 +36,12 @@ class NewCourseForm extends Component {
         )}
         {page === 3 && (
           <NewCourseFormThirdPage
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 4 && (
+          <NewCourseFormFourthPage
             previousPage={this.previousPage}
             onSubmit={onSubmit}
           />

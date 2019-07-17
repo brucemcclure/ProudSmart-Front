@@ -1,54 +1,44 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import validate from "../formServices/validate";
-import renderField from "../formServices/renderField";
-const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet"];
-
-const renderColorSelector = ({ input, meta: { touched, error } }) => (
-  <div>
-    <select {...input}>
-      <option value="">Select a color...</option>
-      {colors.map(val => (
-        <option value={val} key={val}>
-          {val}
-        </option>
-      ))}
-    </select>
-    {touched && error && <span>{error}</span>}
-  </div>
-);
+import validate from "../formHelpers/validate";
+import renderField from "../formHelpers/renderField";
+import renderCheckbox from "../formHelpers/renderCheckbox";
 
 const NewCourseFormThirdPage = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
+      <Field
+        name="Key concepts"
+        type="text"
+        component={renderField}
+        label="Key Concept"
+      />
       <div>
-        <label>Favorite Color</label>
-        <Field name="favoriteColor" component={renderColorSelector} />
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
+        <label htmlFor="prerequisites">prerequisites</label>
         <div>
+          <Field name="IoT" id="IoT" component={renderCheckbox} />
+          <Field name="ML" id="ML" component={renderCheckbox} />
+          <Field name="AI" id="AI" component={renderCheckbox} />
+          <Field name="Cloud" id="Cloud" component={renderCheckbox} />
+          <Field name="Dev Ops" id="Dev Ops" component={renderCheckbox} />
           <Field
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
+            name="Infrastructure"
+            id="Infrastructure"
+            component={renderCheckbox}
           />
+          <Field name="Corgi" id="employed" component={renderCheckbox} />
         </div>
       </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea" placeholder="Notes" />
-        </div>
-      </div>
+
+      <Field name="Price" type="text" component={renderField} label="Price" />
+
       <div>
         <button type="button" className="previous" onClick={previousPage}>
           Previous
         </button>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
+        <button type="submit" className="next">
+          Next
         </button>
       </div>
     </form>

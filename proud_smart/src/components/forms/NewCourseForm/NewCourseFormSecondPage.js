@@ -1,7 +1,8 @@
 import React from "react";
+import renderCheckbox from "../formHelpers/renderCheckbox";
 import { Field, reduxForm } from "redux-form";
-import validate from "../formServices/validate";
-import renderField from "../formServices/renderField";
+import validate from "../formHelpers/validate";
+import renderField from "../formHelpers/renderField";
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false;
@@ -10,28 +11,28 @@ const NewCourseFormSecondPage = props => {
   const { handleSubmit, previousPage } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="email" type="email" component={renderField} label="Email" />
       <div>
-        <label>Sex</label>
+        <label htmlFor="documentupload">Documents to upload</label>
         <div>
-          <label>
-            <Field name="sex" component="input" type="radio" value="male" />{" "}
-            Male
-          </label>
-          <label>
-            <Field name="sex" component="input" type="radio" value="female" />{" "}
-            Female
-          </label>
-          <Field name="sex" component={renderError} />
+          <Field name="documents" component="input" type="file" value={null} />
+        </div>
+        <label htmlFor="picturetoupload">Course profile picture</label>
+        <div>
+          <Field name="picture" component="input" type="file" value={null} />
         </div>
       </div>
+
+      <label htmlFor="Area of study">Is this course certified?</label>
+      <Field name="IoT" id="IoT" component={renderCheckbox} />
       <div>
-        <button type="button" className="previous" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" className="next">
-          Next
-        </button>
+        <div>
+          <button type="button" className="previous" onClick={previousPage}>
+            Previous
+          </button>
+          <button type="submit" className="next">
+            Next
+          </button>
+        </div>
       </div>
     </form>
   );
