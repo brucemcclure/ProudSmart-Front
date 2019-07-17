@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
+import Axios from "axios";
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -11,13 +12,12 @@ class CheckoutForm extends Component {
   async submit(ev) {
     // User clicked submit
     let { token } = await this.props.stripe.createToken({ name: "Name" });
-    let response = await fetch("http://localhost:3002/payments/charge", {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: token.id
+    let response = await Axios.post("http://localhost:3002/payments/charge", {
+      //   headers: { "Content-Type": "text/plain" },
+      token: token.id
     });
-
-    if (response.ok) this.setState({ complete: true });
+    console.log(response);
+    if (response.status === 200) this.setState({ complete: true });
   }
 
   render() {
