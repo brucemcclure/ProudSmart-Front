@@ -6,10 +6,10 @@ const SignedOutLinks = props => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/">Sign Up</NavLink>
+        <NavLink to="/auth/register">Sign Up</NavLink>
       </li>
       <li>
-        <NavLink to="/">Log In</NavLink>
+        <NavLink to="/auth/login">Log In</NavLink>
       </li>
     </ul>
   );
