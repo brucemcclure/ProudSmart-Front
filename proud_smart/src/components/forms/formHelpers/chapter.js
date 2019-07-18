@@ -3,12 +3,15 @@ import Topic from "./topic";
 import { Field, reduxForm } from "redux-form";
 
 class Chapter extends Component {
+  state = { chapters: [] };
+
   render() {
     return (
       <>
+        <button type="button">Submit chapter</button>
         <container className="chapterContainer">
           <Field
-            name="Chapter"
+            name="Chapter Title"
             type="text"
             placeholder="Chapter Title"
             component="input"
@@ -21,10 +24,6 @@ class Chapter extends Component {
             component="textarea"
             label="Description"
           />
-          <div>
-            <Topic />
-          </div>
-          <button>Add Chapter</button>
         </container>
       </>
     );
