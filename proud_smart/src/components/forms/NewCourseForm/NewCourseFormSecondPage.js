@@ -3,11 +3,18 @@ import renderCheckbox from "../formHelpers/renderCheckbox";
 import { Field, reduxForm } from "redux-form";
 import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
+import renderFile from "../formHelpers/renderFile";
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false;
 
 class NewCourseFormSecondPage extends Component {
+  singleFileChangedHandler = event => {
+    //console.log(event.target.files); //this will show you whats inside the event target.
+    this.setState({
+      selectedFile: event.target.files[0]
+    });
+  };
   render() {
     const { handleSubmit, previousPage } = this.props;
     return (
@@ -15,16 +22,11 @@ class NewCourseFormSecondPage extends Component {
         <div>
           <label htmlFor="documentupload">Documents to upload</label>
           <div>
-            <Field
-              name="documents"
-              component="input"
-              type="file"
-              value={null}
-            />
+            <Field name="documents" component={renderFile} />
           </div>
           <label htmlFor="picturetoupload">Course profile picture</label>
           <div>
-            <Field name="picture" component="input" type="file" value={null} />
+            <Field name="picture" component={renderFile} />
           </div>
         </div>
 

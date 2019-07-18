@@ -22,37 +22,36 @@ class NewCourseForm extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
+  onSubmit = values => {
+    console.log(values);
+  };
+
   render() {
-    const { onSubmit } = this.props;
     const { page } = this.state;
     return (
       <div>
         {page === 1 && <NewCourseFormFirstPage onSubmit={this.nextPage} />}
         {page === 2 && (
           <NewCourseFormSecondPage
-            previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            previousPage={this.previousPage}
           />
         )}
         {page === 3 && (
           <NewCourseFormThirdPage
-            previousPage={this.previousPage}
             onSubmit={this.nextPage}
+            previousPage={this.previousPage}
           />
         )}
         {page === 4 && (
           <NewCourseFormFourthPage
+            onSubmit={this.onSubmit}
             previousPage={this.previousPage}
-            onSubmit={onSubmit}
           />
         )}
       </div>
     );
   }
 }
-
-NewCourseForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-};
 
 export default NewCourseForm;

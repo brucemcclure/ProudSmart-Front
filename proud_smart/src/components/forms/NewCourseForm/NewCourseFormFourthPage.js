@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { Field, reduxForm, FieldArray } from "redux-form";
-import validate from "../formHelpers/validate";
+import validateChaptersandTopics from "../formHelpers/validateChaptersandTopics";
 import renderField from "./../formHelpers/renderField";
+import LocalAPI from "../../../apis/Local";
+import renderFile from "../formHelpers/renderFile";
 
 class NewCourseFormFourthPage extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      const { chapters } = values;
+      if (!err) {
+        LocalAPI.post(``, { chapters })
+          .then(response => {
+            this.props.setAuthToken(response.data);
+            this.props.history.push("");
+          })
+          .catch(err => console.log(err));
+        console.log("Received values of form: ", values);
+      }
+    });
+  };
+
   render() {
     const renderChapters = ({ fields, meta: { error, submitFailed } }) => (
       <ul>
@@ -65,12 +83,12 @@ class NewCourseFormFourthPage extends Component {
               component={renderField}
               label="topic Description"
             />
+
             <Field
               name={`${topic}.video`}
               type="file"
-              component={renderField}
+              component={renderFile}
               label="topic video"
-              value={null}
             />
           </li>
         ))}
@@ -81,16 +99,15 @@ class NewCourseFormFourthPage extends Component {
     const { handleSubmit, pristine, previousPage, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit}>
-        {/* <button>Add Chapter</button>
-        <Chapter /> */}
         <FieldArray name="chapters" component={renderChapters} />
         <div>
           <button type="button" className="previous" onClick={previousPage}>
             Previous
           </button>
-          <button type="submit" disabled={pristine || submitting}>
+          <button type="submit" onClick={handleSubmit}>
             Submit
           </button>
+          ,
         </div>
       </form>
     );
@@ -100,5 +117,5 @@ export default reduxForm({
   form: "NewCourseForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate
+  validateChaptersandTopics
 })(NewCourseFormFourthPage);
