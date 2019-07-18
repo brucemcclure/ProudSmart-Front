@@ -12,6 +12,7 @@ class CheckoutForm extends Component {
   async submit(ev) {
     // User clicked submit
     let { token } = await this.props.stripe.createToken({ name: "Name" });
+    console.log(token);
     let response = await Axios.post("http://localhost:3002/payments/charge", {
       //   headers: { "Content-Type": "text/plain" },
       token: token.id

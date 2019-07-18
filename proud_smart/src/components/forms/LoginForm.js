@@ -1,7 +1,7 @@
 import { Form, Icon, Input, Button, Checkbox } from "antd";
-import React, {Component} from "react";
-import {connect} from "react-redux";
-import {setAuthToken} from "./../../actions";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setAuthToken } from "./../../actions";
 import LocalAPI from "./../../apis/Local";
 
 class LoginForm extends Component {
@@ -9,16 +9,16 @@ class LoginForm extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       // Pulling the username and password off the submited form data
-      const {email, password} = values;
+      const { email, password } = values;
       // If the user has submitted the form correctly post the data to the server
       if (!err) {
-        LocalAPI.post(`/auth/login`, {email, password})
-            .then(response => {
-                this.props.setAuthToken(response.data);
-                this.props.history.push("/users/dashboard");
-                })
-            .catch(err => console.log(err))
-        console.log('Received values of form: ', values);
+        LocalAPI.post(`/auth/login`, { email, password })
+          .then(response => {
+            this.props.setAuthToken(response.data);
+            this.props.history.push("/users/dashboard");
+          })
+          .catch(err => console.log(err));
+        console.log("Received values of form: ", values);
       }
     });
   };
@@ -28,35 +28,39 @@ class LoginForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator("email", {
+            rules: [{ required: true, message: "Please input your username!" }]
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               placeholder="email"
-            />,
+            />
           )}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
+          {getFieldDecorator("password", {
+            rules: [{ required: true, message: "Please input your Password!" }]
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               type="password"
               placeholder="Password"
-            />,
+            />
           )}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
+          {getFieldDecorator("remember", {
+            valuePropName: "checked",
+            initialValue: true
           })(<Checkbox>Remember me</Checkbox>)}
           <a className="login-form-forgot" href="">
             Forgot password
           </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
             Log in
           </Button>
           Or <a href="">register now!</a>
@@ -66,6 +70,9 @@ class LoginForm extends Component {
   }
 }
 
-const WrappedLoginForm = Form.create({ name: 'normal_login' })(LoginForm);
+const WrappedLoginForm = Form.create({ name: "normal_login" })(LoginForm);
 
-export default connect(null, {setAuthToken})(WrappedLoginForm) ;
+export default connect(
+  null,
+  { setAuthToken }
+)(WrappedLoginForm);
