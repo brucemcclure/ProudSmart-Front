@@ -12,7 +12,7 @@ const squareCardHolder = {
 class UsersDashboard extends Component {
   render() {
     return (
-      <>
+      <div className="container section">
         <h1>This is the UsersDashboard</h1>;
         <Link to="/courses/show" className="btn">
           Become a Teacher
@@ -20,7 +20,7 @@ class UsersDashboard extends Component {
         <div style={squareCardHolder} className="container section">
           <SquareCard />
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -1,29 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "antd";
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
+import { connect } from "react-redux";
 
-const Navbar = props => {
-  const { Search } = Input;
-  return (
-    <nav className="nav-wrapper grey darken-3">
-      <div className="container">
-        <Link to="/" className="brand-logo">
-          Learning Platform
-        </Link>
-        <div className="center-align">
-          <Search
-            placeholder="search"
-            onSearch={value => console.log(value)}
-            style={{ width: 200 }}
-          />
+class Navbar extends Component {
+  render() {
+    const { token } = this.props;
+    return (
+      <nav className="nav-wrapper grey darken-3">
+        <div className="container">
+          <Link to="/" className="brand-logo">
+            Learning Platform
+          </Link>
+          {token === null && <SignedOutLinks />}
+          {token !== null && <SignedInLinks />}
         </div>
-        <SignedOutLinks />
-        <SignedInLinks />
-      </div>
-    </nav>
-  );
+      </nav>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
 };
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);

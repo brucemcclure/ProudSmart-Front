@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
-import Axios from "axios";
+import LocalAPI from "./../../apis/Local";
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -11,11 +11,28 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     // User clicked submit
-    let { token } = await this.props.stripe.createToken({ name: "Name" });
+    let { token } = await this.props.stripe.createToken({ 
+      name: "name",
+
+      
+     });
     console.log(token);
-    let response = await Axios.post("http://localhost:3002/payments/charge", {
+    let response = await LocalAPI.post("/payments/charge", {
       //   headers: { "Content-Type": "text/plain" },
-      token: token.id
+      token: token,
+
+      // the metadata is used to adjust the database with the payment information
+      // the values below have been hardcoded but will need to be updated with the values of course being purchased 
+      metadata: {
+        amount: 20000, // insert the amount to charge the customer REMEMBER THIS IS IN CENTS!!!!!
+        purchasedCourse: {
+          courseId: "5d2ebd3a1e70ba160f1eff57", // insert the id of the course they purchased
+          title: "spanking", // insert the title of the course
+          courseProfilePictureUrl: "www.goodtimes.com", // insert the profile photo url
+          description: "don't be naughty" // insert the course description
+        }
+
+      }
     });
     console.log(response);
     if (response.status === 200) this.setState({ complete: true });

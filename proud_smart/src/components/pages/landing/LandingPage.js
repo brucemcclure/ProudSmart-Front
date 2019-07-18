@@ -17,15 +17,10 @@ const backgroundImageStyling = {
   backgroundSize: "cover"
 };
 
-// background-image:
-// linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)),
-// url('images/background.jpg');
-
 class LandingPage extends Component {
   render() {
     return (
       <>
-
         <div style={backgroundImageStyling}>
           <div
             className="container section valign-wrapper"
@@ -33,7 +28,9 @@ class LandingPage extends Component {
           >
             <div className="hero row">
               <div className="col s6">
-                <h1 style={{ marginBottom: 5 }}>ProudSmart Learning Platform</h1>
+                <h1 style={{ marginBottom: 5 }}>
+                  ProudSmart Learning Platform
+                </h1>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
                   distinctio animi labore. Fugit facere, distinctio nobis cum

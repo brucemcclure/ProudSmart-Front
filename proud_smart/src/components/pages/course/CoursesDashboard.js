@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import ReactPlayer from "react-player";
 import { Layout, Divider } from "antd";
 import Chapters from "./Chapters";
+import LocalAPI from "./../../../apis/Local";
 
 class CoursesDashboard extends Component {
   componentDidMount() {
+    LocalAPI.get("/courses/dashboard/5d2fcd972cc0a0202dcfa0f7").then(res =>
+      console.log(res)
+    );
     console.log("test");
   }
 
