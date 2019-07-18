@@ -21,15 +21,16 @@ import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
 import Footer from "./components/pages/footer/Footer";
+import PrivateRoute from "./components/PrivateRoute";
 
 // Stripe elements
 import Checkout from "./components/pages/checkout/Checkout";
 
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    const token = sessionStorage.getItem("token") || null; 
-    this.state = {token};
+    const token = sessionStorage.getItem("token") || null;
+    this.state = { token };
     if (token) {
       LocalAPI.setAuthHeader(token);
     }
@@ -103,7 +104,11 @@ class App extends Component {
           <Route exact path="/admin/dashboard" component={AdminDashboard} />
           <Route exact path="/admin/educators" component={AdminTeachers} />
           <Route exact path="/admin/users" component={AdminUsers} />
-          <Route exact path="/users/dashboard" component={UsersDashboard} />
+          <PrivateRoute
+            exact
+            path="/users/dashboard"
+            component={UsersDashboard}
+          />
           <Route exact path="/users/edit" component={UsersEdit} />
           <Route exact path="/courses" component={CoursesIndex} /> //
           <Route exact path="/courses/show" component={CoursesShow} />

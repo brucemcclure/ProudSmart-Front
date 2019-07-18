@@ -11,9 +11,10 @@ const squareCardHolder = {
 
 class UsersDashboard extends Component {
   render() {
+    const { token } = this.props;
     return (
       <>
-        <h1>This is the UsersDashboard</h1>;
+        <h1>This is the UsersDashboard</h1>
         <Link to="/courses/show" className="btn">
           Become a Teacher
         </Link>
