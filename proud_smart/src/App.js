@@ -110,11 +110,12 @@ class App extends Component {
             component={UsersDashboard}
           />
           <Route exact path="/users/edit" component={UsersEdit} />
-          <Route exact path="/courses" component={CoursesIndex} /> //
+          <Route exact path="/courses" component={CoursesIndex} />
           <Route exact path="/courses/show" component={CoursesShow} />
           <Route exact path="/courses/dashboard" component={CoursesDashboard} />
+          <Route exact path="/courses/index" component={CoursesIndex} />
           <Route exact path="/courses/new" component={CoursesNew} />
-          <Route exact path="/courses/edit" component={CoursesEdit} /> //
+          <Route exact path="/courses/edit" component={CoursesEdit} />
           <Route
             exact
             path="/educators/profile"
@@ -125,7 +126,6 @@ class App extends Component {
             path="/educators/dashboard"
             component={EducatorsDashboard}
           />{" "}
-          //
           <Route exact path="/checkout" component={Checkout} />
         </main>
         <Footer />
