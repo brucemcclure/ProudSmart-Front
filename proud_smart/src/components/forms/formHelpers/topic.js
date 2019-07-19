@@ -11,14 +11,14 @@ class Topic extends Component {
             type="text"
             placeholder="topic 1"
             component="input"
-            label="Chapter"
+            label="topic"
           />
           <Field
             name="topic description"
             type="text"
             placeholder="topic description"
             component="input"
-            label="Chapter"
+            label="topic"
           />
 
           <label htmlFor="videoUpload">Topic video</label>

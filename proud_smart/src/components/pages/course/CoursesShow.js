@@ -4,6 +4,7 @@ import Chapters from "./Chapters";
 
 class CoursesShow extends Component {
   render() {
+    console.log(this.props);
     const { Sider, Content } = Layout;
     const data = [
       "Programming languages",

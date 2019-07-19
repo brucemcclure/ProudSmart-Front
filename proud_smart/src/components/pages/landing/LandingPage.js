@@ -68,7 +68,15 @@ class LandingPage extends Component {
             <div style={squareCardContainer}>
               {this.state.courses.map(course => {
                 return (
-                  <Link to={`/courses/show/${course._id}`} style={linkStyle}>
+                  <Link
+                    to={{
+                      pathname: `/courses/show/${course._id}`,
+                      state: {
+                        course: course
+                      }
+                    }}
+                    // style={linkStyle}
+                  >
                     <SquareCard course={course} />
                   </Link>
                 );

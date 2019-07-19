@@ -45,9 +45,7 @@ class SquareCard extends Component {
     return (
       <>
         <div key={this.props.course.title} style={squareCardHolder}>
-          <Link to="/courses/show/" style={linkStye}>
-            <div style={squareBackgroundImage}> </div>
-          </Link>
+          <div style={squareBackgroundImage}> </div>
           <div style={informationSection}>
             <h5>{this.props.course.title.slice(0, 12) + "..."}</h5>
             <p>{this.props.course.description.slice(0, 60) + "..."}</p>

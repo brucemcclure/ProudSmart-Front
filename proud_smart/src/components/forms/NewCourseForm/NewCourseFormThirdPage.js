@@ -18,19 +18,35 @@ class NewCourseFormThirdPage extends Component {
           label="Key Concept"
         />
         <div>
-          <label htmlFor="prerequisites">prerequisites</label>
+          <label title="prerequisites">prerequisites</label>
           <div>
-            <Field name="IoT" id="IoT" component={renderCheckbox} />
-            <Field name="ML" id="ML" component={renderCheckbox} />
-            <Field name="AI" id="AI" component={renderCheckbox} />
-            <Field name="Cloud" id="Cloud" component={renderCheckbox} />
-            <Field name="Dev Ops" id="Dev Ops" component={renderCheckbox} />
             <Field
-              name="Infrastructure"
+              name="prerequisites.IoT"
+              id="IoT"
+              component={renderCheckbox}
+            />
+            <Field name="prerequisites.ML" id="ML" component={renderCheckbox} />
+            <Field name="prerequisites.AI" id="AI" component={renderCheckbox} />
+            <Field
+              name="prerequisites.Cloud"
+              id="Cloud"
+              component={renderCheckbox}
+            />
+            <Field
+              name="prerequisites.Dev Ops"
+              id="Dev Ops"
+              component={renderCheckbox}
+            />
+            <Field
+              name="prerequisites.Infrastructure"
               id="Infrastructure"
               component={renderCheckbox}
             />
-            <Field name="Corgi" id="employed" component={renderCheckbox} />
+            <Field
+              name="prerequisites.Corgi"
+              id="employed"
+              component={renderCheckbox}
+            />
           </div>
         </div>
 
