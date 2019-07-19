@@ -297,15 +297,14 @@ class RegistrationForm extends Component {
         <div id="oc-alert-container" />
         {/* Once you upload your profile picture, it should appear here  */}
 
-        {/** <div className="col-md-4 col-sm-4 text-center">
+        {/*<div className="col-md-4 col-sm-4 text-center">
           <img
             className="btn-md"
             src={file && file.location}
             alt={file && file.image}
             style={{ borderRadius: "50%", height: "10em", width: "10em" }}
           />
-        </div>
-         */}
+              </div>*/}
 
         <input type="file" onChange={this.singleFileChangedHandler} />
         <div className="mt-5">
@@ -313,7 +312,7 @@ class RegistrationForm extends Component {
             className="btn btn-info"
             onClick={this.singleFileUploadHandler}
           >
-            Upload
+            Upload Avatar Image
           </button>
         </div>
         {/** */}
