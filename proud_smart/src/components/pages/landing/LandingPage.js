@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 import SquareCard from "../../cards/SquareCard";
 import BackgroundImage from "../../images/landing.jpeg";
 
+import LocalAPI from "./../../../apis/Local";
+
 const squareCardContainer = {
   display: "flex",
   flexDirection: "row",
   width: "100%",
   flexWrap: "wrap"
+};
+
+const linkStyle = {
+  display: "block",
+  width: "100%"
 };
 
 const backgroundImageStyling = {
@@ -18,6 +25,17 @@ const backgroundImageStyling = {
 };
 
 class LandingPage extends Component {
+  state = {
+    courses: []
+  };
+
+  componentDidMount() {
+    LocalAPI("/courses").then(response => {
+      console.log(response.data);
+      this.setState({ courses: response.data });
+    });
+  }
+
   render() {
     return (
       <>
@@ -48,7 +66,13 @@ class LandingPage extends Component {
           <div className="courses">
             <h1>Featured Courses</h1>
             <div style={squareCardContainer}>
-              <SquareCard />
+              {this.state.courses.map(course => {
+                return (
+                  <Link to={`/courses/show/${course._id}`} style={linkStyle}>
+                    <SquareCard course={course} />
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="row" style={{ display: "flex" }}>

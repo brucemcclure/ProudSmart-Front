@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
-import Axios from "axios";
+import LocalAPI from "./../../apis/Local";
 import Image from "./../images/profilepicture.jpeg";
 
 const rectangleBackgroundImage = {
@@ -39,7 +39,7 @@ class RectangularCard extends Component {
   state = { courses: [] };
 
   componentDidMount() {
-    Axios("http://localhost:3000/courses").then(response => {
+    LocalAPI("/courses").then(response => {
       console.log(response.data);
       this.setState({ courses: response.data });
     });
