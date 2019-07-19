@@ -72,7 +72,7 @@ class NewCourseFormFourthPage extends Component {
               onClick={() => fields.remove(index)}
             />
             <Field
-              name={topic}
+              name={`${topic}.title`}
               type="text"
               component={renderField}
               label={`Topic #${index + 1}`}

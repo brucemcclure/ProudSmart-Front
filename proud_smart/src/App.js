@@ -111,8 +111,16 @@ class App extends Component {
           />
           <Route exact path="/users/edit" component={UsersEdit} />
           <Route exact path="/courses" component={CoursesIndex} />
-          <Route exact path="/courses/show" component={CoursesShow} />
-          <Route exact path="/courses/dashboard" component={CoursesDashboard} />
+          <Route
+            exact
+            path="/courses/show/:id"
+            render={props => <CoursesShow {...props} />}
+          />
+          <Route
+            exact
+            path="/courses/dashboard/:id"
+            render={props => <CoursesDashboard {...props} />}
+          />
           <Route exact path="/courses/index" component={CoursesIndex} />
           <Route exact path="/courses/new" component={CoursesNew} />
           <Route exact path="/courses/edit" component={CoursesEdit} />
