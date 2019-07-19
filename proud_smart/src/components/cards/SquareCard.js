@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
-import Axios from "axios";
-import { blockStatement } from "@babel/types";
+import LocalAPI from "./../../apis/Local";
 
 const linkStye = {
   display: "block",
@@ -42,34 +41,19 @@ const priceOrButtons = {
 };
 
 class SquareCard extends Component {
-  state = { courses: [] };
-
-  componentDidMount() {
-    Axios("http://localhost:3000/courses").then(response => {
-      console.log(response.data);
-      this.setState({ courses: response.data });
-    });
-  }
-
   render() {
     return (
       <>
-        {this.state.courses.map(course => {
-          return (
-            <div key={course.title} style={squareCardHolder}>
-              <Link to="/courses/show" style={linkStye}>
-                <div style={squareBackgroundImage}> </div>
-              </Link>
-              <div style={informationSection}>
-                <h5>{course.title.slice(0, 12) + "..."}</h5>
-                <p>{course.description.slice(0, 60) + "..."}</p>
-                <Button size="large" style={priceOrButtons}>
-                  Price: {course.price}$
-                </Button>
-              </div>
-            </div>
-          );
-        })}
+        <div key={this.props.course.title} style={squareCardHolder}>
+          <div style={squareBackgroundImage}> </div>
+          <div style={informationSection}>
+            <h5>{this.props.course.title.slice(0, 12) + "..."}</h5>
+            <p>{this.props.course.description.slice(0, 60) + "..."}</p>
+            <Button size="large" style={priceOrButtons}>
+              Price: {this.props.course.price}$
+            </Button>
+          </div>
+        </div>
       </>
     );
   }
