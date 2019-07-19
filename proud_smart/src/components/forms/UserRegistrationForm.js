@@ -31,7 +31,6 @@ class RegistrationForm extends Component {
     ///// Joshua
     selectedFile: null, //for single image file upload
     file: null //single image file, single image
-
     ////
   };
 
