@@ -31,9 +31,15 @@ class UsersDashboard extends Component {
         </Link>
         <div style={squareCardHolder} className="container section">
           {console.log(this.state.user)}
-          {this.state.user && this.state.user.purchasedCourses && (
-            <SquareCard courses={this.state.user.purchasedCourses} />
-          )}
+          {this.state.user &&
+            this.state.user.purchasedCourses &&
+            this.state.user.purchasedCourses.map(course => {
+              return (
+                <Link to={`/courses/dashboard/${course.courseId}`}>
+                  <SquareCard course={course} />
+                </Link>
+              );
+            })}
         </div>
       </div>
     );

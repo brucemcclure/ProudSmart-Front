@@ -5,13 +5,13 @@ import LocalAPI from "./../../../apis/Local";
 
 class CoursesDashboard extends Component {
   componentDidMount() {
-    LocalAPI.get("/courses/dashboard/5d2fcd972cc0a0202dcfa0f7").then(res =>
-      console.log(res)
-    );
+    const { id } = this.props.match.params;
+    LocalAPI.get(`/courses/dashboard/${id}`).then(res => console.log(res.data));
     console.log("test");
   }
 
   render() {
+    console.log(this.props);
     const { Sider, Content } = Layout;
     return (
       <Layout style={{ minHeight: "100vh", width: "100vw" }}>

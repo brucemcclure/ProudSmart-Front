@@ -29,13 +29,17 @@ class NewCourseFormFirstPage extends Component {
           label="Educator of this course"
         />
         <div>
-          <label htmlFor="Area of study">Area of study</label>
+          <label title="Area of Study">Area of study</label>
           <div>
-            <Field name="IoT" id="IoT" component={renderCheckbox} />
-            <Field name="ML" id="ML" component={renderCheckbox} />
-            <Field name="AI" id="AI" component={renderCheckbox} />
-            <Field name="Cloud" id="Cloud" component={renderCheckbox} />
-            <Field name="Dev Ops" id="Dev Ops" component={renderCheckbox} />
+            <Field name="topics.IoT" id="IoT" component={renderCheckbox} />
+            <Field name="topics.ML" id="ML" component={renderCheckbox} />
+            <Field name="topics.AI" id="AI" component={renderCheckbox} />
+            <Field name="topics.Cloud" id="Cloud" component={renderCheckbox} />
+            <Field
+              name="topics.Dev Ops"
+              id="Dev Ops"
+              component={renderCheckbox}
+            />
             <Field
               name="Infrastructure"
               id="Infrastructure"
