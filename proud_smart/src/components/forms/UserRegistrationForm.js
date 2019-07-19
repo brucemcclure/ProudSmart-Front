@@ -92,7 +92,7 @@ class RegistrationForm extends Component {
               // Success
               let fileData = response.data;
               this.setState({ file: fileData });
-              console.log("file data image name", fileData.image);
+              console.log("file data image name", fileData.image); //joshua file.image
               console.log("file data image location", fileData.location);
               this.ocShowAlert("File Uploaded", "#3089cf");
             }
@@ -177,6 +177,10 @@ class RegistrationForm extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { file } = this.state; //Joshua
+    const defaltProfileImgUrl =
+      "https://proudsmarts3bucket.s3-ap-southeast-2.amazonaws.com/profile_pictures/defaultAvatarImage.jpg"; //Joshua
+    const defaultProfileImgName = "Proudsmart logo image";
 
     const formItemLayout = {
       labelCol: {
@@ -297,14 +301,14 @@ class RegistrationForm extends Component {
         <div id="oc-alert-container" />
         {/* Once you upload your profile picture, it should appear here  */}
 
-        {/*<div className="col-md-4 col-sm-4 text-center">
+        <div className="col-md-4 col-sm-4 text-center">
           <img
             className="btn-md"
-            src={file && file.location}
-            alt={file && file.image}
+            src={file && file.location} //joshua defaltProfileImgUrl
+            alt={file && file.image} //joshua defaultProfileImgName
             style={{ borderRadius: "50%", height: "10em", width: "10em" }}
           />
-              </div>*/}
+        </div>
 
         <input type="file" onChange={this.singleFileChangedHandler} />
         <div className="mt-5">
@@ -315,7 +319,7 @@ class RegistrationForm extends Component {
             Upload Avatar Image
           </button>
         </div>
-        {/** */}
+        {/***************** */}
 
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
