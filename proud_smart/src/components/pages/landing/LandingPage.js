@@ -75,7 +75,7 @@ class LandingPage extends Component {
                         course: course
                       }
                     }}
-                    // style={linkStyle}
+                    style={linkStyle}
                   >
                     <SquareCard course={course} />
                   </Link>
