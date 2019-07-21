@@ -1,7 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import validate from "./../../forms/formHelpers/validateChaptersandTopics";
 import renderCheckbox from "../../forms/formHelpers/renderCheckbox";
+import LocalAPI from "./../../../apis/Local"
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
@@ -37,7 +38,7 @@ const renderQualifications = ({ fields, meta: { error, submitFailed } }) => (
         />
         <Field
           name={`${qualification}.date`}
-          type="text"
+          type="date"
           component={renderField}
           label="Graduation Date"
         />
@@ -52,51 +53,60 @@ const renderQualifications = ({ fields, meta: { error, submitFailed } }) => (
   </ul>
 );
 
-const NewEducatorForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
-  return (
-    <div className="container section">
-      <form onSubmit={handleSubmit}>
-        <h6>About Me</h6>
-        <Field
-          name="About me"
-          type="text"
-          placeholder="Extra information you would like students to know"
-          component="textarea"
-          label="About me"
-        />
-        <FieldArray name="qulaifications" component={renderQualifications} />
-        <div>
-          <button type="submit" disabled={submitting}>
-            Submit
-          </button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-          >
-            Clear Values
-          </button>
-        </div>
-        <div>
-          <label htmlFor="Area of study">Areas of competence</label>
+class NewEducatorForm extends Component {
+  onFormSubmit = async (formValues) => {
+    // manipulating teaching tags so they are in an array not object literal
+    formValues.teachingTags = Object.keys(formValues.teachingTags);
+    console.log(formValues);
+    LocalAPI.put("auth/educator-application", formValues)
+      .then(data => console.log(data))
+  }
+  render() {
+    const { handleSubmit, pristine, reset, submitting } = this.props;
+    return (
+      <div className="container section">
+        <form onSubmit={handleSubmit(this.onFormSubmit)}>
+          <h6>About Me</h6>
+          <Field
+            name="About me"
+            type="text"
+            placeholder="Extra information you would like students to know"
+            component="textarea"
+            label="About me"
+          />
+          <FieldArray name="qualifications" component={renderQualifications} />
           <div>
-            <Field name="IoT" id="IoT" component={renderCheckbox} />
-            <Field name="ML" id="ML" component={renderCheckbox} />
-            <Field name="AI" id="AI" component={renderCheckbox} />
-            <Field name="Cloud" id="Cloud" component={renderCheckbox} />
-            <Field name="Dev Ops" id="Dev Ops" component={renderCheckbox} />
-            <Field
-              name="Infrastructure"
-              id="Infrastructure"
-              component={renderCheckbox}
-            />
-            <Field name="Corgi" id="employed" component={renderCheckbox} />
+            <button type="submit" disabled={submitting}>
+              Submit
+            </button>
+            <button
+              type="button"
+              disabled={pristine || submitting}
+              onClick={reset}
+            >
+              Clear Values
+            </button>
           </div>
-        </div>
-      </form>
-    </div>
-  );
+          <div>
+            <label htmlFor="Area of study">Areas of competence</label>
+            <div>
+              <Field name="teachingTags.IoT" id="IoT" component={renderCheckbox} />
+              <Field name="teachingTags.ML" id="ML" component={renderCheckbox} />
+              <Field name="teachingTags.AI" id="AI" component={renderCheckbox} />
+              <Field name="teachingTags.Cloud" id="Cloud" component={renderCheckbox} />
+              <Field name="teachingTags.DevOps" id="DevOps" component={renderCheckbox} />
+              <Field
+                name="teachingTags.infrastructure"
+                id="Infrastructure"
+                component={renderCheckbox}
+              />
+              <Field name="Corgi" id="employed" component={renderCheckbox} />
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
 };
 
 export default reduxForm({
