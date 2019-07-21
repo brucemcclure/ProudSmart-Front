@@ -12,7 +12,7 @@ class NewCourseFormThirdPage extends Component {
         <p>Please write out the key concepts of the course separated by a #</p>
         <p>eg. #Programming #Cloud #Machine Learning </p>
         <Field
-          name="Key concepts"
+          name="keyConcepts"
           type="text"
           component={renderField}
           label="Key Concept"
@@ -21,36 +21,36 @@ class NewCourseFormThirdPage extends Component {
           <label title="prerequisites">prerequisites</label>
           <div>
             <Field
-              name="prerequisites.IoT"
+              name="prerequisites.ioT"
               id="IoT"
               component={renderCheckbox}
             />
-            <Field name="prerequisites.ML" id="ML" component={renderCheckbox} />
-            <Field name="prerequisites.AI" id="AI" component={renderCheckbox} />
+            <Field name="prerequisites.mL" id="ML" component={renderCheckbox} />
+            <Field name="prerequisites.aI" id="AI" component={renderCheckbox} />
             <Field
-              name="prerequisites.Cloud"
+              name="prerequisites.cloud"
               id="Cloud"
               component={renderCheckbox}
             />
             <Field
-              name="prerequisites.Dev Ops"
+              name="prerequisites.devOps"
               id="Dev Ops"
               component={renderCheckbox}
             />
             <Field
-              name="prerequisites.Infrastructure"
+              name="prerequisites.infrastructure"
               id="Infrastructure"
               component={renderCheckbox}
             />
             <Field
-              name="prerequisites.Corgi"
+              name="prerequisites.corgi"
               id="employed"
               component={renderCheckbox}
             />
           </div>
         </div>
 
-        <Field name="Price" type="text" component={renderField} label="Price" />
+        <Field name="price" type="text" component={renderField} label="Price" />
 
         <div>
           <button type="button" className="previous" onClick={previousPage}>

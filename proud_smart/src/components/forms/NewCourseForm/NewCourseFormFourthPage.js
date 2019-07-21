@@ -99,6 +99,7 @@ class NewCourseFormFourthPage extends Component {
   };
   ///////////Above is upload related content
 
+  // Can we kill this handleSubmit????????????????
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
