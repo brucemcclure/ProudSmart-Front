@@ -97,14 +97,11 @@ class RectangularCard extends Component {
 
           {this.checkApplicationStatus() && (
             <>
-              <button onClick={() => approvalFunction(document, index)}>
-                Approve
-              </button>
-              <button onCLick={() => denialFunction(document, index)}>
-                Deny
-              </button>
-            </>
-          )}
+              <button onClick={() => approvalFunction(document, index)}>Approve</button>
+              <button onClick={() => denialFunction(document, index)}>Deny</button>
+            </> 
+          }
+
         </div>
       </div>
     );

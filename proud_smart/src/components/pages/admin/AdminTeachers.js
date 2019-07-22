@@ -9,7 +9,6 @@ class AdminTeachers extends Component {
 
   onEducatorApprovalButtonClick = (educator, index) => {
     const {educators} = this.state;
-    console.log("meee heerre")
     LocalAPI.put("/admin/approve-application", {type: "user", document: educator})
       .then(response => {
         console.log(`educators b4`)
