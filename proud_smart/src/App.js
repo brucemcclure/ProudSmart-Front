@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./styles/styles.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import LocalAPI from "./apis/Local";

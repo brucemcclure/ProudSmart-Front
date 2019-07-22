@@ -19,9 +19,13 @@ const linkStyle = {
 };
 
 const backgroundImageStyling = {
-  backgroundImage: `linear-gradient(to right, rgba(189, 214, 255, 0.6), rgba(76, 154, 179, 0.2)), url(${BackgroundImage})`,
-  height: "100%",
-  backgroundSize: "cover"
+  backgroundImage: `url(${BackgroundImage})`,
+  backgroundSize: "cover",
+  backgroundPosition: "50%"
+};
+
+const landingText = {
+  color: "#F7F7F8"
 };
 
 class LandingPage extends Component {
@@ -45,8 +49,8 @@ class LandingPage extends Component {
             style={{ minHeight: "calc(100vh - 64px)" }}
           >
             <div className="hero row">
-              <div className="col s6">
-                <h1 style={{ marginBottom: 5 }}>
+              <div className="col s6" style={landingText}>
+                <h1 style={{ ...landingText, marginBottom: 5 }}>
                   ProudSmart Learning Platform
                 </h1>
                 <p>
