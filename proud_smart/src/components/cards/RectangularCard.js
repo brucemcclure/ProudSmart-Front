@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 import LocalAPI from "./../../apis/Local";
 import Image from "./../images/profilepicture.jpeg";
+import {connect} from "react-redux";
 
 const rectangleBackgroundImage = {
   backgroundImage: `url(${Image})`,
@@ -36,46 +37,81 @@ const priceOrButtons = {
 };
 
 class RectangularCard extends Component {
-  state = { courses: [] };
+  
+  checkOwnerOrAdmin = () => {
+    const {documentId, userId, userType} = this.props;
+    return (documentId === userId || userType === "admin");
+  };
 
-  componentDidMount() {
-    LocalAPI("/courses").then(response => {
-      console.log(response.data);
-      this.setState({ courses: response.data });
-    });
-  }
+  checkApplicationStatus = () => {
+    // console.log(`statement is ${(this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")}`)
+    // console.log(this.props.approvalFunction);
+    // console.log(this.props.userType,  this.props.documentStatus);
+    return (this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")
+  };
 
   render() {
+    const {showUrl, editUrl, title, body, photo, approvalFunction, denialFunction, deleteFunction, documentId, index, document} = this.props;
     return (
-      <>
-        {this.state.courses.map(course => {
-          return (
-            <div key={course.title}>
-              <div
-                style={rectangularCardHolder}
-                className="rectangularCardHolder"
+      <div key={title}>
+        <div
+          style={rectangularCardHolder}
+          className="rectangularCardHolder"
+        > 
+          <Link to={showUrl} style={linkStye}>
+            <div style={rectangleBackgroundImage}> </div>
+          </Link>
+          <div style={informationSection}>
+           <h5>{title}</h5>
+           <p>{body}</p>
+          </div>
+        
+          {
+            this.checkOwnerOrAdmin() 
+            &&  
+            <button>
+              <Link 
+              to=
+                {{
+                  pathname:editUrl,
+                  state:{document}
+                }} 
+              style={linkStye}
               >
-                <Link to="/courses/show" style={linkStye}>
-                  <div style={rectangleBackgroundImage}> </div>
-                </Link>
+                Edit
+              </Link>
+            </button>
+          }
+          {
+            this.props.userType === "admin"
+            &&
+            <button onClick={() => {
+              console.log(deleteFunction);
+              deleteFunction(documentId, index);
+            }}>Delete</button>
+          }
 
-                <div style={informationSection}>
-                  <h5>{course.title}</h5>
-                  <p>{course.description}</p>
-                  <p>{course.description}</p>
-                  <p>{course.teacher}</p>
-                </div>
+          {
+            this.checkApplicationStatus()
+            &&
+            <>
+              <button onClick={() => approvalFunction(document, index)}>Approve</button>
+              <button onCLick={() => denialFunction(document, index)}>Deny</button>
+            </> 
+          }
 
-                <Button size="large" style={priceOrButtons}>
-                  contact
-                </Button>
-              </div>
-            </div>
-          );
-        })}
-      </>
-    );
+        </div>
+      </div>
+    )
   }
 }
 
-export default RectangularCard;
+const mapPropsToState = (state) => {
+  const {userId, userType} = state.user;
+  return {
+    userId,
+    userType
+  } 
+}
+
+export default connect(mapPropsToState)(RectangularCard);
