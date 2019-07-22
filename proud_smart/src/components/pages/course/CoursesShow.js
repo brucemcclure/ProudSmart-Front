@@ -1,84 +1,133 @@
 import React, { Component } from "react";
 import { Layout, Divider, Descriptions, Button, Row, Col, List } from "antd";
 import Chapters from "./Chapters";
+import LocalAPI from "./../../../apis/Local";
 
 class CoursesShow extends Component {
+  state = {
+    course: null,
+    keyConcepts1: [],
+    keyConcepts2: [],
+    details: []
+  };
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    LocalAPI.get(`/courses/show/${id}`).then(res => {
+      const course = res.data;
+      this.setState({ course });
+    });
+  }
+
+  populateListData() {
+    console.log(this.state);
+    const { course } = this.state;
+    // this creates dataset for the "You Will Learn" section
+    const keyConcepts1 = course.keyConcepts.filter(
+      (item, index) => index % 2 === 0
+    );
+    const keyConcepts2 = course.keyConcepts.filter(
+      (item, index) => index % 2 === 1
+    );
+    console.log(course);
+    // this feeds data into the list in the sider
+    const details = [
+      {
+        title: "materials",
+        description: course.materialsUrl
+      },
+      {
+        title: "tags",
+        description: course.interestTags
+      }
+    ];
+
+    this.setState({ keyConcepts1, keyConcepts2, details });
+  }
+
   render() {
     console.log(this.props);
     const { Sider, Content } = Layout;
-    const data = [
-      "Programming languages",
-      "Internet of things",
-      "Our solutions",
-      "ProudSmart Technologies",
-      "Lots of other interesting things"
-    ];
+    const { course, keyConcepts1, keyConcepts2, details } = this.state;
+
+    if (course && keyConcepts1.length === 0) {
+      this.populateListData();
+    }
     return (
-      <Layout>
-        <Content>
-          <div className="section">
-            <h1>Course</h1>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam
-              quisquam et quas tempora assumenda, odit quam? Inventore rem id
-              incidunt soluta vitae necessitatibus quae magnam placeat harum
-              sint. Sed, libero. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Numquam nisi, aperiam officiis deserunt dolore
-              eos quae vitae maiores rem, accusamus impedit quam perspiciatis
-              asperiores? Perferendis iste asperiores sunt officia. Voluptatum.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste
-              exercitationem distinctio sapiente fugit labore possimus suscipit
-              harum quo magni iusto veniam maxime optio odio magnam, odit
-              incidunt corrupti eveniet aliquid?
-            </p>
-          </div>
-          <Divider />
-          <div className="section container">
-            <div style={{ border: "1px solid" }}>
-              <h3>You Will Learn</h3>
-              <Row gutter={24}>
-                <Col span={12}>
-                  <List
-                    dataSource={data}
-                    renderItem={item => <List.Item>{item}</List.Item>}
-                  />
-                </Col>
-                <Col span={12}>
-                  <List
-                    dataSource={data}
-                    renderItem={item => <List.Item>{item}</List.Item>}
-                  />
-                </Col>
-              </Row>
-            </div>
-            <Row style={{ marginTop: 25 }}>
-              <Col span={24}>
-                <Chapters style={{ width: "100%" }} />
-              </Col>
-            </Row>
-          </div>
-        </Content>
-        <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-          <div className="video-container">
-            <iframe
-              src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-              frameborder="0"
-              allowfullscreen
-            />
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Button type="primary" size="large">
-              Add to Cart
-            </Button>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <Button size="large">Buy Now</Button>
-          </div>
-          <Chapters />
-        </Sider>
-      </Layout>
+      <>
+        {course ? (
+          <Layout>
+            <Content>
+              <div className="section container">
+                <h1>{course.title}</h1>
+                <p>{course.description}</p>
+              </div>
+              <div className="section container">
+                <h4>Recommended Prerequisites</h4>
+                <List
+                  dataSource={course.recommendedPrerequisites}
+                  renderItem={item => <List.Item>{item}</List.Item>}
+                />
+              </div>
+              <Divider />
+              <div className="section container">
+                <div style={{ border: "1px solid" }}>
+                  <h3>You Will Learn</h3>
+                  <Row gutter={24}>
+                    <Col span={12}>
+                      <List
+                        dataSource={keyConcepts1}
+                        renderItem={item => <List.Item>{item}</List.Item>}
+                      />
+                    </Col>
+                    <Col span={12}>
+                      <List
+                        dataSource={keyConcepts2}
+                        renderItem={item => <List.Item>{item}</List.Item>}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+                <Row style={{ marginTop: 25 }}>
+                  <Col span={24}>
+                    <Chapters course={course} style={{ width: "100%" }} />
+                  </Col>
+                </Row>
+              </div>
+            </Content>
+            <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
+              <div className="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+                  frameborder="0"
+                  allowfullscreen
+                />
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <Button type="primary" size="large">
+                  Add to Cart
+                </Button>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <Button size="large">Buy Now</Button>
+              </div>
+              {/* <Chapters /> */}
+              <List
+                itemLayout="horizontal"
+                dataSource={details}
+                renderItem={item => (
+                  <List.Item>
+                    <List.Item.Meta
+                      title={item.title}
+                      description={item.description}
+                    />
+                  </List.Item>
+                )}
+              />
+            </Sider>
+          </Layout>
+        ) : null}
+      </>
     );
   }
 }
