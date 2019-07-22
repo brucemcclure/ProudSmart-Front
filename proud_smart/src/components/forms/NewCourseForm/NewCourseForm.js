@@ -24,6 +24,7 @@ class NewCourseForm extends Component {
 
   onSubmit = values => {
     console.log(values);
+    console.log("Mr pickles the corgi");
   };
 
   render() {
