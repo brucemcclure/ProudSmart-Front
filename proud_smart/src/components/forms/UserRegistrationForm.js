@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthToken } from "./../../actions";
+import { setAuthToken, setUser } from "./../../actions";
 import LocalAPI from "./../../apis/Local";
 import $ from "jquery";
 
@@ -122,7 +122,9 @@ class RegistrationForm extends Component {
           values
         })
           .then(response => {
-            this.props.setAuthToken(response.data);
+            const {token, userType} = response.data;
+            this.props.setAuthToken(token);
+            this.props.setUserType(userType);
             this.props.history.push("/users/dashboard");
           })
           .catch(err => console.log(err));
@@ -336,5 +338,8 @@ const WrappedRegistrationForm = Form.create({ name: "register" })(
 
 export default connect(
   null,
-  { setAuthToken }
+  { 
+    setAuthToken, 
+    setUser
+  }
 )(WrappedRegistrationForm);
