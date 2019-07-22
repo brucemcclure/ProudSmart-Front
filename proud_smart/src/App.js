@@ -43,56 +43,6 @@ class App extends Component {
           <Navbar />
         </header>
         <main>
-          {/* <div>
-              <Link to="/">LandingPage</Link>
-            </div>
-            <div>
-              <Link to="/auth/login">AuthLogin</Link>
-            </div>
-            <div>
-              <Link to="/auth/register">AuthRegister</Link>
-            </div>
-            <div>
-              <Link to="/auth/educator_application">
-                AuthEducatorApplication
-              </Link>
-            </div>
-            <div>
-              <Link to="/admin/dashboard">AdminDashboard</Link>
-            </div>
-            <div>
-              <Link to="/admin/educators">AdminTeachers</Link>
-            </div>
-            <div>
-              <Link to="/admin/users">AdminUsers</Link>
-            </div>
-            <div>
-              <Link to="/users/dashboard">UsersDashboard</Link>
-            </div>
-            <div>
-              <Link to="/users/edit">UsersEdit</Link>
-            </div>
-            <div>
-              <Link to="/courses">CoursesIndex</Link>
-            </div>
-            <div>
-              <Link to="/courses/show">CoursesShow</Link>
-            </div>
-            <div>
-              <Link to="/courses/dasboard">CoursesDashboard</Link>
-            </div>
-            <div>
-              <Link to="/courses/new">CoursesNew</Link>
-            </div>
-            <div>
-              <Link to="/courses/edit">CoursesEdit</Link>
-            </div>
-            <div>
-              <Link to="/educators/profile">EducatorsProfile</Link>
-            </div>
-            <div>
-              <Link to="/educators/dashboard">EducatorsDashboard</Link>
-            </div> */}
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/auth/login" component={AuthLogin} />
           <Route exact path="/auth/register" component={AuthRegister} />
@@ -109,7 +59,11 @@ class App extends Component {
             path="/users/dashboard"
             component={UsersDashboard}
           />
-          <Route exact path="/users/edit" component={UsersEdit} />
+          <Route
+            exact
+            path="/users/edit"
+            render={props => <UsersEdit {...props} />}
+          />
           <Route exact path="/courses" component={CoursesIndex} />
           <Route
             exact

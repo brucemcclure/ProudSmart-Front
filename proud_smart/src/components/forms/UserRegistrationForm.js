@@ -213,7 +213,7 @@ class RegistrationForm extends Component {
     );
     return (
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="E-mail">
+        <Form.Item label="email">
           {getFieldDecorator("email", {
             rules: [
               {
