@@ -5,21 +5,9 @@ import LocalAPI from "./../../apis/Local"; //Joshua
 import $ from "jquery"; //Joshua
 import "antd/dist/antd.css";
 import "./../../index.css";
-import {
-  Form,
-  Input,
-  Icon,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-  Upload
-} from "antd";
+import { Form, Input, Select, Row, Col, Checkbox, Button } from "antd";
 
 const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 
 class RegistrationForm extends Component {
   state = {
@@ -121,7 +109,7 @@ class RegistrationForm extends Component {
           values
         })
           .then(response => {
-            const {token, userType} = response.data;
+            const { token, userType } = response.data;
             this.props.setAuthToken(token);
             this.props.setUserType(userType);
             this.props.history.push("/users/dashboard");
@@ -178,9 +166,9 @@ class RegistrationForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { file } = this.state; //Joshua
-    const defaltProfileImgUrl =
-      "https://proudsmarts3bucket.s3-ap-southeast-2.amazonaws.com/profile_pictures/defaultAvatarImage.jpg"; //Joshua
-    const defaultProfileImgName = "Proudsmart logo image";
+    // const defaltProfileImgUrl =
+    //   "https://proudsmarts3bucket.s3-ap-southeast-2.amazonaws.com/profile_pictures/defaultAvatarImage.jpg"; //Joshua
+    // const defaultProfileImgName = "Proudsmart logo image";
 
     const formItemLayout = {
       labelCol: {
@@ -337,8 +325,8 @@ const WrappedRegistrationForm = Form.create({ name: "register" })(
 
 export default connect(
   null,
-  { 
-    setAuthToken, 
+  {
+    setAuthToken,
     setUser
   }
 )(WrappedRegistrationForm);

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
-import LocalAPI from "./../../apis/Local";
 import Image from "./../images/profilepicture.jpeg";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 const rectangleBackgroundImage = {
   backgroundImage: `url(${Image})`,
@@ -32,86 +30,93 @@ const informationSection = {
   padding: "20px"
 };
 
-const priceOrButtons = {
-  width: "15%"
-};
-
 class RectangularCard extends Component {
-  
   checkOwnerOrAdmin = () => {
-    const {documentId, userId, userType} = this.props;
-    return (documentId === userId || userType === "admin");
+    const { documentId, userId, userType } = this.props;
+    return documentId === userId || userType === "admin";
   };
 
   checkApplicationStatus = () => {
     // console.log(`statement is ${(this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")}`)
     // console.log(this.props.approvalFunction);
     // console.log(this.props.userType,  this.props.documentStatus);
-    return (this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")
+    return (
+      this.props.approvalFunction &&
+      this.props.userType === "admin" &&
+      this.props.documentStatus === "applied"
+    );
   };
 
   render() {
-    const {showUrl, editUrl, title, body, photo, approvalFunction, denialFunction, deleteFunction, documentId, index, document} = this.props;
+    const {
+      showUrl,
+      editUrl,
+      title,
+      body,
+      approvalFunction,
+      denialFunction,
+      deleteFunction,
+      documentId,
+      index,
+      document
+    } = this.props;
     return (
       <div key={title}>
-        <div
-          style={rectangularCardHolder}
-          className="rectangularCardHolder"
-        > 
+        <div style={rectangularCardHolder} className="rectangularCardHolder">
           <Link to={showUrl} style={linkStye}>
             <div style={rectangleBackgroundImage}> </div>
           </Link>
           <div style={informationSection}>
-           <h5>{title}</h5>
-           <p>{body}</p>
+            <h5>{title}</h5>
+            <p>{body}</p>
           </div>
-        
-          {
-            this.checkOwnerOrAdmin() 
-            &&  
+
+          {this.checkOwnerOrAdmin() && (
             <button>
-              <Link 
-              to=
-                {{
-                  pathname:editUrl,
-                  state:{document}
-                }} 
-              style={linkStye}
+              <Link
+                to={{
+                  pathname: editUrl,
+                  state: { document }
+                }}
+                style={linkStye}
               >
                 Edit
               </Link>
             </button>
-          }
-          {
-            this.props.userType === "admin"
-            &&
-            <button onClick={() => {
-              console.log(deleteFunction);
-              deleteFunction(documentId, index);
-            }}>Delete</button>
-          }
+          )}
+          {this.props.userType === "admin" && (
+            <button
+              onClick={() => {
+                console.log(deleteFunction);
+                deleteFunction(documentId, index);
+              }}
+            >
+              Delete
+            </button>
+          )}
 
-          {
-            this.checkApplicationStatus()
-            &&
+          {this.checkApplicationStatus() && (
             <>
-              <button onClick={() => approvalFunction(document, index)}>Approve</button>
-              <button onCLick={() => denialFunction(document, index)}>Deny</button>
-            </> 
-          }
-
+              <button onClick={() => approvalFunction(document, index)}>
+                Approve
+              </button>
+              <button onCLick={() => denialFunction(document, index)}>
+                Deny
+              </button>
+            </>
+          )}
         </div>
       </div>
-    )
+    );
   }
 }
 
-const mapPropsToState = (state) => {
-  const {userId, userType} = state.user;
+const mapPropsToState = state => {
+  const { userId, userType } = state.user;
   return {
     userId,
     userType
-  } 
-}
+  };
+};
 
 export default connect(mapPropsToState)(RectangularCard);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Layout } from "antd";
 import Image from "./../../images/profilepicture.jpeg";
 import { Divider } from "antd";
 import SquareCard from "./../../cards/SquareCard";
@@ -13,12 +12,11 @@ const squareCardContainer = {
 
 class EducatorsProfile extends Component {
   render() {
-    const { Sider, Content } = Layout;
     return (
       <div className="container">
         <div className="row section">
           <div className="col s12 m3">
-            <img src={Image} style={{ width: "100%" }} />
+            <img src={Image} style={{ width: "100%" }} alt="" />
           </div>
           <div className="col s12 m9">
             <div className="section">
