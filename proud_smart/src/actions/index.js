@@ -6,10 +6,12 @@ export const setAuthToken = (token) => {
   }
 }
 
-export const setUserType = (userType) => {
-  sessionStorage.setItem("userType", userType);
+export const setUser = (user) => {
+  sessionStorage.setItem("userId", user.userId);
+  sessionStorage.setItem("userType", user.userType);
+  console.log(`user should be in setUser ${user}`);
   return {
-    type: "USER_TYPE",
-    payload: userType
+    type: "USER",
+    payload: user
   }
 }

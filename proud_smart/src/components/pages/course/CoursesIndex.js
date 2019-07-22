@@ -24,8 +24,10 @@ class CoursesIndex extends Component {
 }
 
 const mapPropsToState = (state) => {
+  const {userId, userType} = state.user;
   return {
-    userType: state.user.userType
+    userId,
+    userType
   } 
 }
 
