@@ -4,7 +4,7 @@ import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
 import renderCheckbox from "../formHelpers/renderCheckbox";
 
-class NewCourseFormThirdPage extends Component {
+class EditCourseFormThirdPage extends Component {
   render() {
     const { handleSubmit, pristine, previousPage, submitting } = this.props;
     return (
@@ -65,8 +65,8 @@ class NewCourseFormThirdPage extends Component {
   }
 }
 export default reduxForm({
-  form: "NewCourseForm", //Form name is same
+  form: "EditCourseForm", //Form name is same
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate
-})(NewCourseFormThirdPage);
+})(EditCourseFormThirdPage);

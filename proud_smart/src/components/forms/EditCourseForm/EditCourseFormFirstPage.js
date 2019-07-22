@@ -4,7 +4,7 @@ import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
 import renderCheckbox from "../formHelpers/renderCheckbox";
 
-class NewCourseFormFirstPage extends Component {
+class EditCourseFormFirstPage extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -14,6 +14,7 @@ class NewCourseFormFirstPage extends Component {
           type="text"
           component={renderField}
           label="courseTitle"
+          defaultValue={"course"}
         />
         <Field
           name="description"
@@ -45,7 +46,11 @@ class NewCourseFormFirstPage extends Component {
               id="Infrastructure"
               component={renderCheckbox}
             />
-            <Field name="topics.corgi" id="employed" component={renderCheckbox} />
+            <Field
+              name="topics.corgi"
+              id="employed"
+              component={renderCheckbox}
+            />
           </div>
         </div>
         <div>
@@ -59,8 +64,8 @@ class NewCourseFormFirstPage extends Component {
 }
 
 export default reduxForm({
-  form: "NewCourseForm",
+  form: "EditCourseForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate
-})(NewCourseFormFirstPage);
+})(EditCourseFormFirstPage);

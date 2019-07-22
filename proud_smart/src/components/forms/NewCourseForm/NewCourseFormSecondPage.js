@@ -239,7 +239,7 @@ class NewCourseFormSecondPage extends Component {
         */}
 
         <label htmlFor="Area of study">Is this course certified?</label>
-        <Field name="Certified" id="Certified" component={renderCheckbox} />
+        <Field name="certified" id="Certified" component={renderCheckbox} />
         <div>
           <div>
             <button type="button" className="previous" onClick={previousPage}>

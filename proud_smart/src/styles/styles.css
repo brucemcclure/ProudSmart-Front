@@ -1,0 +1,11 @@
+#root {
+  background-color: #f7f7f8;
+  font-family: "Roboto", sans-serif;
+}
+#root h1,
+#root h3,
+#root h4 {
+  font-family: "Open Sans", sans-serif;
+}
+
+/*# sourceMappingURL=styles.css.map */

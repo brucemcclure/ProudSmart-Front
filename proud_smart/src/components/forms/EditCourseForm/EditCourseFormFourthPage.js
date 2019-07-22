@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { Field, reduxForm, FieldArray } from "redux-form";
 import validateChaptersandTopics from "../formHelpers/validateChaptersandTopics";
-import renderField from "./../formHelpers/renderField";
+import renderField from "../formHelpers/renderField";
 import LocalAPI from "../../../apis/Local";
 import $ from "jquery"; //Joshua
 import ReactPlayer from "react-player"; //Joshua
 import renderFile from "../formHelpers/renderFile";
 
-class NewCourseFormFourthPage extends Component {
-  constructor(props) {
-    super(props);
-    this.selectedVideoInput = React.createRef();
+class EditCourseFormFourthPage extends Component {
+  constructor() {
+    super();
     this.state = {
       uploading: false,
       selectedVideoFile: null,
@@ -24,9 +23,9 @@ class NewCourseFormFourthPage extends Component {
   videoFileChangeHandler = event => {
     console.log(event.target.files); //this will show you whats inside the event target.
     this.setState({
-      [event.target.name]: event.target.files[0]
+      selectedVideoFile: event.target.files[0]
     });
-    console.log(this.state.selectedVideoFile);
+    console.log(this.state);
   };
 
   singleVideoFileUploadHandler = event => {
@@ -69,7 +68,7 @@ class NewCourseFormFourthPage extends Component {
               });
               let fileData = response.data;
               this.setState({ videoFile: fileData });
-              console.log("video name", fileData.video); //video name is here
+              console.log("video name", fileData.video);
               console.log("video url", fileData.location); //video url is here
               this.ocShowAlert("File Uploaded", "#3089cf");
             }
@@ -153,7 +152,7 @@ class NewCourseFormFourthPage extends Component {
     );
 
     const renderTopics = ({ fields, meta: { error } }) => {
-      const { videoFile, uploading, selectedVideoFile } = this.state;
+      const { videoFile, uploading } = this.state;
       return (
         <ul>
           <li>
@@ -194,26 +193,11 @@ class NewCourseFormFourthPage extends Component {
                 <div id={videoFile && videoFile.video}>
                   <h2>{uploading ? "Uploading..." : null}</h2>
                 </div>
-
                 <div>
                   <p>(Only mp4 file less than 100MB allowed)</p>
-                  {/**no file chosen sign doesn't change even filed selected, so I created the button following this input element */}
-                  <input
-                    ref={this.selectedVideoInput}
-                    type="file"
-                    name="selectedVideoFile"
-                    onChange={this.videoFileChangeHandler}
-                    style={{ display: "none" }}
-                  />
-                  {/** this button element is to invoke the input element above, and do exactly what that input element would do, we need to change the state name of "selectedVideoInput" for another topic input   */}
-                  <p>{selectedVideoFile && selectedVideoFile.name}</p>
-                  <button
-                    onClick={() => this.selectedVideoInput.current.click()}
-                  >
-                    Choose File
-                  </button>
+                  {/**??no file chosen sign doesn't change even filed selected */}
+                  <input type="file" onChange={this.videoFileChangeHandler} />
                 </div>
-
                 <button
                   className="btn btn-info"
                   onClick={this.singleVideoFileUploadHandler}
@@ -248,8 +232,8 @@ class NewCourseFormFourthPage extends Component {
   }
 }
 export default reduxForm({
-  form: "NewCourseForm",
+  form: "EditCourseForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validateChaptersandTopics
-})(NewCourseFormFourthPage);
+})(EditCourseFormFourthPage);
