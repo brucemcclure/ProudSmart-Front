@@ -43,10 +43,15 @@ class RectangularCard extends Component {
     return (documentId === userId || userType === "admin");
   };
 
-  checkApplicationStatus = () => (this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied");
+  checkApplicationStatus = () => {
+    // console.log(`statement is ${(this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")}`)
+    // console.log(this.props.approvalFunction);
+    // console.log(this.props.userType,  this.props.documentStatus);
+    return (this.props.approvalFunction && this.props.userType === "admin" && this.props.documentStatus === "applied")
+  };
 
   render() {
-    const {showUrl, editUrl, title, body, photo, approvalFunction, denialFunction, deleteFunction, documentId, index} = this.props;
+    const {showUrl, editUrl, title, body, photo, approvalFunction, denialFunction, deleteFunction, documentId, index, document} = this.props;
     return (
       <div key={title}>
         <div
@@ -65,7 +70,14 @@ class RectangularCard extends Component {
             this.checkOwnerOrAdmin() 
             &&  
             <button>
-              <Link to={editUrl} style={linkStye}>
+              <Link 
+              to=
+                {{
+                  pathname:editUrl,
+                  state:{document}
+                }} 
+              style={linkStye}
+              >
                 Edit
               </Link>
             </button>
@@ -83,8 +95,8 @@ class RectangularCard extends Component {
             this.checkApplicationStatus()
             &&
             <>
-              <button onClick={() => approvalFunction(documentId, index)}>Approve</button>
-              <button onCLick={() => denialFunction(documentId, index)}>Deny</button>
+              <button onClick={() => approvalFunction(document, index)}>Approve</button>
+              <button onCLick={() => denialFunction(document, index)}>Deny</button>
             </> 
           }
 

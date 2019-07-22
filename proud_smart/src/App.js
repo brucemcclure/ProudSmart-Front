@@ -126,7 +126,7 @@ class App extends Component {
           <Route exact path="/courses/edit" component={CoursesEdit} />
           <Route
             exact
-            path="/educators/profile"
+            path="/educators/profile/:id"
             component={EducatorsProfile}
           />{" "}
           <Route

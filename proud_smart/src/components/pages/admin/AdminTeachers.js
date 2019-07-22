@@ -7,17 +7,22 @@ class AdminTeachers extends Component {
     educators: null
   }
 
-  onApprovalButtonClick = (educator, index) => {
+  onEducatorApprovalButtonClick = (educator, index) => {
     const {educators} = this.state;
+    console.log("meee heerre")
     LocalAPI.put("/admin/approve-application", {type: "user", document: educator})
       .then(response => {
+        console.log(`educators b4`)
+        console.log(educators)
         educators[`${index}`] = response.data;
+        console.log(`educators after`)
+        console.log(educators)
         this.setState({educators});
       })
       .catch(err => console.log(err))
   }
 
-  onDenialButtonClick = (educator, index) => {
+  onEducatorDenialButtonClick = (educator, index) => {
     const {educators} = this.state;
     LocalAPI.put("/admin/deny-application", {type: "user", document: educator})
       .then(response => {
@@ -28,9 +33,16 @@ class AdminTeachers extends Component {
       .catch(err => console.log(err))
   }
 
+  onEducatorDeleteButtonClick = (educator, index) => {
+
+  };
+
   componentDidMount = async () => {
     LocalAPI("/educators")
-      .then(response => this.setState({educators: response.data}))
+      .then(response => {
+        this.setState({educators: response.data})
+        console.log(response.data)
+      })
   };
   
   render() {
@@ -38,25 +50,26 @@ class AdminTeachers extends Component {
     console.log(educators);
     return (
       <>
-        <h1>This is the AdminTeachers</h1>
-        {educators && educators.map((educator, index) => {
-          return (
-            <>
-              <h3>{educator.firstName + " " + educator.lastName}</h3>
-              <div>
-                {educator.educatorStatus === "applied" && (
-                  <>
-                    <button onClick={() => this.onApprovalButtonClick(educator, index)}>Approve</button> 
-                    <button onClick={() => this.onDenialButtonClick(educator, index)}>Deny</button>
-                  </>
-                  ) 
-                }
-              </div>
-            </>
-          )})
-        }
+        <h1>ProudSmart Educators</h1>
         <div className="container section">
-          <RectangularCard />
+          {educators && educators.map((educator, index) => {
+            return (
+              <RectangularCard
+                documentId={educator._id}
+                showUrl={`/educators/profile/${educator._id}`}
+                editUrl={`/educators/profile/${educator._id}`}
+                title={educator.firstName + " " + educator.lastName}
+                body={educator.aboutMe}
+                photo={educator.profilePhotoUrl}
+                approvalFunction={this.onEducatorApprovalButtonClick}
+                denialFunction={this.onEducatorDenialButtonClick}
+                deleteFunction={this.onEducatorDeleteButtonClick}
+                documentStatus={educator.educatorStatus}
+                document={educator}
+                index={index}
+              />
+            );
+          })};
         </div>
       </>
     );
