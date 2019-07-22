@@ -37,7 +37,10 @@ class EditCourseForm extends Component {
     values.courseProfilePictureUrl = "www.PleaseAddThisFeatureJoshOrBruce";
     console.log(values);
 
-    LocalAPI.post("courses", values)
+    LocalAPI.put(`/courses/${this.props.course._id}`, {
+      course: this.props.course,
+      values
+    })
       .then(data => console.log(data))
       .catch(err => console.log(err));
   };
