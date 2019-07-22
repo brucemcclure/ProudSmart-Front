@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import NewCourseForm from "../../forms/NewCourseForm/NewCourseForm";
 
 class CoursesEdit extends Component {
   render() {
-    return <h1>This is the CoursesEdit</h1>;
+    console.log(this.props);
+    return (
+      <>
+        <h1>This is the CoursesEdit page</h1>
+        <div className="container section">
+          <NewCourseForm />
+        </div>
+      </>
+    );
   }
 }
 

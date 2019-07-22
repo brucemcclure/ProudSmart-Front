@@ -123,7 +123,7 @@ class App extends Component {
           />
           <Route exact path="/courses/index" component={CoursesIndex} />
           <Route exact path="/courses/new" component={CoursesNew} />
-          <Route exact path="/courses/edit" component={CoursesEdit} />
+          <Route exact path="/courses/edit/:id" component={CoursesEdit} />
           <Route
             exact
             path="/educators/profile"
