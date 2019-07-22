@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import RectangularCard from "./../../cards/RectangularCard";
+import {connect} from "react-redux";
+import LocalAPI from "./../../../apis/Local";
 
 class CoursesIndex extends Component {
+  state = { courses: [] };
+
+  componentDidMount() {
+    LocalAPI("/courses").then(response => {
+      console.log(response.data);
+      this.setState({ courses: response.data });
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -12,4 +23,10 @@ class CoursesIndex extends Component {
   }
 }
 
-export default CoursesIndex;
+const mapPropsToState = (state) => {
+  return {
+    userType: state.user.userType
+  } 
+}
+
+export default connect(mapPropsToState)(CoursesIndex);

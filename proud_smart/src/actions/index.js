@@ -5,3 +5,11 @@ export const setAuthToken = (token) => {
     payload: token
   }
 }
+
+export const setUserType = (userType) => {
+  sessionStorage.setItem("userType", userType);
+  return {
+    type: "USER_TYPE",
+    payload: userType
+  }
+}

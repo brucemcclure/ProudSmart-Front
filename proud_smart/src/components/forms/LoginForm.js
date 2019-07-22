@@ -1,7 +1,7 @@
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthToken } from "./../../actions";
+import { setAuthToken, setUserType } from "./../../actions";
 import LocalAPI from "./../../apis/Local";
 
 class LoginForm extends Component {
@@ -14,7 +14,9 @@ class LoginForm extends Component {
       if (!err) {
         LocalAPI.post(`/auth/login`, { email, password })
           .then(response => {
-            this.props.setAuthToken(response.data);
+            const {token, userType} = response.data;
+            this.props.setAuthToken(token);
+            this.props.setUserType(userType);
             this.props.history.push("/users/dashboard");
           })
           .catch(err => console.log(err));
@@ -74,5 +76,5 @@ const WrappedLoginForm = Form.create({ name: "normal_login" })(LoginForm);
 
 export default connect(
   null,
-  { setAuthToken }
+  { setAuthToken, setUserType }
 )(WrappedLoginForm);
