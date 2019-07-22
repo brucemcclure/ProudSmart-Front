@@ -13,11 +13,6 @@ const squareCardContainer = {
   flexWrap: "wrap"
 };
 
-const linkStyle = {
-  display: "block",
-  width: "100%"
-};
-
 const backgroundImageStyling = {
   backgroundImage: `url(${BackgroundImage})`,
   backgroundSize: "cover",
@@ -79,7 +74,6 @@ class LandingPage extends Component {
                         course: course
                       }
                     }}
-                    // style={linkStyle}
                   >
                     <SquareCard course={course} />
                   </Link>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Icon } from "antd";
+import { Menu } from "antd";
 import "./../../../../node_modules/antd/dist/antd.css";
 
 const { SubMenu } = Menu;

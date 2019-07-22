@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu } from "antd";
 import LocalAPI from "../../../apis/Local";
 
 class SignedInLinks extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Divider, Descriptions, Button, Row, Col, List } from "antd";
+import { Layout, Divider, Button, Row, Col, List } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 
