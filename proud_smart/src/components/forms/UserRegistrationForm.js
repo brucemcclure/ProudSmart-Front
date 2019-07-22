@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthToken, setUser } from "./../../actions";
-import LocalAPI from "./../../apis/Local";
-import $ from "jquery";
-
+import LocalAPI from "./../../apis/Local"; //Joshua
+import $ from "jquery"; //Joshua
 import "antd/dist/antd.css";
 import "./../../index.css";
 import {
