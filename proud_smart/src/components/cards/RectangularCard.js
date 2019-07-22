@@ -96,7 +96,7 @@ class RectangularCard extends Component {
             &&
             <>
               <button onClick={() => approvalFunction(document, index)}>Approve</button>
-              <button onCLick={() => denialFunction(document, index)}>Deny</button>
+              <button onClick={() => denialFunction(document, index)}>Deny</button>
             </> 
           }
 

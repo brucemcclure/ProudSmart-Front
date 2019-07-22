@@ -20,17 +20,19 @@ class CourseApplications extends Component {
     const {courses} = this.state;
     LocalAPI.put("/admin/approve-application", {type: "course", document})
       .then(response => {
-        courses[`${index}`] = response.data;
+        courses.splice(index,1);
         this.setState({courses});
+        console.log(this.state)
       })
       .catch(err => console.log(err))
   };
 
   onCourseDenialClick = (document, index) => {
     const {courses} = this.state;
-    LocalAPI.put("/admin/deny-application", {type: "user", document})
+    LocalAPI.put("/admin/deny-application", {type: "course", document})
       .then(response => {
-        courses[`${index}`] = response.data;
+        console.log(response.data);
+        courses.splice(index,1);
         this.setState({courses});
       });
   }
@@ -54,6 +56,7 @@ class CourseApplications extends Component {
             <RectangularCard
               documentType="course"
               documentId={course._id}
+              document={course}
               showUrl={`courses/show/${course._id}`}
               editUrl={`courses/edit/${course._id}`}
               title={course.title}
@@ -62,6 +65,7 @@ class CourseApplications extends Component {
               deleteFunction={this.onCourseDeleteClick}
               approvalFunction={this.onCourseApprovalClick}
               denialFunction={this.onCourseDenialClick}
+              documentStatus={course.approvalStatus}
             />
           );
         })}
