@@ -52,6 +52,16 @@ class SquareCard extends Component {
             <Button size="large" style={priceOrButtons}>
               Price: {this.props.course.price}$
             </Button>
+            <Link
+              to={{
+                pathname: `/courses/edit/${this.props.course._id}`,
+                state: {
+                  course: this.props.course
+                }
+              }}
+            >
+              Edit this course
+            </Link>
           </div>
         </div>
       </>

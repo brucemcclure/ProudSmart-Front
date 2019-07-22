@@ -17,6 +17,7 @@ class Chapter extends Component {
             component="input"
             label="Chapter"
           />
+
           <Field
             name="ChapterDescription"
             type="text"

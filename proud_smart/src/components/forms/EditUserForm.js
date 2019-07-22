@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { setAuthToken, setUser } from "./../../actions";
-import LocalAPI from "./../../apis/Local"; //Joshua
-import $ from "jquery"; //Joshua
+import { setAuthToken } from "./../../actions";
+import LocalAPI from "./../../apis/Local";
+import $ from "jquery";
+
 import "antd/dist/antd.css";
 import "./../../index.css";
 import {
@@ -21,7 +22,7 @@ import {
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
-class RegistrationForm extends Component {
+class EditUserForm extends Component {
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -32,6 +33,14 @@ class RegistrationForm extends Component {
     file: null //single image file, single image
     ////
   };
+
+  componentDidMount() {
+    LocalAPI("/users/account-info").then(response => {
+      this.setState({ user: response.data });
+      console.log(this.state.user);
+      console.log("The above is the user informatiion in the state");
+    });
+  }
 
   /**
    * Joshua profile image single file upload
@@ -116,23 +125,17 @@ class RegistrationForm extends Component {
         // console.log(values.photo.file.uid);
         // console.log(process.env.REACT_APP_API_URL);
         console.log(this.state);
-        LocalAPI.post(`/auth/register`, {
+        LocalAPI.put(`/auth/update`, {
           profilePhotoUrl: this.state.file.location,
           values
         })
           .then(response => {
-            const {token, userType} = response.data;
-            this.props.setAuthToken(token);
-            this.props.setUserType(userType);
-            this.props.history.push("/users/dashboard");
+            this.props.setAuthToken(response.data);
+            //this.props.history.push("/users/dashboard");
           })
           .catch(err => console.log(err));
       }
     });
-  };
-
-  componentDidMount = () => {
-    console.log(this.props);
   };
 
   handleConfirmBlur = e => {
@@ -213,8 +216,12 @@ class RegistrationForm extends Component {
       </Select>
     );
     return (
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="email">
+      <Form
+        {...formItemLayout}
+        onSubmit={this.handleSubmit}
+        initialvalues={this.state.user}
+      >
+        <Form.Item label="E-mail">
           {getFieldDecorator("email", {
             rules: [
               {
@@ -254,7 +261,7 @@ class RegistrationForm extends Component {
             ]
           })(<Input.Password onBlur={this.handleConfirmBlur} />)}
         </Form.Item>
-        <Form.Item label="First Name" hasFeedback>
+        <Form.Item label="firstName" hasFeedback>
           {getFieldDecorator("firstName", {
             rules: [
               {
@@ -323,7 +330,7 @@ class RegistrationForm extends Component {
 
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
-            Register
+            Update
           </Button>
         </Form.Item>
       </Form>
@@ -331,14 +338,9 @@ class RegistrationForm extends Component {
   }
 }
 
-const WrappedRegistrationForm = Form.create({ name: "register" })(
-  RegistrationForm
-);
+const WrappedEditUserForm = Form.create({ name: "update" })(EditUserForm);
 
 export default connect(
   null,
-  { 
-    setAuthToken, 
-    setUser
-  }
-)(WrappedRegistrationForm);
+  { setAuthToken }
+)(WrappedEditUserForm);

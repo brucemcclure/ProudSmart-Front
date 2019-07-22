@@ -6,19 +6,29 @@ const { SubMenu } = Menu;
 
 class Chapters extends Component {
   handleClick = e => {
-    console.log("click ", e);
+    console.log(e.target);
   };
 
   render() {
+    const { course } = this.props;
     return (
       <Menu
         onClick={this.handleClick}
-        style={{ width: 256 }}
+        style={{ width: "100%" }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
       >
-        <SubMenu
+        {course.chapters.map(item => {
+          return (
+            <SubMenu key={item.title} title={item.title}>
+              {item.topics.map(topic => {
+                return <Menu.Item key={topic.title}>{topic.title}</Menu.Item>;
+              })}
+            </SubMenu>
+          );
+        })}
+        {/* <SubMenu
           key="sub1"
           title={
             <span>
@@ -61,7 +71,7 @@ class Chapters extends Component {
           <Menu.Item key="10">Option 10</Menu.Item>
           <Menu.Item key="11">Option 11</Menu.Item>
           <Menu.Item key="12">Option 12</Menu.Item>
-        </SubMenu>
+        </SubMenu> */}
       </Menu>
     );
   }
