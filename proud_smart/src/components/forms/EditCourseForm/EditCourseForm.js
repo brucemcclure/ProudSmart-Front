@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import NewCourseFormFirstPage from "./NewCourseFormFirstPage";
-import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
-import NewCourseFormThirdPage from "./NewCourseFormThirdPage";
-import NewCourseFormFourthPage from "./NewCourseFormFourthPage";
-import LocalAPI from "./../../../apis/Local";
+import EditCourseFormFirstPage from "./EditCourseFormFirstPage";
+import EditCourseFormSecondPage from "./EditCourseFormSecondPage";
+import EditCourseFormThirdPage from "./EditCourseFormThirdPage";
+import EditCourseFormFourthPage from "./EditCourseFormFourthPage";
+import LocalAPI from "../../../apis/Local";
 
-class NewCourseForm extends Component {
+class EditCourseForm extends Component {
   constructor(props) {
     super(props);
     this.nextPage = this.nextPage.bind(this);
@@ -44,25 +44,34 @@ class NewCourseForm extends Component {
 
   render() {
     const { page } = this.state;
+    console.log(this.props.course, "This");
     return (
       <div>
-        {page === 1 && <NewCourseFormFirstPage onSubmit={this.nextPage} />}
+        {page === 1 && (
+          <EditCourseFormFirstPage
+            onSubmit={this.nextPage}
+            initialValues={this.props.course}
+          />
+        )}
         {page === 2 && (
-          <NewCourseFormSecondPage
+          <EditCourseFormSecondPage
             onSubmit={this.nextPage}
             previousPage={this.previousPage}
+            initialValues={this.props.course}
           />
         )}
         {page === 3 && (
-          <NewCourseFormThirdPage
+          <EditCourseFormThirdPage
             onSubmit={this.nextPage}
             previousPage={this.previousPage}
+            initialValues={this.props.course}
           />
         )}
         {page === 4 && (
-          <NewCourseFormFourthPage
+          <EditCourseFormFourthPage
             onSubmit={this.onSubmit}
             previousPage={this.previousPage}
+            initialValues={this.props.course}
           />
         )}
       </div>
@@ -70,14 +79,4 @@ class NewCourseForm extends Component {
   }
 }
 
-// NewCourseForm = reduxForm ({
-//   form: 'NewCourseForm',
-//   initialValues: {
-//     location: {
-//      titl: "0.0",
-//      longitude: "0.0"
-//    }
-//   }
-// })(WizardForm)
-
-export default NewCourseForm;
+export default EditCourseForm;

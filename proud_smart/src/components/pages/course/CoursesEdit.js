@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import NewCourseForm from "../../forms/NewCourseForm/NewCourseForm";
+import EditCourseForm from "../../forms/EditCourseForm/EditCourseForm";
 
 class CoursesEdit extends Component {
   render() {
-    console.log(this.props);
+    console.log(this.props.location.state.course);
+    let course = this.props.location.state.course;
     return (
       <>
         <h1>This is the CoursesEdit page</h1>
         <div className="container section">
-          <NewCourseForm />
+          <EditCourseForm course={course} />
         </div>
       </>
     );
