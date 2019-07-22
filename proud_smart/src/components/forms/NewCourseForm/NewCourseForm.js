@@ -4,6 +4,7 @@ import NewCourseFormFirstPage from "./NewCourseFormFirstPage";
 import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
 import NewCourseFormThirdPage from "./NewCourseFormThirdPage";
 import NewCourseFormFourthPage from "./NewCourseFormFourthPage";
+import LocalAPI from "./../../../apis/Local";
 
 class NewCourseForm extends Component {
   constructor(props) {
@@ -23,8 +24,22 @@ class NewCourseForm extends Component {
   }
 
   onSubmit = values => {
+    // Manipulating submitted form data so that is the format expected by the backend
+    // Seperating key key concepts and placing them into an array
+    values.keyConcepts = values.keyConcepts.split("#");
+    values.keyConcepts = values.keyConcepts.filter(el => el !== "");
+    values.keyConcepts = values.keyConcepts.map(el => el.trim());
+
+    // Turning prerequisites into an array (at the moment they are in an object literal)
+    values.prerequisites = Object.keys(values.prerequisites);
+
+    // HAVE HARD CODED IN A COURSE PROFILE PICTURE URL NEED TO ADD THIS FEATURE WITH LOCAL STORAGE!!!!!!!!!!!!!!!!!!
+    values.courseProfilePictureUrl = "www.PleaseAddThisFeatureJoshOrBruce";
     console.log(values);
-    console.log("Mr pickles the corgi");
+
+    LocalAPI.post("courses", values)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
   render() {
