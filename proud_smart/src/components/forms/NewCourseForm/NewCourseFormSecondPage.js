@@ -120,8 +120,8 @@ class NewCourseFormSecondPage extends Component {
               // Success
               let filesData = response.data;
               this.setState({ files: filesData });
-              console.log("files names array", filesData.filesArray);
-              console.log("files locations array", filesData.locationArray);
+              console.log("files names array", filesData.filesArray); //course profile image name from s3
+              console.log("files locations array", filesData.locationArray); //course profile image url from s3
               this.ocShowAlert("Files Uploaded", "#3089cf");
             }
           }
@@ -162,16 +162,13 @@ class NewCourseFormSecondPage extends Component {
           {/************* */}
           {/* For Alert box*/}
           <div id="oc-alert-container" />
-          {/* alert && (
-            <div id="oc-alert-container">
-              <div
-                className="oc-alert-pop-up"
-                style={{ background: "#3089cf" }}
-              >
-                {alert}
-              </div>
-            </div>
-          ) */}
+          {this.state.field && (
+            <Field
+              name="courseProfilePictureURL"
+              type="hidden"
+              setDef={`${this.state.file.location}`}
+            />
+          )}
           {/* Once you upload your profile picture, it should appear here  */}
 
           <div className="col-md-4 col-sm-4 text-center">
@@ -259,5 +256,9 @@ export default reduxForm({
   form: "NewCourseForm", //Form name is same
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  validate
+  validate,
+  // initialValues: {
+  //   file: state.file
+  // },
+  enableReinitialize: true
 })(NewCourseFormSecondPage);
