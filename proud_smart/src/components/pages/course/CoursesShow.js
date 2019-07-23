@@ -33,10 +33,6 @@ class CoursesShow extends Component {
     // this feeds data into the list in the sider
     const details = [
       {
-        title: "materials",
-        description: course.materialsUrl.join(", ")
-      },
-      {
         title: "tags",
         description: course.interestTags.join(", ")
       }
@@ -51,8 +47,12 @@ class CoursesShow extends Component {
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
     if (course && keyConcepts1.length === 0) {
-      // this.populateListData();
+      this.populateListData();
     }
+    if (course) {
+      console.log(course.courseProfilePictureUrl);
+    }
+
     return (
       <>
         {course ? (
@@ -96,7 +96,7 @@ class CoursesShow extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <img src={course.profilePictureUrl} />
+              <img src={course.courseProfilePictureUrl} />
               <div style={{ textAlign: "center" }}>
                 <Button type="primary" size="large">
                   Add to Cart
@@ -105,7 +105,6 @@ class CoursesShow extends Component {
               <div style={{ textAlign: "center" }}>
                 <Button size="large">Buy Now</Button>
               </div>
-              {/* <Chapters /> */}
               <List
                 itemLayout="horizontal"
                 dataSource={details}
