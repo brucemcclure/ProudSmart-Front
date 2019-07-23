@@ -26,17 +26,17 @@ class NewCourseForm extends Component {
     console.log(values);
     // Manipulating submitted form data so that is the format expected by the backend
     // Seperating key key concepts and placing them into an array
-    // values.keyConcepts = values.keyConcepts.split("#");
-    // values.keyConcepts = values.keyConcepts.filter(el => el !== "");
-    // values.keyConcepts = values.keyConcepts.map(el => el.trim());
+    values.keyConcepts = values.keyConcepts.split("#");
+    values.keyConcepts = values.keyConcepts.filter(el => el !== "");
+    values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
     values.prerequisites = Object.keys(values.prerequisites);
     console.log(values);
 
-    // LocalAPI.post("courses", values)
-    //   .then(data => console.log(data))
-    //   .catch(err => console.log(err));
+    LocalAPI.post("courses", values)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
   render() {
