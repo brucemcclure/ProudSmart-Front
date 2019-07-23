@@ -13,11 +13,35 @@ class CoursesIndex extends Component {
     });
   }
 
+  onCourseDeleteClick = async (courseId, index) => {
+    LocalAPI.delete(`/courses/${courseId}`)
+      .then(response => {
+        const {courses} = this.state;
+        courses.splice(index, 1);
+        this.setState({courses}); 
+      })
+  }
+
   render() {
+    const {courses} = this.state;
     return (
       <div className="container">
-        <h1>This is the CoursesIndex</h1>
-        <RectangularCard />;
+        <h1>Available Courses</h1>
+        {courses && courses.map(course => {
+          return (
+            <RectangularCard
+              documentType="course"
+              documentId={course._id}
+              showUrl={`courses/show/${course._id}`}
+              editUrl={`courses/edit/${course._id}`}
+              title={course.title}
+              body={course.description}
+              photo={course.courseProfilePictureUrl}
+              deleteFunction={this.onCourseDeleteClick}
+            />
+          );
+        })}
+        
       </div>
     );
   }

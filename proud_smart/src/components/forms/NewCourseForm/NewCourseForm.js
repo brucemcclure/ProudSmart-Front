@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import NewCourseFormFirstPage from "./NewCourseFormFirstPage";
 import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
 import NewCourseFormThirdPage from "./NewCourseFormThirdPage";

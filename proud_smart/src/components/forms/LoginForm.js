@@ -14,7 +14,7 @@ class LoginForm extends Component {
       if (!err) {
         LocalAPI.post(`/auth/login`, { email, password })
           .then(response => {
-            const {token, userInfo} = response.data;
+            const { token, userInfo } = response.data;
             console.log(`user info in response is ${userInfo}`);
             this.props.setAuthToken(token);
             this.props.setUser(userInfo);

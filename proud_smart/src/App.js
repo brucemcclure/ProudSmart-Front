@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles/styles.css";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import LocalAPI from "./apis/Local";
 
@@ -18,6 +18,7 @@ import CoursesShow from "./components/pages/course/CoursesShow";
 import CoursesNew from "./components/pages/course/CoursesNew";
 import CoursesDashboard from "./components/pages/course/CoursesDashboard";
 import CoursesEdit from "./components/pages/course/CoursesEdit";
+import CourseApplications from "./components/pages/admin/CourseApplications";
 import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
@@ -81,7 +82,7 @@ class App extends Component {
           <Route exact path="/courses/edit/:id" component={CoursesEdit} />
           <Route
             exact
-            path="/educators/profile"
+            path="/educators/profile/:id"
             component={EducatorsProfile}
           />{" "}
           <Route
@@ -90,6 +91,7 @@ class App extends Component {
             component={EducatorsDashboard}
           />{" "}
           <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/admin/course-applications" component={CourseApplications} />
         </main>
         <Footer />
       </BrowserRouter>

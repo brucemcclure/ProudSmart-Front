@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
-import LocalAPI from "./../../apis/Local";
 
 const linkStye = {
   display: "block",
