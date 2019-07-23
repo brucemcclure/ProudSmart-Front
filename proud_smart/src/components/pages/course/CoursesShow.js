@@ -15,6 +15,7 @@ class CoursesShow extends Component {
     const { id } = this.props.match.params;
     LocalAPI.get(`/courses/show/${id}`).then(res => {
       const course = res.data;
+      console.log(res.data);
       this.setState({ course });
     });
   }
