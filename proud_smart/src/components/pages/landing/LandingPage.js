@@ -10,13 +10,23 @@ const squareCardContainer = {
   display: "flex",
   flexDirection: "row",
   width: "100%",
-  flexWrap: "wrap"
+  flexWrap: "wrap",
+  justifyContent: "space-between",
+  alignContent: "space-between",
+  marginBottom: "4%"
+  // backgroundColor: "purple"
 };
 
 const backgroundImageStyling = {
   backgroundImage: `url(${BackgroundImage})`,
   backgroundSize: "cover",
   backgroundPosition: "50%"
+};
+
+const LinkStyle = {
+  display: "block",
+  width: "24%"
+  // backgroundColor: "yellow"
 };
 
 const landingText = {
@@ -54,10 +64,10 @@ class LandingPage extends Component {
                   eveniet eum possimus totam pariatur! Dolore quis accusamus,
                   obcaecati sunt eligendi ut beatae!
                 </p>
-                <Link to="/auth/register" className="btn-large">
-                  Register
-                </Link>
               </div>
+              <Link to="/auth/register" className="btn-large">
+                Register
+              </Link>
             </div>
           </div>
         </div>
@@ -74,6 +84,7 @@ class LandingPage extends Component {
                         course: course
                       }
                     }}
+                    style={LinkStyle}
                   >
                     <SquareCard course={course} />
                   </Link>
