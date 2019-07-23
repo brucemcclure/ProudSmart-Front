@@ -13,8 +13,8 @@ class Navbar extends Component {
           <Link to="/" className="brand-logo">
             Learning Platform
           </Link>
-          {token === null && <SignedOutLinks />}
-          {token !== null && <SignedInLinks />}
+          {!(token) && <SignedOutLinks />}
+          {token && <SignedInLinks />}
         </div>
       </nav>
     );

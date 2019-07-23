@@ -5,9 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from "react-redux";
 import store from "./store";
+import history from "./history";
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store} history={history}>
       <App />
     </Provider>,
     document.getElementById('root')

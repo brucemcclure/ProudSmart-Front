@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import LocalAPI from "../../../apis/Local";
+import {connect} from "react-redux";
+import {setAuthToken, setUser} from "./../../../actions";
+import history from "./../../../history";
 
 class SignedInLinks extends Component {
-  componentDidMount() {
-    LocalAPI("/users/account-info").then(response => {
-      this.setState({ user: response.data });
-      console.log(this.state.user + "This is the state");
-    });
+  onLogoutButtonClick = () => {
+    this.props.setAuthToken("");
+    this.props.setUser("");
+    history.push("/");
   }
+
   render() {
+    
     return (
       <ul className="right">
         <li>
@@ -30,11 +34,23 @@ class SignedInLinks extends Component {
             AF
           </NavLink>
         </li>
+        <li>
+          <NavLink onClick={this.onLogoutButtonClick}>
+            Logout
+          </NavLink>
+        </li>
       </ul>
     );
   }
 }
-export default SignedInLinks;
+
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
+};
+
+export default connect(mapStateToProps, {setAuthToken, setUser})(SignedInLinks);
 
 // to={{
 //   pathname: `/courses/edit/${this.props.course._id}`,
