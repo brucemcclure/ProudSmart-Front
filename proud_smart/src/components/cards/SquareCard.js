@@ -40,7 +40,20 @@ class SquareCard extends Component {
     return (
       <>
         <div key={this.props.course.title} style={squareCardHolder}>
-          <div style={squareBackgroundImage}> </div>
+          <div
+            style={{
+              backgroundImage: `url(${
+                this.props.course.courseProfilePictureUrl
+              })`,
+              height: "150px",
+              width: "100%",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center"
+            }}
+          >
+            {" "}
+          </div>
           <div style={informationSection}>
             {console.log(this.props.course.title)}
             <h6>{this.props.course.title.slice(0, 12) + "..."}</h6>
