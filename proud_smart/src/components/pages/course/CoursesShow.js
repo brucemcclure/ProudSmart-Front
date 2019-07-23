@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Layout, Divider, Button, Row, Col, List } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
+import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import {setCourse} from "./../../../actions/index";
 
 class CoursesShow extends Component {
   state = {
@@ -13,9 +16,11 @@ class CoursesShow extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    const {setCourse} = this.props;
     LocalAPI.get(`/courses/show/${id}`).then(res => {
       const course = res.data;
-      console.log(res.data);
+      setCourse(course);
+      // console.log(res.data);
       this.setState({ course });
     });
   }
@@ -42,7 +47,7 @@ class CoursesShow extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { Sider, Content } = Layout;
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
@@ -50,7 +55,7 @@ class CoursesShow extends Component {
       this.populateListData();
     }
     if (course) {
-      console.log(course.courseProfilePictureUrl);
+      // console.log(course.courseProfilePictureUrl);
     }
 
     return (
@@ -103,7 +108,13 @@ class CoursesShow extends Component {
                 </Button>
               </div>
               <div style={{ textAlign: "center" }}>
-                <Button size="large">Buy Now</Button>
+                <Link 
+                  to={{
+                    pathname: "/checkout",
+                    state: { course }
+                  }}>
+                  <Button size="large">Buy Now</Button>
+                </Link>
               </div>
               <List
                 itemLayout="horizontal"
@@ -125,4 +136,5 @@ class CoursesShow extends Component {
   }
 }
 
-export default CoursesShow;
+
+export default connect(null, {setCourse})(CoursesShow);
