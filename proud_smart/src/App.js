@@ -28,6 +28,7 @@ import PublicRoute from "./components/routes/PublicRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 import EducatorOrAdminRoute from "./components/routes/EducatorOrAdminRoute";
 import CheckoutRoute from "./components/routes/CheckoutRoute";
+import EducatorProfileRoute from "./components/routes/EducatorProfileRoute";
 
 // Stripe elements
 import Checkout from "./components/pages/checkout/Checkout";
@@ -47,7 +48,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <header>
-          <Navbar />
+          <Navbar {...this.props} />
         </header>
         <main>
           <Route exact path="/" component={LandingPage} />
@@ -81,7 +82,7 @@ class App extends Component {
             path="/courses/show/:id"
             render={props => <CoursesShow {...props} />}
           />
-          <PrivateRoute
+          <Route
             exact
             path="/courses/dashboard/:id"
             render={props => <CoursesDashboard {...props} />}
@@ -89,9 +90,9 @@ class App extends Component {
           <Route exact path="/courses/index" component={CoursesIndex} />
           <EducatorOrAdminRoute exact path="/courses/new" component={CoursesNew} />
           <EducatorOrAdminRoute exact path="/courses/edit/:id" component={CoursesEdit} />
-          <Route
+          <EducatorProfileRoute
             exact
-            path="/educators/profile/:id"
+            path="/educators/profile"
             component={EducatorsProfile}
           />{" "}
           <EducatorOrAdminRoute

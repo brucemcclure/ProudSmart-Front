@@ -3,6 +3,9 @@ import { Layout, Divider, Row, List, Col } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 import ReactPlayer from "react-player";
+import {fetchEducator} from "./../../../actions";
+import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class CoursesDashboard extends Component {
   state = {
@@ -27,6 +30,14 @@ class CoursesDashboard extends Component {
     console.log(`this is what we want ${videoSrc}`);
     this.setState({ videoSrc });
   };
+
+  onEducatorButtonClick = async () => {
+    const {course} = this.state;
+    const {fetchEducator} = this.props;
+    await fetchEducator(course.educatorId);
+    this.props.history.push("/educators/profile");
+
+  }
 
   render() {
     const { course } = this.state;
@@ -92,7 +103,9 @@ class CoursesDashboard extends Component {
                   <Divider />
                 </div>
                 <div className="row">
-                  <h5>About {course.educator}</h5>
+                  <button onClick={this.onEducatorButtonClick}>
+                    <h5>About {course.educator}</h5>
+                  </button>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorum quos pariatur saepe odit ad reiciendis deleniti
@@ -121,4 +134,4 @@ class CoursesDashboard extends Component {
   }
 }
 
-export default CoursesDashboard;
+export default connect(null, {fetchEducator})(withRouter(CoursesDashboard));
