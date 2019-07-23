@@ -82,6 +82,7 @@ class NewCourseFormFourthPage extends Component {
               this.setState({videoFile});
               console.log("video name", fileData.video); //video name is here
               console.log("video url", fileData.location); //video url is here
+              // JOSH THIS IS WHERE WE PUSH VIDEO URL TO REDUX FORM STATE - BILLY
               this.props.change(`${topic}.videoUrl`, fileData.location);
               // this.props.change(`${topic}.fileName`, fileData.video);
               this.ocShowAlert("File Uploaded", "#3089cf");

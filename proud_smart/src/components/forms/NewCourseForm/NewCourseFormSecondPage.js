@@ -67,7 +67,7 @@ class NewCourseFormSecondPage extends Component {
               // Success
               
               let fileData = response.data;
-              this.props.change("coursProfilePictureUrl", fileData.location);
+              this.props.change("courseProfilePictureUrl", fileData.location);
               this.setState({ file: fileData });
               console.log("file data image name", fileData.image); //joshua file.image
               console.log("file data image location", fileData.location);

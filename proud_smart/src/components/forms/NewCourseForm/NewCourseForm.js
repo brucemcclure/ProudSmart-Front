@@ -33,9 +33,9 @@ class NewCourseForm extends Component {
     values.prerequisites = Object.keys(values.prerequisites);
     console.log(values);
 
-    // LocalAPI.post("courses", values)
-    //   .then(data => console.log(data))
-    //   .catch(err => console.log(err));
+    LocalAPI.post("courses", values)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
   render() {
