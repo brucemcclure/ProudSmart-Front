@@ -10,7 +10,11 @@ const squareCardContainer = {
   display: "flex",
   flexDirection: "row",
   width: "100%",
-  flexWrap: "wrap"
+  flexWrap: "wrap",
+  justifyContent: "space-between",
+  alignContent: "space-between",
+  marginBottom: "4%"
+  // backgroundColor: "purple"
 };
 
 const backgroundImageStyling = {
@@ -19,8 +23,18 @@ const backgroundImageStyling = {
   backgroundPosition: "50%"
 };
 
+const LinkStyle = {
+  display: "block",
+  width: "24%"
+  // backgroundColor: "yellow"
+};
+
 const landingText = {
   color: "#F7F7F8"
+};
+
+const titleParagraph = {
+  width: "60%"
 };
 
 class LandingPage extends Component {
@@ -48,12 +62,13 @@ class LandingPage extends Component {
                 <h1 style={{ ...landingText, marginBottom: 5 }}>
                   ProudSmart Learning Platform
                 </h1>
-                <p>
+                <p style={titleParagraph}>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
                   distinctio animi labore. Fugit facere, distinctio nobis cum
                   eveniet eum possimus totam pariatur! Dolore quis accusamus,
                   obcaecati sunt eligendi ut beatae!
                 </p>
+
                 <Link to="/auth/register" className="btn-large">
                   Register
                 </Link>
@@ -74,6 +89,7 @@ class LandingPage extends Component {
                         course: course
                       }
                     }}
+                    style={LinkStyle}
                   >
                     <SquareCard course={course} />
                   </Link>

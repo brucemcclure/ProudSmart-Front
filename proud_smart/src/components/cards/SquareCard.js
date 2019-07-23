@@ -5,7 +5,7 @@ import Image from "./../images/GoLang.jpeg";
 
 const linkStye = {
   display: "block",
-  width: "100%"
+  width: "24%"
 };
 
 const squareBackgroundImage = {
@@ -21,10 +21,10 @@ const squareCardHolder = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  margin: "1%",
+  marginTop: "10%",
   padding: "0",
-  width: "23%",
-  height: "300px",
+  width: "100%",
+  height: "100%",
   boxShadow: "11px 11px 17px -7px rgba(0,0,0,0.67)"
 };
 
@@ -46,11 +46,12 @@ class SquareCard extends Component {
         <div key={this.props.course.title} style={squareCardHolder}>
           <div style={squareBackgroundImage}> </div>
           <div style={informationSection}>
-            <h5>{this.props.course.title.slice(0, 12) + "..."}</h5>
-            <p>{this.props.course.description.slice(0, 60) + "..."}</p>
-            <Button size="large" style={priceOrButtons}>
-              Price: {this.props.course.price}$
-            </Button>
+            {console.log(this.props.course.title)}
+            <h6>{this.props.course.title.slice(0, 12) + "..."}</h6>
+            <p>{this.props.course.description.slice(0, 48) + "..."}</p>
+
+            <p>Price: {this.props.course.price}$</p>
+
             <Link
               to={{
                 pathname: `/courses/edit/${this.props.course._id}`,
