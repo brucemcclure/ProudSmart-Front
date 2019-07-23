@@ -23,7 +23,11 @@ import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
 import Footer from "./components/pages/footer/Footer";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import PublicRoute from "./components/routes/PublicRoute";
+import AdminRoute from "./components/routes/AdminRoute";
+import EducatorOrAdminRoute from "./components/routes/EducatorOrAdminRoute";
+import CheckoutRoute from "./components/routes/CheckoutRoute";
 
 // Stripe elements
 import Checkout from "./components/pages/checkout/Checkout";
@@ -39,6 +43,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <BrowserRouter>
         <header>
@@ -46,22 +51,26 @@ class App extends Component {
         </header>
         <main>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/auth/login" component={AuthLogin} />
-          <Route exact path="/auth/register" component={AuthRegister} />
-          <Route
+          <PublicRoute exact path="/auth/login" component={AuthLogin} />
+          <PublicRoute exact path="/auth/register" component={AuthRegister} />
+          <PrivateRoute
             exact
             path="/auth/educator_application"
             component={AuthEducatorApplication}
           />
-          <Route exact path="/admin/dashboard" component={AdminDashboard} />
-          <Route exact path="/admin/educators" component={AdminTeachers} />
-          <Route exact path="/admin/users" component={AdminUsers} />
+          <AdminRoute exact path="/admin/educators" component={AdminTeachers} />
+          <AdminRoute exact path="/admin/users" component={AdminUsers} />
+          <AdminRoute
+            exact
+            path="/admin/course-applications"
+            component={CourseApplications}
+          />
           <PrivateRoute
             exact
             path="/users/dashboard"
             component={UsersDashboard}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/users/edit"
             render={props => <UsersEdit {...props} />}
@@ -72,30 +81,26 @@ class App extends Component {
             path="/courses/show/:id"
             render={props => <CoursesShow {...props} />}
           />
-          <Route
+          <PrivateRoute
             exact
             path="/courses/dashboard/:id"
             render={props => <CoursesDashboard {...props} />}
           />
           <Route exact path="/courses/index" component={CoursesIndex} />
-          <Route exact path="/courses/new" component={CoursesNew} />
-          <Route exact path="/courses/edit/:id" component={CoursesEdit} />
+          <EducatorOrAdminRoute exact path="/courses/new" component={CoursesNew} />
+          <EducatorOrAdminRoute exact path="/courses/edit/:id" component={CoursesEdit} />
           <Route
             exact
             path="/educators/profile/:id"
             component={EducatorsProfile}
           />{" "}
-          <Route
+          <EducatorOrAdminRoute
             exact
             path="/educators/dashboard"
             component={EducatorsDashboard}
           />{" "}
-          <Route exact path="/checkout" component={Checkout} />
-          <Route
-            exact
-            path="/admin/course-applications"
-            component={CourseApplications}
-          />
+          <CheckoutRoute exact path="/checkout" component={Checkout} />
+          
         </main>
         <Footer />
       </BrowserRouter>
