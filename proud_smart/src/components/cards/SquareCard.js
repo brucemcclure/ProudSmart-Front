@@ -17,7 +17,7 @@ const squareBackgroundImage = {
 };
 
 const squareCardHolder = {
-  backgroundColor: "#4C9AB3",
+  backgroundColor: "#1C103F",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -47,8 +47,12 @@ class SquareCard extends Component {
           <div style={squareBackgroundImage}> </div>
           <div style={informationSection}>
             {console.log(this.props.course.title)}
-            <h6>{this.props.course.title.slice(0, 12) + "..."}</h6>
-            <p>{this.props.course.description.slice(0, 48) + "..."}</p>
+            <h6 style={{ color: "#F7F7F8" }}>
+              {this.props.course.title.slice(0, 12) + "..."}
+            </h6>
+            <p style={{ color: "#F7F7F8" }}>
+              {this.props.course.description.slice(0, 48) + "..."}
+            </p>
 
             <p>Price: {this.props.course.price}$</p>
 
