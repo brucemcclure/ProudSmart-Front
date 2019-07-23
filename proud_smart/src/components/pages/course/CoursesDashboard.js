@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Divider } from "antd";
+import { Layout, Divider, Row, List, Col } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 
@@ -7,6 +7,7 @@ class CoursesDashboard extends Component {
   state = {
     course: null
   };
+
   componentDidMount() {
     const { id } = this.props.match.params;
     LocalAPI.get(`/courses/dashboard/${id}`).then(res => {
@@ -14,6 +15,10 @@ class CoursesDashboard extends Component {
       const course = res.data;
       this.setState({ course });
     });
+    // LocalAPI("/users/dashboard").then(response => {
+    //   console.log(response.data);
+    //   this.setState({ user: response.data });
+    // });
   }
 
   render() {
@@ -36,32 +41,45 @@ class CoursesDashboard extends Component {
               <div className="section">
                 <div className="row">
                   <div className="col s6 left-align">
-                    <h3>About This Course</h3>
-                    <h4>This is a good course</h4>
+                    <h3>{course.title}</h3>
                   </div>
                   <div className="col s6 right-align">
                     <h5>Course Content</h5>
                   </div>
                 </div>
-                <Divider />
                 <div className="row">
-                  <h5>Heading</h5>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorum quos pariatur saepe odit ad reiciendis deleniti
-                    doloribus. Alias natus unde nisi non et porro, beatae ad,
-                    tempore magnam optio dolor.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorum quos pariatur saepe odit ad reiciendis deleniti
-                    doloribus. Alias natus unde nisi non et porro, beatae ad,
-                    tempore magnam optio dolor.
-                  </p>
+                  <h4>{course.description}</h4>
                 </div>
                 <Divider />
                 <div className="row">
-                  <h5>The Teacher</h5>
+                  <div className="col s4">
+                    <h5>Skills Learned</h5>
+                    <List
+                      dataSource={course.keyConcepts}
+                      renderItem={item => <List.Item>{item}</List.Item>}
+                      split={false}
+                    />
+                  </div>
+                  <div className="col s4">
+                    <h5>Tags</h5>
+                    <List
+                      dataSource={course.interestTags}
+                      renderItem={item => <List.Item>{item}</List.Item>}
+                      split={false}
+                    />
+                  </div>
+                  <div className="col s4">
+                    <h5>Course Materials</h5>
+                    <List
+                      dataSource={course.materialsUrl}
+                      renderItem={item => <List.Item>{item}</List.Item>}
+                      split={false}
+                    />
+                  </div>
+                  <Divider />
+                </div>
+                <div className="row">
+                  <h5>About {course.educator}</h5>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorum quos pariatur saepe odit ad reiciendis deleniti
