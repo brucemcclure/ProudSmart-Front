@@ -1,3 +1,5 @@
+import LocalAPI from "./../apis/Local";
+
 export const setAuthToken = (token) => {
   sessionStorage.setItem("token", token);
   return {
@@ -21,4 +23,17 @@ export const setCourse = (course) => {
     type: "COURSE",
     payload: course
   }
+}
+
+export const fetchEducator = (id) => {
+  return async (dispatch, getState) => {
+    const response = await LocalAPI.get(`/educators/${id}`)
+    
+    dispatch({
+      type: "EDUCATOR",
+      payload: response.data
+    })
+  }
+
+  
 }

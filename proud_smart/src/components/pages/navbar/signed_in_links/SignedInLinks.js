@@ -6,12 +6,13 @@ import history from "./../../../../history";
 import AdminLinks from "./AdminLinks";
 import EducatorLinks from "./EducatorLinks";
 import UserLinks from "./UserLinks";
+import { withRouter } from "react-router-dom";
 
 class SignedInLinks extends Component {
   onLogoutButtonClick = () => {
     this.props.setAuthToken("");
     this.props.setUser("");
-    history.push("/");
+    this.props.history.push("/");
   }
 
   render() {
@@ -43,7 +44,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {setAuthToken, setUser})(SignedInLinks);
+export default connect(mapStateToProps, {setAuthToken, setUser})(withRouter(SignedInLinks));
 
 // to={{
 //   pathname: `/courses/edit/${this.props.course._id}`,
