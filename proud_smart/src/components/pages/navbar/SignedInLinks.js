@@ -13,10 +13,7 @@ class SignedInLinks extends Component {
     return (
       <ul className="right">
         <li>
-          <NavLink to="/">Shopping Cart</NavLink>
-        </li>
-        <li>
-          <NavLink to="/users/dashboard">My Courses</NavLink>
+          <NavLink to="/users/dashboard">Dashboard</NavLink>
         </li>
         <li>
           <NavLink

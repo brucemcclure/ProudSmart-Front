@@ -25,7 +25,8 @@ const backgroundImageStyling = {
 
 const LinkStyle = {
   display: "block",
-  width: "24%"
+  width: "24%",
+  marginBottom: "10px"
   // backgroundColor: "yellow"
 };
 
