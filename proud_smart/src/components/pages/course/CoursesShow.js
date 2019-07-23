@@ -51,7 +51,7 @@ class CoursesShow extends Component {
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
     if (course && keyConcepts1.length === 0) {
-      this.populateListData();
+      // this.populateListData();
     }
     return (
       <>
