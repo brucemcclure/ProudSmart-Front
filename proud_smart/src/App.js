@@ -18,6 +18,7 @@ import CoursesShow from "./components/pages/course/CoursesShow";
 import CoursesNew from "./components/pages/course/CoursesNew";
 import CoursesDashboard from "./components/pages/course/CoursesDashboard";
 import CoursesEdit from "./components/pages/course/CoursesEdit";
+import CourseApplications from "./components/pages/admin/CourseApplications";
 import EducatorsProfile from "./components/pages/educator/EducatorsProfile";
 import EducatorsDashboard from "./components/pages/educator/EducatorsDashboard";
 import Navbar from "./components/pages/navbar/Navbar";
@@ -90,6 +91,7 @@ class App extends Component {
             component={EducatorsDashboard}
           />{" "}
           <Route exact path="/checkout" component={Checkout} />
+          <Route exact path="/admin/course-applications" component={CourseApplications} />
         </main>
         <Footer />
       </BrowserRouter>
