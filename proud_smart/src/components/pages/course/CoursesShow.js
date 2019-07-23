@@ -20,8 +20,8 @@ class CoursesShow extends Component {
   }
 
   populateListData() {
-    console.log(this.state);
     const { course } = this.state;
+
     // this creates dataset for the "You Will Learn" section
     const keyConcepts1 = course.keyConcepts.filter(
       (item, index) => index % 2 === 0
@@ -29,16 +29,15 @@ class CoursesShow extends Component {
     const keyConcepts2 = course.keyConcepts.filter(
       (item, index) => index % 2 === 1
     );
-    console.log(course);
     // this feeds data into the list in the sider
     const details = [
       {
         title: "materials",
-        description: course.materialsUrl
+        description: course.materialsUrl.join(", ")
       },
       {
         title: "tags",
-        description: course.interestTags
+        description: course.interestTags.join(", ")
       }
     ];
 
