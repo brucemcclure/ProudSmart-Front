@@ -9,7 +9,21 @@ const required = value => (value ? undefined : "Required");
 const number = value =>
   value && isNaN(Number(value)) ? "Must be a number" : undefined;
 
+const correctAutofillForValidation = value => {
+  console.log(value);
+  if (value[0][0] != "#") {
+    let arrayLength = value.length;
+
+    for (let i = 0; i < arrayLength; i++) {
+      value[i] = "#" + value[i] + " ";
+    }
+    console.log(value.join(""));
+    return value.join("");
+  }
+};
+
 // const KeyConceptsValidation = value => {
+//   console.log(value);
 //   let arr = value.split(",");
 //   console.log(arr);
 //   let arrayLength = arr.length;
@@ -24,7 +38,7 @@ const number = value =>
 
 class EditCourseFormThirdPage extends Component {
   render() {
-    const { handleSubmit, pristine, previousPage, submitting } = this.props;
+    const { handleSubmit, previousPage } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <p>Please write out the key concepts of the course separated by a #</p>
@@ -35,7 +49,7 @@ class EditCourseFormThirdPage extends Component {
           type="text"
           component={renderField}
           label="Key Concept"
-          validate={[required]}
+          validate={[required, correctAutofillForValidation]}
         />
         <div>
           <label title="prerequisites">prerequisites</label>
