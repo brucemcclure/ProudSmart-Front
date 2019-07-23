@@ -7,6 +7,7 @@ import renderCheckbox from "../formHelpers/renderCheckbox";
 class NewCourseFormFirstPage extends Component {
   render() {
     const { handleSubmit } = this.props;
+    
     return (
       <form onSubmit={handleSubmit}>
         <Field

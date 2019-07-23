@@ -35,10 +35,6 @@ const informationSection = {
   padding: "10px"
 };
 
-const priceOrButtons = {
-  width: "60%"
-};
-
 class SquareCard extends Component {
   render() {
     return (
