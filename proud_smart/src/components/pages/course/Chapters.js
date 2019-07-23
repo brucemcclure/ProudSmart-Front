@@ -5,15 +5,17 @@ import "./../../../../node_modules/antd/dist/antd.css";
 const { SubMenu } = Menu;
 
 class Chapters extends Component {
-  handleClick = e => {
-    console.log(e.target);
+  handleClick = topic => {
+    const { onTopicVideoClick } = this.props;
+    if (onTopicVideoClick) {
+      onTopicVideoClick(topic.videoUrl);
+    }
   };
 
   render() {
-    const { course } = this.props;
+    const { course, onTopicVideoClick } = this.props;
     return (
       <Menu
-        onClick={this.handleClick}
         style={{ width: "100%" }}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
@@ -23,7 +25,16 @@ class Chapters extends Component {
           return (
             <SubMenu key={item.title} title={item.title}>
               {item.topics.map(topic => {
-                return <Menu.Item key={topic.title}>{topic.title}</Menu.Item>;
+                return (
+                  <Menu.Item
+                    key={topic.title}
+                    onClick={e => {
+                      this.handleClick(topic);
+                    }}
+                  >
+                    {topic.title}
+                  </Menu.Item>
+                );
               })}
             </SubMenu>
           );

@@ -91,7 +91,11 @@ class App extends Component {
             component={EducatorsDashboard}
           />{" "}
           <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/admin/course-applications" component={CourseApplications} />
+          <Route
+            exact
+            path="/admin/course-applications"
+            component={CourseApplications}
+          />
         </main>
         <Footer />
       </BrowserRouter>

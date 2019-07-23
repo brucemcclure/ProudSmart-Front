@@ -96,13 +96,7 @@ class CoursesShow extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <div className="video-container">
-                <iframe
-                  src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-                  frameborder="0"
-                  allowfullscreen
-                />
-              </div>
+              <img src={course.profilePictureUrl} />
               <div style={{ textAlign: "center" }}>
                 <Button type="primary" size="large">
                   Add to Cart
