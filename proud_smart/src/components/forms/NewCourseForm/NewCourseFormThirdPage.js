@@ -3,7 +3,6 @@ import { Field, reduxForm } from "redux-form";
 import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
 import renderCheckbox from "../formHelpers/renderCheckbox";
-// import KeyConceptsValidation from "../formHelpers/keyConceptsValidation";
 
 const required = value => (value ? undefined : "Required");
 
@@ -29,7 +28,9 @@ class NewCourseFormThirdPage extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <p>Please write out the key concepts of the course separated by a #</p>
-        <p>eg. #Programming #Cloud #Machine Learning </p>
+        <p>for multiword concepts please do not uses spaces </p>
+        <p>eg. #Programming #Cloud #MachineLearning </p>
+
         <Field
           name="keyConcepts"
           type="text"

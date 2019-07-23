@@ -59,21 +59,18 @@ class EditCourseForm extends Component {
           <EditCourseFormSecondPage
             onSubmit={this.nextPage}
             previousPage={this.previousPage}
-            initialValues={this.props.course}
           />
         )}
         {page === 3 && (
           <EditCourseFormThirdPage
             onSubmit={this.nextPage}
             previousPage={this.previousPage}
-            initialValues={this.props.course}
           />
         )}
         {page === 4 && (
           <EditCourseFormFourthPage
             onSubmit={this.onSubmit}
             previousPage={this.previousPage}
-            initialValues={this.props.course}
           />
         )}
       </div>
