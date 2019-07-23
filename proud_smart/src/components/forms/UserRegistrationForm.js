@@ -78,6 +78,12 @@ class RegistrationForm extends Component {
               // Success
               let fileData = response.data;
               this.setState({ file: fileData });
+              // this.props.change("profilePhotoUrl", "djkkhfdkhfd");
+              // this.props.form.setFields({
+              //   profilePhotoUrl: {
+              //     value: fileData.location
+              //   }
+              // })
               console.log("file data image name", fileData.image); //joshua file.image
               console.log("file data image location", fileData.location);
               this.ocShowAlert("File Uploaded", "#3089cf");
@@ -103,15 +109,16 @@ class RegistrationForm extends Component {
         // console.log('Received values of form: ', values);
         // console.log(values.photo.file.uid);
         // console.log(process.env.REACT_APP_API_URL);
-        console.log(this.state);
+        // console.log(values);
+        // console.log(this.state);
         LocalAPI.post(`/auth/register`, {
           profilePhotoUrl: this.state.file.location,
           values
         })
           .then(response => {
-            const { token, userType } = response.data;
+            const { token, userInfo } = response.data;
             this.props.setAuthToken(token);
-            this.props.setUserType(userType);
+            this.props.setUser(userInfo);
             this.props.history.push("/users/dashboard");
           })
           .catch(err => console.log(err));
@@ -302,7 +309,10 @@ class RegistrationForm extends Component {
         <div className="mt-5">
           <button
             className="btn btn-info"
-            onClick={this.singleFileUploadHandler}
+            onClick={(e) => {
+              e.preventDefault();
+              this.singleFileUploadHandler(e);
+            }}
           >
             Upload Avatar Image
           </button>
