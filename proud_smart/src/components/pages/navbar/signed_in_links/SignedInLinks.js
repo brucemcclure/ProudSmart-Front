@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import LocalAPI from "../../../apis/Local";
 import {connect} from "react-redux";
-import {setAuthToken, setUser} from "./../../../actions";
-import history from "./../../../history";
+import {setAuthToken, setUser} from "./../../../../actions";
+import history from "./../../../../history";
+import AdminLinks from "./AdminLinks";
+import EducatorLinks from "./EducatorLinks";
+import UserLinks from "./UserLinks";
 
 class SignedInLinks extends Component {
   onLogoutButtonClick = () => {
@@ -13,40 +15,31 @@ class SignedInLinks extends Component {
   }
 
   render() {
-    
+    const {userType} = this.props;
     return (
-      <ul className="right">
+      <>
         <li>
-          <NavLink to="/users/dashboard">Dashboard</NavLink>
-        </li>
-        <li>
-          <NavLink
-          // to={{
-          //   pathname: `/users/edit/${this.props.user._id}`,
-          //   state: { user: this.props.user }
-          // }}
-          >
-            Edit Profile
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" className="btn btn-floating pink lighten-1">
+          <NavLink className="btn btn-floating pink lighten-1">
             AF
           </NavLink>
         </li>
+        {userType === "admin" && <AdminLinks />}
+        {userType === "educator" && <EducatorLinks />}
+        {userType === "user" && <UserLinks />}
         <li>
           <NavLink onClick={this.onLogoutButtonClick}>
             Logout
           </NavLink>
         </li>
-      </ul>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    userType: state.user.userType
   };
 };
 

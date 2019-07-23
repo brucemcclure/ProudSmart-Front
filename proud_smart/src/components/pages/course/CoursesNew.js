@@ -5,7 +5,7 @@ class CoursesNew extends Component {
   render() {
     return (
       <>
-        <h1>This is the CoursesNew page</h1>
+        <h1>Create a Course</h1>
         <div className="container section">
           <NewCourseForm />
         </div>

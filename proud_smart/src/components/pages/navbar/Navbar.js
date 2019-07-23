@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import SignedInLinks from "./SignedInLinks";
+import { Link, NavLink } from "react-router-dom";
+import SignedInLinks from "./signed_in_links/SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 
@@ -13,8 +13,15 @@ class Navbar extends Component {
           <Link to="/" className="brand-logo">
             Learning Platform
           </Link>
-          {!(token) && <SignedOutLinks />}
-          {token && <SignedInLinks />}
+          <ul className="right">
+            <li>
+              <NavLink to="/courses">
+                Available Courses
+              </NavLink>
+            </li>
+            {!(token) && <SignedOutLinks />}
+            {token && <SignedInLinks />}
+          </ul>
         </div>
       </nav>
     );
