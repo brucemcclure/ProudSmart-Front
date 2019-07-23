@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Image from "./../images/profilepicture.jpeg";
 import { connect } from "react-redux";
-
-const rectangleBackgroundImage = {
-  backgroundImage: `url(${Image})`,
-  height: "150px",
-  width: "150px",
-  backgroundSize: "contain"
-};
 
 const linkStye = {
   display: "block",
@@ -59,13 +51,25 @@ class RectangularCard extends Component {
       deleteFunction,
       documentId,
       index,
-      document
+      document,
+      photo
     } = this.props;
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
           <Link to={showUrl} style={linkStye}>
-            <div style={rectangleBackgroundImage}> </div>
+            <div
+              style={{
+                backgroundImage: `url(${photo})`,
+                height: "150px",
+                width: "150px",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center"
+              }}
+            >
+              {" "}
+            </div>
           </Link>
           <div style={informationSection}>
             <h5 style={{ color: "#F7F7F8" }}>{title}</h5>
