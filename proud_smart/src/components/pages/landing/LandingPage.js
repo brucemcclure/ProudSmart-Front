@@ -33,6 +33,10 @@ const landingText = {
   color: "#F7F7F8"
 };
 
+const titleParagraph = {
+  width: "60%"
+};
+
 class LandingPage extends Component {
   state = {
     courses: []
@@ -58,16 +62,17 @@ class LandingPage extends Component {
                 <h1 style={{ ...landingText, marginBottom: 5 }}>
                   ProudSmart Learning Platform
                 </h1>
-                <p>
+                <p style={titleParagraph}>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
                   distinctio animi labore. Fugit facere, distinctio nobis cum
                   eveniet eum possimus totam pariatur! Dolore quis accusamus,
                   obcaecati sunt eligendi ut beatae!
                 </p>
+
+                <Link to="/auth/register" className="btn-large">
+                  Register
+                </Link>
               </div>
-              <Link to="/auth/register" className="btn-large">
-                Register
-              </Link>
             </div>
           </div>
         </div>
