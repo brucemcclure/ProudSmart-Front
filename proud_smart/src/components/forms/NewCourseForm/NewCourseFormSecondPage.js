@@ -22,6 +22,10 @@ class NewCourseFormSecondPage extends Component {
   /**
    * Joshua course profile image single file upload
    */
+  addAWSImageToFormValues = (formField, url) => {
+    this.props.change(formField, url);
+  }
+
   singleFileChangedHandler = event => {
     console.log(event.target.files); //this will show you whats inside the event target.
     this.setState({
@@ -61,7 +65,9 @@ class NewCourseFormSecondPage extends Component {
               }
             } else {
               // Success
+              
               let fileData = response.data;
+              this.props.change("courseProfilePictureUrl", fileData.location);
               this.setState({ file: fileData });
               console.log("file data image name", fileData.image); //joshua file.image
               console.log("file data image location", fileData.location);
@@ -119,6 +125,7 @@ class NewCourseFormSecondPage extends Component {
             } else {
               // Success
               let filesData = response.data;
+              this.props.change("materialsUrl", filesData.locationArray);
               this.setState({ files: filesData });
               console.log("files names array", filesData.filesArray); //course profile image name from s3
               console.log("files locations array", filesData.locationArray); //course profile image url from s3

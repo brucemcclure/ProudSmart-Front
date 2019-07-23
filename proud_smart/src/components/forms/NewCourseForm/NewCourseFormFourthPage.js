@@ -6,6 +6,7 @@ import LocalAPI from "../../../apis/Local";
 import $ from "jquery"; //Joshua
 import ReactPlayer from "react-player"; //Joshua
 import renderFile from "../formHelpers/renderFile";
+import {connect} from "react-redux";
 
 class NewCourseFormFourthPage extends Component {
   constructor(props) {
@@ -14,13 +15,20 @@ class NewCourseFormFourthPage extends Component {
     this.state = {
       uploading: false,
       selectedVideoFile: null,
-      videoFile: null //single video file initial state
+      videoFile: [] //single video file initial state
     };
   }
 
   /**
    * Joshua single video file upload
    */
+  addTest = (stateObject, index, url) => {
+    this.props.change(`${stateObject}.${index}`, url )
+  }
+  addTopicTest = (stateObject, url) => {
+    this.props.change(`${stateObject}.url`, url )
+  }
+
   videoFileChangeHandler = event => {
     console.log(event.target.files); //this will show you whats inside the event target.
     this.setState({
@@ -29,7 +37,8 @@ class NewCourseFormFourthPage extends Component {
     console.log(this.state.selectedVideoFile);
   };
 
-  singleVideoFileUploadHandler = event => {
+  singleVideoFileUploadHandler = (event, topic) => {
+    event.preventDefault();
     this.setState({
       uploading: true
     });
@@ -68,9 +77,14 @@ class NewCourseFormFourthPage extends Component {
                 uploading: false //when uploading finised, the state turns into false
               });
               let fileData = response.data;
-              this.setState({ videoFile: fileData });
+              const {videoFile} = this.state;
+              videoFile.push(fileData);
+              this.setState({videoFile});
               console.log("video name", fileData.video); //video name is here
               console.log("video url", fileData.location); //video url is here
+              // JOSH THIS IS WHERE WE PUSH VIDEO URL TO REDUX FORM STATE - BILLY
+              this.props.change(`${topic}.videoUrl`, fileData.location);
+              // this.props.change(`${topic}.fileName`, fileData.video);
               this.ocShowAlert("File Uploaded", "#3089cf");
             }
           }
@@ -118,6 +132,10 @@ class NewCourseFormFourthPage extends Component {
   };
 
   render() {
+    console.log("....................")
+    console.log(this.props)
+    console.log("!!!!!!!!!!!")
+    console.log(this.state)
     const renderChapters = ({ fields, meta: { error, submitFailed } }) => (
       <ul>
         <li>
@@ -146,6 +164,7 @@ class NewCourseFormFourthPage extends Component {
               component={renderField}
               label="Chapter Description"
             />
+            {this.addTest(chapter, index, "testing")}
             <FieldArray name={`${chapter}.topics`} component={renderTopics} />
           </li>
         ))}
@@ -180,16 +199,15 @@ class NewCourseFormFourthPage extends Component {
                 component={renderField}
                 label="topic Description"
               />
-
               {/**Joshua changes this part */}
               <div>
                 {/* For Alert box*/}
                 <div id="oc-alert-container" />
-                {videoFile === null ? (
+                {/* {videoFile === null ? (
                   <></>
                 ) : (
-                  <ReactPlayer url={videoFile.location} controls={true} />
-                )}
+                  // <ReactPlayer url={videoFile[`${index}`] && videoFile[`${index}`].location} controls={true} />
+                )} */}
                 {/**?? the latter topic's video url will replace the former one's video url */}
                 <div id={videoFile && videoFile.video}>
                   <h2>{uploading ? "Uploading..." : null}</h2>
@@ -208,7 +226,10 @@ class NewCourseFormFourthPage extends Component {
                   {/** this button element is to invoke the input element above, and do exactly what that input element would do, we need to change the state name of "selectedVideoInput" for another topic input   */}
                   <p>{selectedVideoFile && selectedVideoFile.name}</p>
                   <button
-                    onClick={() => this.selectedVideoInput.current.click()}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      this.selectedVideoInput.current.click(
+                      )}}
                   >
                     Choose File
                   </button>
@@ -216,7 +237,7 @@ class NewCourseFormFourthPage extends Component {
 
                 <button
                   className="btn btn-info"
-                  onClick={this.singleVideoFileUploadHandler}
+                  onClick={(event) => this.singleVideoFileUploadHandler(event, topic)}
                 >
                   Upload a video!
                 </button>
@@ -247,6 +268,8 @@ class NewCourseFormFourthPage extends Component {
     );
   }
 }
+
+
 export default reduxForm({
   form: "NewCourseForm",
   destroyOnUnmount: false,

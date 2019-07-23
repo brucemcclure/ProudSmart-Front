@@ -16,7 +16,8 @@ const linkStye = {
 };
 
 const rectangularCardHolder = {
-  backgroundColor: "#4C9AB3",
+  backgroundColor: "#1C103F",
+  color: "#F7F7F8",
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
@@ -67,7 +68,7 @@ class RectangularCard extends Component {
             <div style={rectangleBackgroundImage}> </div>
           </Link>
           <div style={informationSection}>
-            <h5>{title}</h5>
+            <h5 style={{ color: "#F7F7F8" }}>{title}</h5>
             <p>{body}</p>
           </div>
 
@@ -97,11 +98,14 @@ class RectangularCard extends Component {
 
           {this.checkApplicationStatus() && (
             <>
-              <button onClick={() => approvalFunction(document, index)}>Approve</button>
-              <button onClick={() => denialFunction(document, index)}>Deny</button>
-            </> 
+              <button onClick={() => approvalFunction(document, index)}>
+                Approve
+              </button>
+              <button onClick={() => denialFunction(document, index)}>
+                Deny
+              </button>
+            </>
           )}
-
         </div>
       </div>
     );

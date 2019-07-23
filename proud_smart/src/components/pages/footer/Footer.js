@@ -2,11 +2,11 @@ import React from "react";
 
 const Footer = props => {
   return (
-    <footer className="page-footer grey darken-3 section">
+    <footer className="page-footer grey darken-4 section">
       <div className="container">
         <div className="row">
           <div className="col l6 s12">
-            <h5>Footer</h5>
+            <h5 style={{ color: "#F7F7F8" }}>Footer</h5>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
               voluptates iusto excepturi suscipit in hic, dolorem labore
@@ -15,7 +15,7 @@ const Footer = props => {
             </p>
           </div>
           <div className="col l4 offset-l2 s2">
-            <h5>Links</h5>
+            <h5 style={{ color: "#F7F7F8" }}>Links</h5>
             <ul>
               <li>About</li>
               <li>Contact</li>

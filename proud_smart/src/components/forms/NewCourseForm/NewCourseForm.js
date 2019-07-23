@@ -30,12 +30,18 @@ class NewCourseForm extends Component {
     // values.keyConcepts = values.keyConcepts.filter(el => el !== "");
     // values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
+<<<<<<< HEAD
     // // Turning prerequisites into an array (at the moment they are in an object literal)
     // values.prerequisites = Object.keys(values.prerequisites);
 
     // // HAVE HARD CODED IN A COURSE PROFILE PICTURE URL NEED TO ADD THIS FEATURE WITH LOCAL STORAGE!!!!!!!!!!!!!!!!!!
     // values.courseProfilePictureUrl = "www.PleaseAddThisFeatureJoshOrBruce";
     // console.log(values);
+=======
+    // Turning prerequisites into an array (at the moment they are in an object literal)
+    values.prerequisites = Object.keys(values.prerequisites);
+    console.log(values);
+>>>>>>> d2ca2dce4369a10d34d86137efec46f222a8caf7
 
     // LocalAPI.post("courses", values)
     //   .then(data => console.log(data))
