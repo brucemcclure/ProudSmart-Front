@@ -48,7 +48,7 @@ class EditCourseForm extends Component {
     const { page } = this.state;
     console.log(this.props.course, "This");
     return (
-      <div>
+      <div className="container">
         {page === 1 && (
           <EditCourseFormFirstPage
             onSubmit={this.nextPage}

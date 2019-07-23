@@ -95,7 +95,7 @@ class CoursesDashboard extends Component {
                 </div>
               </div>
             </Content>
-            <Sider>
+            <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
               <Chapters course={course} />
             </Sider>
           </Layout>
