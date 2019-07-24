@@ -25,8 +25,8 @@ const informationSection = {
 
 class RectangularCard extends Component {
   checkOwnerOrAdmin = () => {
-    const { educatorId, userId, userType } = this.props;
-    return educatorId === userId || userType === "admin";
+    const { token, educatorId, userId, userType } = this.props;
+    return token && (educatorId === userId || userType === "admin");
   };
 
   checkApplicationStatus = () => {
@@ -89,7 +89,7 @@ class RectangularCard extends Component {
               </Link>
             </button>
           )}
-          {this.props.userType === "admin" && (
+          {this.props.userType === "admin" && deleteFunction && (
             <button
               onClick={() => {
                 console.log(deleteFunction);
@@ -120,7 +120,8 @@ const mapPropsToState = state => {
   const { userId, userType } = state.user;
   return {
     userId,
-    userType
+    userType,
+    token: state.auth.token
   };
 };
 

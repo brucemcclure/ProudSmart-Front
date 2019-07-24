@@ -39,7 +39,7 @@ class CoursesShow extends Component {
     const details = [
       {
         title: "tags",
-        description: course.interestTags.join(", ")
+        description: course.keyConcepts.join(", ")
       }
     ];
 

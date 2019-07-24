@@ -5,6 +5,7 @@ import SquareCard from "../../cards/SquareCard";
 import BackgroundImage from "../../images/landing.jpeg";
 
 import LocalAPI from "./../../../apis/Local";
+import {connect} from "react-redux"
 
 const squareCardContainer = {
   display: "flex",
@@ -51,6 +52,7 @@ class LandingPage extends Component {
   }
 
   render() {
+    const {token} = this.props;
     return (
       <>
         <div style={backgroundImageStyling}>
@@ -69,10 +71,13 @@ class LandingPage extends Component {
                   eveniet eum possimus totam pariatur! Dolore quis accusamus,
                   obcaecati sunt eligendi ut beatae!
                 </p>
-
-                <Link to="/auth/register" className="btn-large">
-                  Register
-                </Link>
+                {
+                  !(token) 
+                  && 
+                  <Link to="/auth/register" className="btn-large">
+                    Register
+                  </Link>
+                } 
               </div>
             </div>
           </div>
@@ -132,6 +137,12 @@ class LandingPage extends Component {
       </>
     );
   }
-}
+};
 
-export default LandingPage;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
+};
+
+export default connect(mapStateToProps)(LandingPage);
