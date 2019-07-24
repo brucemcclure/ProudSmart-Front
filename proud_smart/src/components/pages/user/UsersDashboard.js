@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SquareCard from "../../cards/SquareCard";
 import LocalAPI from "./../../../apis/Local";
+import {connect} from "react-redux";
 
 const squareCardContainer = {
   display: "flex",
@@ -33,12 +34,18 @@ class UsersDashboard extends Component {
   }
 
   render() {
+    const {userType} = this.props;
     return (
       <div className="container section">
         <h1>Purchased Courses</h1>
-        <Link to="/courses/show" className="btn">
-          Become a Teacher
-        </Link>
+        {
+          userType === "user" 
+          &&
+          <Link to="/auth/educator-application" className="btn">
+            Become an Educator
+          </Link>
+        }
+        
         <div style={squareCardContainer} className="container section">
           {console.log(this.state.user)}
           {this.state.user &&
@@ -59,4 +66,12 @@ class UsersDashboard extends Component {
   }
 }
 
-export default UsersDashboard;
+const mapPropsToState = state => {
+  const { userType } = state.user;
+  return {
+    userType
+  };
+};
+
+
+export default connect(mapPropsToState)(UsersDashboard);
