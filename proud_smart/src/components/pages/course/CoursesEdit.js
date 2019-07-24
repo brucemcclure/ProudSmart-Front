@@ -7,7 +7,7 @@ class CoursesEdit extends Component {
     let course = this.props.location.state.course;
     return (
       <>
-        <h1>This is the CoursesEdit page</h1>
+        <h1>Edit Course</h1>
         <div className="container section">
           <EditCourseForm course={course} />
         </div>

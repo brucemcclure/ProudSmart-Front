@@ -53,27 +53,25 @@ class AdminTeachers extends Component {
     return (
       <div className="container">
         <h1>ProudSmart Educators</h1>
-        <div className="section">
-          {educators &&
-            educators.map((educator, index) => {
-              return (
-                <RectangularCard
-                  documentId={educator._id}
-                  showUrl={`/educators/profile/${educator._id}`}
-                  editUrl={`/educators/profile/${educator._id}`}
-                  title={educator.firstName + " " + educator.lastName}
-                  body={educator.aboutMe}
-                  photo={educator.profilePhotoUrl}
-                  approvalFunction={this.onEducatorApprovalButtonClick}
-                  denialFunction={this.onEducatorDenialButtonClick}
-                  deleteFunction={this.onEducatorDeleteButtonClick}
-                  documentStatus={educator.educatorStatus}
-                  document={educator}
-                  index={index}
-                />
-              );
-            })}
-          ;
+        <div className="container section">
+          {educators && educators.map((educator, index) => {
+            return (
+              <RectangularCard
+                documentId={educator._id}
+                showUrl={`/educators/profile/${educator._id}`}
+                editUrl={`/educators/profile/${educator._id}`}
+                title={educator.firstName + " " + educator.lastName}
+                body={educator.aboutMe}
+                photo={educator.profilePhotoUrl}
+                approvalFunction={this.onEducatorApprovalButtonClick}
+                denialFunction={this.onEducatorDenialButtonClick}
+                documentStatus={educator.educatorStatus}
+                document={educator}
+                index={index}
+              />
+            );
+          })};
+
         </div>
       </div>
     );

@@ -56,7 +56,7 @@ class App extends Component {
           <PublicRoute exact path="/auth/register" component={AuthRegister} />
           <PrivateRoute
             exact
-            path="/auth/educator_application"
+            path="/auth/educator-application"
             component={AuthEducatorApplication}
           />
           <AdminRoute exact path="/admin/educators" component={AdminTeachers} />
