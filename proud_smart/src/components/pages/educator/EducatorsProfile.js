@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Image from "./../../images/profilepicture.jpeg";
 import { Divider } from "antd";
 import SquareCard from "./../../cards/SquareCard";
-import LocalAPI from "./../../../apis/Local";
+import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 
 const squareCardContainer = {
@@ -37,7 +37,9 @@ class EducatorsProfile extends Component {
               <Divider orientation="left">{profile.firstName}'s Courses</Divider>
               {courses.map(course => {
                 return (
-                  <SquareCard course={course} />
+                  <Link to={`/courses/show/${course._id}`} >
+                    <SquareCard course={course} />
+                  </Link>
                 )
               })}
             </div>
