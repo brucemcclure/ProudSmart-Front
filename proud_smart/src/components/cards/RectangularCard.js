@@ -25,8 +25,8 @@ const informationSection = {
 
 class RectangularCard extends Component {
   checkOwnerOrAdmin = () => {
-    const { documentId, userId, userType } = this.props;
-    return documentId === userId || userType === "admin";
+    const { educatorId, userId, userType } = this.props;
+    return educatorId === userId || userType === "admin";
   };
 
   checkApplicationStatus = () => {
