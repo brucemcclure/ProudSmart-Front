@@ -23,7 +23,7 @@ class EditCourseFormFirstPage extends Component {
           name="description"
           type="text"
           placeholder="Course Description"
-          component="textarea"
+          component={renderField}
           label="Description"
           validate={required}
         />

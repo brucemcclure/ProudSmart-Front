@@ -30,6 +30,7 @@ class CoursesIndex extends Component {
           courses.map(course => {
             return (
               <RectangularCard
+                course={course}
                 documentType="course"
                 documentId={course._id}
                 educatorId={course.educatorId}

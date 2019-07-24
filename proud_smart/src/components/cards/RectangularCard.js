@@ -51,9 +51,10 @@ class RectangularCard extends Component {
       deleteFunction,
       documentId,
       index,
-      document,
+      course,
       photo
     } = this.props;
+    console.log(this.props);
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
@@ -81,7 +82,7 @@ class RectangularCard extends Component {
               <Link
                 to={{
                   pathname: editUrl,
-                  state: { document }
+                  state: { course }
                 }}
                 style={linkStye}
               >
