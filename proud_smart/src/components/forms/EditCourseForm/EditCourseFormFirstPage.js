@@ -48,5 +48,6 @@ export default reduxForm({
   form: "EditCourseForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  enableReinitialize: true,
   validate
 })(EditCourseFormFirstPage);
