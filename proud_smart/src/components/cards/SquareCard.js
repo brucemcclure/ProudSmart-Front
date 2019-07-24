@@ -64,19 +64,8 @@ class SquareCard extends Component {
             </p>
 
             {this.props.course.price && (
-              <p>Price: {this.props.course.price}$</p>
+              <p>Price: ${this.props.course.price}</p>
             )}
-
-            <Link
-              to={{
-                pathname: `/courses/edit/${this.props.course._id}`,
-                state: {
-                  course: this.props.course
-                }
-              }}
-            >
-              Edit this course
-            </Link>
           </div>
         </div>
       </>

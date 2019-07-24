@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import RectangularCard from "./../../cards/RectangularCard";
 import LocalAPI from "./../../../apis/Local";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
 
 class AdminTeachers extends Component {
   state = {
@@ -16,11 +14,11 @@ class AdminTeachers extends Component {
       document: educator
     })
       .then(response => {
-        console.log(`educators b4`);
-        console.log(educators);
+        // console.log(`educators b4`);
+        // console.log(educators);
         educators[`${index}`] = response.data;
-        console.log(`educators after`);
-        console.log(educators);
+        // console.log(`educators after`);
+        // console.log(educators);
         this.setState({ educators });
       })
       .catch(err => console.log(err));
@@ -33,7 +31,7 @@ class AdminTeachers extends Component {
       document: educator
     })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         educators[`${index}`] = response.data;
         this.setState({ educators });
       })
@@ -45,7 +43,7 @@ class AdminTeachers extends Component {
   componentDidMount = async () => {
     LocalAPI("/educators").then(response => {
       this.setState({ educators: response.data });
-      console.log(response.data);
+      // console.log(response.data);
     });
   };
 
