@@ -41,10 +41,12 @@ class EditCourseFormThirdPage extends Component {
     const { handleSubmit, previousPage } = this.props;
     return (
       <form onSubmit={handleSubmit}>
+
         <p>
           Please write out the key concepts of the course separated by a #
           without commas
         </p>
+
         <p>for multiword concepts please do not uses spaces </p>
         <p>eg. #Programming #Cloud #MachineLearning </p>
         <Field
@@ -52,11 +54,13 @@ class EditCourseFormThirdPage extends Component {
           type="text"
           component={renderField}
           label="Key Concept"
+
           validate={[
             required,
             correctAutofillForValidation,
             KeyConceptsValidation
           ]}
+
         />
         <div>
           <label title="prerequisites">prerequisites</label>
