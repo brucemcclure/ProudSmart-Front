@@ -63,7 +63,9 @@ class SquareCard extends Component {
               {this.props.course.description.slice(0, 48) + "..."}
             </p>
 
-            <p>Price: {this.props.course.price}$</p>
+            {this.props.course.price && (
+              <p>Price: {this.props.course.price}$</p>
+            )}
 
             <Link
               to={{
