@@ -3,8 +3,8 @@ import { Layout, Divider, Button, Row, Col, List } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 import { Link } from "react-router-dom";
-import {connect} from "react-redux";
-import {setCourse} from "./../../../actions/index";
+import { connect } from "react-redux";
+import { setCourse } from "./../../../actions/index";
 
 class CoursesShow extends Component {
   state = {
@@ -16,7 +16,7 @@ class CoursesShow extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    const {setCourse} = this.props;
+    const { setCourse } = this.props;
     LocalAPI.get(`/courses/show/${id}`).then(res => {
       const course = res.data;
       setCourse(course);
@@ -101,19 +101,17 @@ class CoursesShow extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <img src={course.courseProfilePictureUrl} />
-              <div style={{ textAlign: "center" }}>
-                <Button type="primary" size="large">
-                  Add to Cart
-                </Button>
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <Link 
+              <img src={course.courseProfilePictureUrl} width="100%" />
+              <div style={{ textAlign: "center", marginTop: "15px" }}>
+                <Link
                   to={{
                     pathname: "/checkout",
                     state: { course }
-                  }}>
-                  <Button size="large">Buy Now</Button>
+                  }}
+                >
+                  <Button type="primary" size="large">
+                    Buy Now
+                  </Button>
                 </Link>
               </div>
               <List
@@ -136,5 +134,7 @@ class CoursesShow extends Component {
   }
 }
 
-
-export default connect(null, {setCourse})(CoursesShow);
+export default connect(
+  null,
+  { setCourse }
+)(CoursesShow);
