@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import LocalAPI from "./../../apis/Local";
-<<<<<<< HEAD
 import { connect } from "react-redux";
-=======
-import {connect} from "react-redux";
-import {setPurchasedCoursesIds} from "./../../actions";
->>>>>>> 2ff6284d4299a425d0a40b2150d8be2f3f931b5f
+import { setPurchasedCoursesIds } from "./../../actions";
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -44,25 +40,13 @@ class CheckoutForm extends Component {
         }
       }
     });
-<<<<<<< HEAD
-    console.log(response);
-    if (response.status === 200) this.setState({ complete: true });
-  }
-
-  componentDidMount = () => {
-    console.log("^^^^^");
-    console.log(this.props);
-    console.log("^^^^^");
-  };
-=======
     if (response.status === 200) {
-      const {purchasedCoursesIds} = this.props;
+      const { purchasedCoursesIds } = this.props;
       purchasedCoursesIds.push(_id);
       this.props.setPurchasedCoursesIds(purchasedCoursesIds);
-      this.setState({ complete: true })
-    };
+      this.setState({ complete: true });
+    }
   }
->>>>>>> 2ff6284d4299a425d0a40b2150d8be2f3f931b5f
 
   render() {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
@@ -84,15 +68,12 @@ class CheckoutForm extends Component {
 
 const mapPropsToState = state => {
   return {
-<<<<<<< HEAD
-    course: state.course.displayedCourse
-  };
-};
-=======
     course: state.course.displayedCourse,
     purchasedCoursesIds: state.purchasedCourses.purchasedCoursesIds
-  }
-}
->>>>>>> 2ff6284d4299a425d0a40b2150d8be2f3f931b5f
+  };
+};
 
-export default connect(mapPropsToState, {setPurchasedCoursesIds})(injectStripe(CheckoutForm));
+export default connect(
+  mapPropsToState,
+  { setPurchasedCoursesIds }
+)(injectStripe(CheckoutForm));
