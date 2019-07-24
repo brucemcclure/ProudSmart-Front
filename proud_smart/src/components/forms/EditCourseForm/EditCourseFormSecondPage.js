@@ -4,6 +4,9 @@ import { Field, reduxForm } from "redux-form";
 import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
 import renderFile from "../formHelpers/renderFile";
+import LocalAPI from "./../../../apis/Local"; //Joshua
+import $ from "jquery"; //Joshua
+
 
 const renderError = ({ meta: { touched, error } }) =>
   touched && error ? <span>{error}</span> : false;

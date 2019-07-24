@@ -35,30 +35,6 @@ class EditCourseFormFirstPage extends Component {
           validate={required}
         />
         <div>
-          <label title="Area of Study">Area of study</label>
-          <div>
-            <Field name="topics.ioT" id="IoT" component={renderCheckbox} />
-            <Field name="topics.mL" id="ML" component={renderCheckbox} />
-            <Field name="topics.aI" id="AI" component={renderCheckbox} />
-            <Field name="topics.cloud" id="Cloud" component={renderCheckbox} />
-            <Field
-              name="topics.devOps"
-              id="Dev Ops"
-              component={renderCheckbox}
-            />
-            <Field
-              name="topics.infrastructure"
-              id="Infrastructure"
-              component={renderCheckbox}
-            />
-            <Field
-              name="topics.corgi"
-              id="employed"
-              component={renderCheckbox}
-            />
-          </div>
-        </div>
-        <div>
           <button type="submit" className="next">
             Next
           </button>
