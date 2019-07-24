@@ -47,7 +47,6 @@ class CoursesShow extends Component {
   }
 
   render() {
-    // console.log(this.props);
     const { Sider, Content } = Layout;
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
