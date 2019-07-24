@@ -8,14 +8,15 @@ const squareCardContainer = {
   flexDirection: "row",
   width: "100%",
   flexWrap: "wrap",
-  justifyContent: "space-between",
+  justifyContent: "flex-start",
   alignContent: "space-between",
   marginBottom: "4%"
   // backgroundColor: "purple"
 };
 const LinkStyle = {
   display: "block",
-  width: "24%"
+  width: "24%",
+  marginRight: "10px"
 
   // backgroundColor: "yellow"
 };
