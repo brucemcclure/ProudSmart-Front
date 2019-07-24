@@ -62,7 +62,6 @@ class AdminTeachers extends Component {
                 photo={educator.profilePhotoUrl}
                 approvalFunction={this.onEducatorApprovalButtonClick}
                 denialFunction={this.onEducatorDenialButtonClick}
-                deleteFunction={this.onEducatorDeleteButtonClick}
                 documentStatus={educator.educatorStatus}
                 document={educator}
                 index={index}
