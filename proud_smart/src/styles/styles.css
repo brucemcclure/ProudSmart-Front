@@ -16,7 +16,7 @@
     display: block;
   }
   nav .brand-logo {
-    position: fixed;
+    position: absolute;
   }
 }
 

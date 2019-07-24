@@ -28,34 +28,40 @@ class UsersDashboard extends Component {
 
   componentDidMount() {
     LocalAPI("/users/dashboard").then(response => {
-      console.log(response.data);
       this.setState({ user: response.data });
     });
   }
 
   render() {
+    console.log(this.state);
     return (
-      <div className="container section">
-        <h1>Purchased Courses</h1>
-        <Link to="/courses/show" className="btn">
-          Become a Teacher
-        </Link>
-        <div style={squareCardContainer} className="container section">
-          {console.log(this.state.user)}
-          {this.state.user &&
-            this.state.user.purchasedCourses &&
-            this.state.user.purchasedCourses.map(course => {
-              return (
-                <Link
-                  style={LinkStyle}
-                  to={`/courses/dashboard/${course.courseId}`}
-                >
-                  <SquareCard course={course} />
-                </Link>
-              );
-            })}
-        </div>
-      </div>
+      <>
+        {this.state.user ? (
+          <div className="container section">
+            <h1>Purchased Courses</h1>
+            {this.state.user.userType === "educator" || (
+              <Link to="/auth/educator_application" className="btn">
+                Become a Teacher
+              </Link>
+            )}
+            <div style={squareCardContainer} className="container section">
+              {console.log(this.state.user)}
+              {this.state.user &&
+                this.state.user.purchasedCourses &&
+                this.state.user.purchasedCourses.map(course => {
+                  return (
+                    <Link
+                      style={LinkStyle}
+                      to={`/courses/dashboard/${course.courseId}`}
+                    >
+                      <SquareCard course={course} />
+                    </Link>
+                  );
+                })}
+            </div>
+          </div>
+        ) : null}
+      </>
     );
   }
 }
