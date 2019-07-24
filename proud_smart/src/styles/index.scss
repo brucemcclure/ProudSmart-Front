@@ -7,3 +7,21 @@
     font-family: "Open Sans", sans-serif;
   }
 }
+
+@media only screen and (max-width: 1350px) {
+  .hide-on-large-and-down {
+    display: none !important;
+  }
+  nav a.sidenav-trigger {
+    display: block;
+  }
+  nav .brand-logo {
+    position: fixed;
+  }
+}
+
+@media only screen and (min-width: 1349px) {
+  nav a.sidenav-trigger {
+    display: none;
+  }
+}
