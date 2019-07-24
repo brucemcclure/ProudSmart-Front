@@ -89,7 +89,7 @@ class RectangularCard extends Component {
               </Link>
             </button>
           )}
-          {this.props.userType === "admin" && (
+          {this.props.userType === "admin" && deleteFunction && (
             <button
               onClick={() => {
                 console.log(deleteFunction);
