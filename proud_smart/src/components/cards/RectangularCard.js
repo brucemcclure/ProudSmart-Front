@@ -60,8 +60,10 @@ class RectangularCard extends Component {
       index,
       document,
       photo,
-      educatorId
+      educatorId,
+      course
     } = this.props;
+    console.log(this.props);
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
@@ -106,7 +108,7 @@ class RectangularCard extends Component {
               <Link
                 to={{
                   pathname: editUrl,
-                  state: { document }
+                  state: { course }
                 }}
                 style={linkStye}
               >

@@ -10,25 +10,39 @@ import renderFile from "../formHelpers/renderFile";
 class EditCourseFormFourthPage extends Component {
   constructor() {
     super();
+    this.selectedVideoInput = React.createRef();
     this.state = {
       uploading: false,
       selectedVideoFile: null,
-      videoFile: null //single video file initial state
+      selectedVideoNameArray: [],
+      videoFile: null, //single video file initial state
+      videoUrlArray: []
     };
   }
+
+  addTest = (stateObject, index, url) => {
+    this.props.change(`${stateObject}.${index}`, url);
+  };
+  addTopicTest = (stateObject, url) => {
+    this.props.change(`${stateObject}.url`, url);
+  }; //Billy
 
   /**
    * Joshua single video file upload
    */
   videoFileChangeHandler = event => {
     console.log(event.target.files); //this will show you whats inside the event target.
+    const { selectedVideoNameArray } = this.state;
+    selectedVideoNameArray.push(event.target.files[0].name);
     this.setState({
-      selectedVideoFile: event.target.files[0]
+      [event.target.name]: event.target.files[0],
+      selectedVideoNameArray
     });
-    console.log(this.state);
+    //console.log(this.state.selectedVideoFile);
   };
 
-  singleVideoFileUploadHandler = event => {
+  singleVideoFileUploadHandler = (event, topic) => {
+    event.preventDefault();
     this.setState({
       uploading: true
     });
@@ -67,9 +81,14 @@ class EditCourseFormFourthPage extends Component {
                 uploading: false //when uploading finised, the state turns into false
               });
               let fileData = response.data;
-              this.setState({ videoFile: fileData });
-              console.log("video name", fileData.video);
+              let { videoUrlArray } = this.state;
+              videoUrlArray.push(fileData.location);
+              this.setState({ videoFile: fileData, videoUrlArray });
+              console.log("video name", fileData.video); //video name is here
               console.log("video url", fileData.location); //video url is here
+              // JOSH THIS IS WHERE WE PUSH VIDEO URL TO REDUX FORM STATE - BILLY
+              this.props.change(`${topic}.videoUrl`, fileData.location);
+              // this.props.change(`${topic}.fileName`, fileData.video);
               this.ocShowAlert("File Uploaded", "#3089cf");
             }
           }
@@ -152,7 +171,13 @@ class EditCourseFormFourthPage extends Component {
     );
 
     const renderTopics = ({ fields, meta: { error } }) => {
-      const { videoFile, uploading } = this.state;
+      const {
+        videoFile,
+        uploading,
+        selectedVideoFile,
+        videoUrlArray,
+        selectedVideoNameArray
+      } = this.state;
       return (
         <ul>
           <li>
@@ -187,20 +212,40 @@ class EditCourseFormFourthPage extends Component {
                 {videoFile === null ? (
                   <></>
                 ) : (
-                  <ReactPlayer url={videoFile.location} controls={true} />
+                  <ReactPlayer url={videoUrlArray[index]} controls={true} />
                 )}
                 {/**?? the latter topic's video url will replace the former one's video url */}
                 <div id={videoFile && videoFile.video}>
                   <h2>{uploading ? "Uploading..." : null}</h2>
                 </div>
+
                 <div>
                   <p>(Only mp4 file less than 100MB allowed)</p>
-                  {/**??no file chosen sign doesn't change even filed selected */}
-                  <input type="file" onChange={this.videoFileChangeHandler} />
+                  {/**no file chosen sign doesn't change even filed selected, so I created the button following this input element */}
+                  <input
+                    ref={this.selectedVideoInput}
+                    type="file"
+                    name="selectedVideoFile"
+                    onChange={this.videoFileChangeHandler}
+                    style={{ display: "none" }}
+                  />
+                  {/** this button element is to invoke the input element above, and do exactly what that input element would do, we need to change the state name of "selectedVideoInput" for another topic input   */}
+                  <p>{selectedVideoFile && selectedVideoNameArray[index]}</p>
+                  <button
+                    onClick={event => {
+                      event.preventDefault();
+                      this.selectedVideoInput.current.click();
+                    }}
+                  >
+                    Choose File
+                  </button>
                 </div>
+
                 <button
                   className="btn btn-info"
-                  onClick={this.singleVideoFileUploadHandler}
+                  onClick={event =>
+                    this.singleVideoFileUploadHandler(event, topic)
+                  }
                 >
                   Upload a video!
                 </button>
