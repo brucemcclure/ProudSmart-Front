@@ -19,10 +19,10 @@ class Navbar extends Component {
             <Link to="/" className="brand-logo">
               Learning Platform
             </Link>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
               <i class="material-icons">menu</i>
             </a>
-            <ul className="right hide-on-med-and-down">
+            <ul className="right hide-on-large-and-down">
               <li>
                 <NavLink to="/courses">Available Courses</NavLink>
               </li>

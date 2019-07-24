@@ -3,9 +3,9 @@ import { Layout, Divider, Row, List, Col } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 import ReactPlayer from "react-player";
-import {fetchEducator} from "./../../../actions";
-import {connect} from "react-redux";
-import { withRouter } from "react-router-dom";
+import { fetchEducator } from "./../../../actions";
+import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 
 class CoursesDashboard extends Component {
   state = {
@@ -32,12 +32,11 @@ class CoursesDashboard extends Component {
   };
 
   onEducatorButtonClick = async () => {
-    const {course} = this.state;
-    const {fetchEducator} = this.props;
+    const { course } = this.state;
+    const { fetchEducator } = this.props;
     await fetchEducator(course.educatorId);
     this.props.history.push("/educators/profile");
-
-  }
+  };
 
   render() {
     const { course } = this.state;
@@ -76,26 +75,10 @@ class CoursesDashboard extends Component {
                 </div>
                 <Divider />
                 <div className="row">
-                  <div className="col s4">
-                    <h5>Skills Learned</h5>
-                    <List
-                      dataSource={course.keyConcepts}
-                      renderItem={item => <List.Item>{item}</List.Item>}
-                      split={false}
-                    />
-                  </div>
-                  <div className="col s4">
+                  <div className="col s12">
                     <h5>Tags</h5>
                     <List
-                      dataSource={course.interestTags}
-                      renderItem={item => <List.Item>{item}</List.Item>}
-                      split={false}
-                    />
-                  </div>
-                  <div className="col s4">
-                    <h5>Course Materials</h5>
-                    <List
-                      dataSource={course.materialsUrl}
+                      dataSource={course.keyConcepts}
                       renderItem={item => <List.Item>{item}</List.Item>}
                       split={false}
                     />
@@ -103,9 +86,9 @@ class CoursesDashboard extends Component {
                   <Divider />
                 </div>
                 <div className="row">
-                  <button onClick={this.onEducatorButtonClick}>
+                  <Link onClick={this.onEducatorButtonClick}>
                     <h5>About {course.educator}</h5>
-                  </button>
+                  </Link>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorum quos pariatur saepe odit ad reiciendis deleniti
@@ -134,4 +117,7 @@ class CoursesDashboard extends Component {
   }
 }
 
-export default connect(null, {fetchEducator})(withRouter(CoursesDashboard));
+export default connect(
+  null,
+  { fetchEducator }
+)(withRouter(CoursesDashboard));
