@@ -4,6 +4,8 @@ import validate from "../formHelpers/validate";
 import renderField from "../formHelpers/renderField";
 import renderCheckbox from "../formHelpers/renderCheckbox";
 
+const required = value => (value ? undefined : "Required");
+
 class EditCourseFormFirstPage extends Component {
   render() {
     const { handleSubmit } = this.props;
@@ -15,6 +17,7 @@ class EditCourseFormFirstPage extends Component {
           component={renderField}
           label="courseTitle"
           defaultValue={"course"}
+          validate={required}
         />
         <Field
           name="description"
@@ -22,12 +25,14 @@ class EditCourseFormFirstPage extends Component {
           placeholder="Course Description"
           component="textarea"
           label="Description"
+          validate={required}
         />
         <Field
           name="educator"
           type="text"
           component={renderField}
           label="Educator of this course"
+          validate={required}
         />
         <div>
           <label title="Area of Study">Area of study</label>

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import renderCheckbox from "../formHelpers/renderCheckbox";
 import { Field, reduxForm } from "redux-form";
 import validate from "../formHelpers/validate";
-import renderField from "../formHelpers/renderField";
-import renderFile from "../formHelpers/renderFile";
 import LocalAPI from "./../../../apis/Local"; //Joshua
 import $ from "jquery"; //Joshua
 
@@ -24,7 +22,7 @@ class NewCourseFormSecondPage extends Component {
    */
   addAWSImageToFormValues = (formField, url) => {
     this.props.change(formField, url);
-  }
+  };
 
   singleFileChangedHandler = event => {
     console.log(event.target.files); //this will show you whats inside the event target.
@@ -65,7 +63,7 @@ class NewCourseFormSecondPage extends Component {
               }
             } else {
               // Success
-              
+
               let fileData = response.data;
               this.props.change("courseProfilePictureUrl", fileData.location);
               this.setState({ file: fileData });

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import LocalAPI from "./../../apis/Local";
 
 class newCourseForm extends Component {
   testRequest = async event => {
