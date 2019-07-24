@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import SquareCard from "../../cards/SquareCard";
 import LocalAPI from "./../../../apis/Local";
+import {connect} from "react-redux";
 
 const squareCardContainer = {
   display: "flex",
@@ -66,4 +67,12 @@ class UsersDashboard extends Component {
   }
 }
 
-export default UsersDashboard;
+const mapPropsToState = state => {
+  const { userType } = state.user;
+  return {
+    userType
+  };
+};
+
+
+export default connect(mapPropsToState)(UsersDashboard);
