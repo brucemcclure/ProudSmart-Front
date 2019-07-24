@@ -23,7 +23,7 @@ class EditCourseFormFirstPage extends Component {
           name="description"
           type="text"
           placeholder="Course Description"
-          component="textarea"
+          component={renderField}
           label="Description"
           validate={required}
         />
@@ -48,5 +48,6 @@ export default reduxForm({
   form: "EditCourseForm",
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
+  enableReinitialize: true,
   validate
 })(EditCourseFormFirstPage);
