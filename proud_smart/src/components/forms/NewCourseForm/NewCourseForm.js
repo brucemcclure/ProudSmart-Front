@@ -4,6 +4,7 @@ import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
 import NewCourseFormThirdPage from "./NewCourseFormThirdPage";
 import NewCourseFormFourthPage from "./NewCourseFormFourthPage";
 import LocalAPI from "./../../../apis/Local";
+import { withRouter } from "react-router-dom";
 // import { url } from "inspector";
 
 class NewCourseForm extends Component {
@@ -38,7 +39,7 @@ class NewCourseForm extends Component {
       values.courseProfilePictureURL &&
       "https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/profile_pictures/academia-1563926224405.jpg";
     LocalAPI.post("courses", values)
-      .then(data => console.log(data))
+      .then(data => this.props.history.push("/"))
       .catch(err => console.log(err));
   };
 
@@ -80,4 +81,4 @@ class NewCourseForm extends Component {
 //   }
 // })(WizardForm)
 
-export default NewCourseForm;
+export default withRouter(NewCourseForm);
