@@ -35,13 +35,6 @@ const priceOrButtons = {
 class SquareCardLanding extends Component {
   state = { courses: [] };
 
-  componentDidMount() {
-    Axios("http://localhost:3000/courses").then(response => {
-      console.log(response.data);
-      this.setState({ courses: response.data });
-    });
-  }
-
   render() {
     return (
       <>
