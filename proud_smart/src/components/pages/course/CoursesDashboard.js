@@ -2,23 +2,41 @@ import React, { Component } from "react";
 import { Layout, Divider, Row, List, Col } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
+import ReactPlayer from "react-player";
+import {fetchEducator} from "./../../../actions";
+import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
 
 class CoursesDashboard extends Component {
   state = {
-    course: null
+    course: null,
+    videoSrc: null
   };
 
   componentDidMount() {
     const { id } = this.props.match.params;
     LocalAPI.get(`/courses/dashboard/${id}`).then(res => {
-      console.log(res.data);
       const course = res.data;
-      this.setState({ course });
+      const defaultUrl =
+        course.chapters &&
+        course.chapters[0] &&
+        course.chapters[0].topics[0] &&
+        course.chapters[0].topics[0].videoUrl;
+      this.setState({ course, videoSrc: defaultUrl });
     });
-    // LocalAPI("/users/dashboard").then(response => {
-    //   console.log(response.data);
-    //   this.setState({ user: response.data });
-    // });
+  }
+
+  onTopicVideoClick = videoSrc => {
+    console.log(`this is what we want ${videoSrc}`);
+    this.setState({ videoSrc });
+  };
+
+  onEducatorButtonClick = async () => {
+    const {course} = this.state;
+    const {fetchEducator} = this.props;
+    await fetchEducator(course.educatorId);
+    this.props.history.push("/educators/profile");
+
   }
 
   render() {
@@ -30,12 +48,18 @@ class CoursesDashboard extends Component {
           <Layout style={{ minHeight: "100vh", width: "100vw" }}>
             <Content>
               <div className="video-container">
-                <iframe
+                {/* <iframe
                   width="800"
                   height="480"
-                  src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+                  src="https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/videos/1-1563854513115.mp4"
                   frameborder="0"
                   allowfullscreen
+                /> */}
+                <ReactPlayer
+                  url={this.state.videoSrc}
+                  controls={true}
+                  width="800"
+                  height="480"
                 />
               </div>
               <div className="section">
@@ -79,7 +103,9 @@ class CoursesDashboard extends Component {
                   <Divider />
                 </div>
                 <div className="row">
-                  <h5>About {course.educator}</h5>
+                  <button onClick={this.onEducatorButtonClick}>
+                    <h5>About {course.educator}</h5>
+                  </button>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Dolorum quos pariatur saepe odit ad reiciendis deleniti
@@ -96,7 +122,10 @@ class CoursesDashboard extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <Chapters course={course} />
+              <Chapters
+                course={course}
+                onTopicVideoClick={this.onTopicVideoClick}
+              />
             </Sider>
           </Layout>
         ) : null}
@@ -105,4 +134,4 @@ class CoursesDashboard extends Component {
   }
 }
 
-export default CoursesDashboard;
+export default connect(null, {fetchEducator})(withRouter(CoursesDashboard));

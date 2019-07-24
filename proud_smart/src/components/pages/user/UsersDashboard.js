@@ -35,7 +35,7 @@ class UsersDashboard extends Component {
   render() {
     return (
       <div className="container section">
-        <h1>This is the UsersDashboard</h1>
+        <h1>Purchased Courses</h1>
         <Link to="/courses/show" className="btn">
           Become a Teacher
         </Link>

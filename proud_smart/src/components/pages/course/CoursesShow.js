@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Layout, Divider, Button, Row, Col, List } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
+import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import {setCourse} from "./../../../actions/index";
 
 class CoursesShow extends Component {
   state = {
@@ -13,9 +16,11 @@ class CoursesShow extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    const {setCourse} = this.props;
     LocalAPI.get(`/courses/show/${id}`).then(res => {
       const course = res.data;
-      console.log(res.data);
+      setCourse(course);
+      // console.log(res.data);
       this.setState({ course });
     });
   }
@@ -33,10 +38,6 @@ class CoursesShow extends Component {
     // this feeds data into the list in the sider
     const details = [
       {
-        title: "materials",
-        description: course.materialsUrl.join(", ")
-      },
-      {
         title: "tags",
         description: course.interestTags.join(", ")
       }
@@ -46,13 +47,17 @@ class CoursesShow extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { Sider, Content } = Layout;
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
     if (course && keyConcepts1.length === 0) {
-      // this.populateListData();
+      this.populateListData();
     }
+    if (course) {
+      // console.log(course.courseProfilePictureUrl);
+    }
+
     return (
       <>
         {course ? (
@@ -96,22 +101,21 @@ class CoursesShow extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <div className="video-container">
-                <iframe
-                  src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
-                  frameborder="0"
-                  allowfullscreen
-                />
-              </div>
+              <img src={course.courseProfilePictureUrl} />
               <div style={{ textAlign: "center" }}>
                 <Button type="primary" size="large">
                   Add to Cart
                 </Button>
               </div>
               <div style={{ textAlign: "center" }}>
-                <Button size="large">Buy Now</Button>
+                <Link 
+                  to={{
+                    pathname: "/checkout",
+                    state: { course }
+                  }}>
+                  <Button size="large">Buy Now</Button>
+                </Link>
               </div>
-              {/* <Chapters /> */}
               <List
                 itemLayout="horizontal"
                 dataSource={details}
@@ -132,4 +136,5 @@ class CoursesShow extends Component {
   }
 }
 
-export default CoursesShow;
+
+export default connect(null, {setCourse})(CoursesShow);
