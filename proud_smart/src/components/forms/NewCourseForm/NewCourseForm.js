@@ -4,6 +4,7 @@ import NewCourseFormSecondPage from "./NewCourseFormSecondPage";
 import NewCourseFormThirdPage from "./NewCourseFormThirdPage";
 import NewCourseFormFourthPage from "./NewCourseFormFourthPage";
 import LocalAPI from "./../../../apis/Local";
+// import { url } from "inspector";
 
 class NewCourseForm extends Component {
   constructor(props) {
@@ -33,7 +34,9 @@ class NewCourseForm extends Component {
     // Turning prerequisites into an array (at the moment they are in an object literal)
     values.prerequisites = Object.keys(values.prerequisites);
     console.log(values);
-
+    values.courseProfilePictureURL =
+      values.courseProfilePictureURL &&
+      "https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/profile_pictures/academia-1563926224405.jpg";
     LocalAPI.post("courses", values)
       .then(data => console.log(data))
       .catch(err => console.log(err));
