@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { fetchEducator } from "./../../actions";
 import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom";
 
 const linkStye = {
   display: "block",
@@ -40,6 +41,12 @@ class RectangularCard extends Component {
     );
   };
 
+  onEducatorButtonClick = async () => {
+    const { fetchEducator, educatorId } = this.props;
+    await fetchEducator(educatorId);
+    this.props.history.push("/educators/profile");
+  };
+
   render() {
     const {
       showUrl,
@@ -51,27 +58,46 @@ class RectangularCard extends Component {
       deleteFunction,
       documentId,
       index,
-      course,
-      photo
+      document,
+      photo,
+      educatorId,
+      course
     } = this.props;
     console.log(this.props);
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
-          <Link to={showUrl} style={linkStye}>
-            <div
-              style={{
-                backgroundImage: `url(${photo})`,
-                height: "150px",
-                width: "150px",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center"
-              }}
-            >
-              {" "}
-            </div>
-          </Link>
+          {educatorId ? (
+            <Link onClick={this.onEducatorButtonClick} style={linkStye}>
+              <div
+                style={{
+                  backgroundImage: `url(${photo})`,
+                  height: "150px",
+                  width: "150px",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center"
+                }}
+              >
+                {" "}
+              </div>
+            </Link>
+          ) : (
+            <Link to={showUrl} style={linkStye}>
+              <div
+                style={{
+                  backgroundImage: `url(${photo})`,
+                  height: "150px",
+                  width: "150px",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center"
+                }}
+              >
+                {" "}
+              </div>
+            </Link>
+          )}
           <div style={informationSection}>
             <h5 style={{ color: "#F7F7F8" }}>{title}</h5>
             <p>{body}</p>
@@ -126,4 +152,7 @@ const mapPropsToState = state => {
   };
 };
 
-export default connect(mapPropsToState)(RectangularCard);
+export default connect(
+  mapPropsToState,
+  { fetchEducator }
+)(withRouter(RectangularCard));
