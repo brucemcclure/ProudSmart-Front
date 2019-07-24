@@ -32,6 +32,7 @@ class CoursesIndex extends Component {
               <RectangularCard
                 documentType="course"
                 documentId={course._id}
+                educatorId={course.educatorId}
                 showUrl={`courses/show/${course._id}`}
                 editUrl={`courses/edit/${course._id}`}
                 title={course.title}
