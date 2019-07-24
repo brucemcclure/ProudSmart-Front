@@ -3,14 +3,15 @@ import WrappedRegistrationForm from "./../../forms/UserRegistrationForm";
 
 class AuthRegister extends Component {
   componentDidMount = () => {
-    console.log(this.props)
-  }
+    console.log(this.props);
+  };
   render() {
     return (
-      <div>
-        <h1>Register</h1>;
-        <WrappedRegistrationForm history={this.props.history}/>
-      </div>);
+      <div className="container">
+        <h1>Register</h1>
+        <WrappedRegistrationForm history={this.props.history} />
+      </div>
+    );
   }
 }
 

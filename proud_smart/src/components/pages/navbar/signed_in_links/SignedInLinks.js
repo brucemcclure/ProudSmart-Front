@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import {connect} from "react-redux";
-import {setAuthToken, setUser} from "./../../../../actions";
+import { connect } from "react-redux";
+import { setAuthToken, setUser } from "./../../../../actions";
 import history from "./../../../../history";
 import AdminLinks from "./AdminLinks";
 import EducatorLinks from "./EducatorLinks";
@@ -13,24 +13,17 @@ class SignedInLinks extends Component {
     this.props.setAuthToken("");
     this.props.setUser("");
     this.props.history.push("/");
-  }
+  };
 
   render() {
-    const {userType} = this.props;
+    const { userType } = this.props;
     return (
       <>
-        <li>
-          <NavLink className="btn btn-floating pink lighten-1">
-            AF
-          </NavLink>
-        </li>
         {userType === "admin" && <AdminLinks />}
         {userType === "educator" && <EducatorLinks />}
         {userType === "user" && <UserLinks />}
         <li>
-          <NavLink onClick={this.onLogoutButtonClick}>
-            Logout
-          </NavLink>
+          <NavLink onClick={this.onLogoutButtonClick}>Logout</NavLink>
         </li>
       </>
     );
@@ -44,7 +37,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {setAuthToken, setUser})(withRouter(SignedInLinks));
+export default connect(
+  mapStateToProps,
+  { setAuthToken, setUser }
+)(withRouter(SignedInLinks));
 
 // to={{
 //   pathname: `/courses/edit/${this.props.course._id}`,
