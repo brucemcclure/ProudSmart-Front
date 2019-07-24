@@ -47,13 +47,6 @@ class CoursesDashboard extends Component {
           <Layout style={{ minHeight: "100vh", width: "100vw" }}>
             <Content>
               <div className="video-container">
-                {/* <iframe
-                  width="800"
-                  height="480"
-                  src="https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/videos/1-1563854513115.mp4"
-                  frameborder="0"
-                  allowfullscreen
-                /> */}
                 <ReactPlayer
                   url={this.state.videoSrc}
                   controls={true}

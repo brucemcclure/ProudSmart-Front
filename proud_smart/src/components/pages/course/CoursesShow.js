@@ -20,9 +20,14 @@ class CoursesShow extends Component {
     LocalAPI.get(`/courses/show/${id}`).then(res => {
       const course = res.data;
       setCourse(course);
-      // console.log(res.data);
       this.setState({ course });
     });
+  }
+
+  userHasPurchasedCourseOrIsAdmin() {
+    const {userType, purchasedCoursesIds} = this.props;
+    const {_id} = this.state.course;
+    return userType && (userType === "admin" || purchasedCoursesIds.includes(_id));
   }
 
   populateListData() {
@@ -47,7 +52,6 @@ class CoursesShow extends Component {
   }
 
   render() {
-    // console.log(this.props);
     const { Sider, Content } = Layout;
     const { course, keyConcepts1, keyConcepts2, details } = this.state;
 
@@ -109,9 +113,18 @@ class CoursesShow extends Component {
                     state: { course }
                   }}
                 >
-                  <Button type="primary" size="large">
-                    Buy Now
-                  </Button>
+                  {(this.userHasPurchasedCourseOrIsAdmin())?  
+                    <Link to={`/courses/dashboard/${course._id}`} >
+                      <Button type="primary" size="large">
+                        View Full Course
+                      </Button>
+                    </Link>
+                    :
+                    <Button type="primary" size="large">
+                      Buy Now
+                    </Button>
+                  }
+                  
                 </Link>
               </div>
               <List
@@ -134,7 +147,14 @@ class CoursesShow extends Component {
   }
 }
 
+const mapPropsToState = (state) => {
+  return {
+    userType: state.user.userType,
+    purchasedCoursesIds: state.purchasedCourses.purchasedCoursesIds
+  }
+}
+
 export default connect(
-  null,
+  mapPropsToState,
   { setCourse }
 )(CoursesShow);
