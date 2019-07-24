@@ -34,6 +34,12 @@ export const fetchEducator = (id) => {
       payload: response.data
     })
   }
+}
 
-  
+export const setPurchasedCoursesIds = (purchasedCoursesIds) => {
+  sessionStorage.setItem("purchasedCoursesIds", purchasedCoursesIds);
+  return {
+    type: "PURCHASED_COURSES",
+    payload: purchasedCoursesIds
+  }
 }

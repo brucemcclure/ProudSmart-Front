@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import LocalAPI from "./../../apis/Local";
 import {connect} from "react-redux";
+import {setPurchasedCoursesIds} from "./../../actions";
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -36,14 +37,12 @@ class CheckoutForm extends Component {
 
       }
     });
-    console.log(response);
-    if (response.status === 200) this.setState({ complete: true });
-  }
-
-  componentDidMount = () => {
-    console.log("^^^^^");
-    console.log(this.props);
-    console.log("^^^^^");
+    if (response.status === 200) {
+      const {purchasedCoursesIds} = this.props;
+      purchasedCoursesIds.push(_id);
+      this.props.setPurchasedCoursesIds(purchasedCoursesIds);
+      this.setState({ complete: true })
+    };
   }
 
   render() {
@@ -64,8 +63,9 @@ class CheckoutForm extends Component {
 
 const mapPropsToState = (state) => {
   return {
-    course: state.course.displayedCourse
+    course: state.course.displayedCourse,
+    purchasedCoursesIds: state.purchasedCourses.purchasedCoursesIds
   }
 }
 
-export default connect(mapPropsToState)(injectStripe(CheckoutForm));
+export default connect(mapPropsToState, {setPurchasedCoursesIds})(injectStripe(CheckoutForm));

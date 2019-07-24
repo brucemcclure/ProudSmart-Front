@@ -57,8 +57,8 @@ class CourseApplications extends Component {
               documentType="course"
               documentId={course._id}
               document={course}
-              showUrl={`courses/show/${course._id}`}
-              editUrl={`courses/edit/${course._id}`}
+              showUrl={`/courses/show/${course._id}`}
+              editUrl={`/courses/edit/${course._id}`}
               title={course.title}
               body={course.description}
               photo={course.courseProfilePictureUrl}
