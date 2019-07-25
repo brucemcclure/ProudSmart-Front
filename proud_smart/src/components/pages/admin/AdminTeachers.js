@@ -49,7 +49,7 @@ class AdminTeachers extends Component {
 
   render() {
     const { educators } = this.state;
-    console.log(educators);
+    // console.log(educators);
     return (
       <div className="container">
         <h1>ProudSmart Educators</h1>
@@ -60,7 +60,6 @@ class AdminTeachers extends Component {
                 <RectangularCard
                   documentId={educator._id}
                   showUrl={`/educators/profile`}
-                  editUrl={`/educators/profile/${educator._id}`}
                   title={educator.firstName + " " + educator.lastName}
                   body={educator.aboutMe}
                   photo={educator.profilePhotoUrl}
@@ -70,6 +69,7 @@ class AdminTeachers extends Component {
                   document={educator}
                   index={index}
                   educatorId={educator._id}
+                  key={`admin educators ${educator._id}`}
                 />
               );
             })}
