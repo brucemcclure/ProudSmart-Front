@@ -106,11 +106,15 @@ The project plan and effort estimation was based on the below gantt chart.
 
 ### Data Flow Diagram
 
+### ORM
+
+![](../docs/proudsmartImagesForDocs/ORM.jpg)
+
 ### OOD
 
 ![](../docs/proudsmartImagesForDocs/OODChart.jpg)
 
-##design documentation
+## design documentation
 
 ## Details of Project Management & Planning process
 
@@ -118,7 +122,8 @@ Time line planning was conducted by consulting the gantt chart.
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/GanttChart.jpg)
 
-API end point documentation:
+### API end point documentation:
+
 ![](../docs/proudsmartImagesForDocs/APIdoc.png)
 
 ### Project managment
