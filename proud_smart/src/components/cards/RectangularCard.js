@@ -63,7 +63,7 @@ class RectangularCard extends Component {
       educatorId,
       course
     } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
@@ -119,7 +119,7 @@ class RectangularCard extends Component {
           {this.props.userType === "admin" && deleteFunction && (
             <button
               onClick={() => {
-                console.log(deleteFunction);
+                // console.log(deleteFunction);
                 deleteFunction(documentId, index);
               }}
             >

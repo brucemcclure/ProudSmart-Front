@@ -34,7 +34,7 @@ class UsersDashboard extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <>
         {this.state.user ? (
@@ -46,7 +46,6 @@ class UsersDashboard extends Component {
               </Link>
             )}
             <div style={squareCardContainer} className="container section">
-              {console.log(this.state.user)}
               {this.state.user &&
                 this.state.user.purchasedCourses &&
                 this.state.user.purchasedCourses.map(course => {
