@@ -230,8 +230,8 @@ Our knowledge and skills surrounding the MERN stack were sound at the beginning 
 Upon commencement of the project the decision was made to tackle a problem we knew very little about i.e. video streaming from an S3 bucket. Considering our lack of knowledge on the subject we managed to incorporate this feature into our project and have a fully functional product. Considering our lack of knowledge on the subject one could objectively say that our knowledge and skills greatly increased with regards to this. That said, because the implementation of this feature was so time consuming I would recommend exploring the youtube API instead and using the private or unlisted features to protect the educators IP. As an evaluation of our skills and knowledge of amazon web services we would say we achieved a professional level of efficiency.
 
 Considering the short time period provided to build the project, we were unable to fulfill all of our clients features. Some features we would like to see implemented in the future are:
-Search functionality:
 
+- Search functionality
 - This would be the first feature to implement as it would be difficult to navigate the site without it.
 - Disable the video download ability: This is a consideration for video
 - Extend validation to video and picture upload instead of using defaults.
