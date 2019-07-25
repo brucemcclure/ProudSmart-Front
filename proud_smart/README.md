@@ -160,6 +160,14 @@ Client communication was conducted both by email and by skype meetings.
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/email3.png)
 
+#### Final communications and survey
+
+Final Client feedback
+![](../docs/proudsmartImagesForDocs/clientCommunication/FinalComms1.png)
+
+Final Client survey
+![](../docs/proudsmartImagesForDocs/clientCommunication/FinalComms2.png)
+
 ### Final Survey
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/survey.png)
