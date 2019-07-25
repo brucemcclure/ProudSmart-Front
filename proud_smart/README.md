@@ -21,28 +21,46 @@ Wireframes for all main pages of your app
 
 User Wireframes:
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user1.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user2.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user3.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user4.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user5.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user6.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user7.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user8.png)
 
 Educator Wireframes:
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator1.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator2.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator3.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator4.png)
 
 admin Wireframes:
 ![](../docs/proudsmartImagesForDocs/wireframes/admin/admin1.png)
+
 ![](../docs/proudsmartImagesForDocs/wireframes/admin/admin2.png)
 
 Entity Relationship Diagram (ORD)
 
 Project plan and effort estimation
 ![](../docs/proudsmartImagesForDocs/clientCommunication/GanttChart.jpg)
+
+Client communication:
+![](../docs/proudsmartImagesForDocs/clientCommunication/1stemail.png)
+
+![](../docs/proudsmartImagesForDocs/clientCommunication/email2.png)
+
+![](../docs/proudsmartImagesForDocs/clientCommunication/email3.png)
 
 Data Flow Diagram
 OO design documentation
