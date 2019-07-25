@@ -1,5 +1,7 @@
 Url: http://proudsmartdeploy.s3-website-ap-southeast-2.amazonaws.com/
+
 GitHub React: https://github.com/brucemcclure/ProudSmart-Front
+
 Github Express: https://github.com/brucemcclure/ProudSmart-Back
 
 Problem identification and Solution:
@@ -8,7 +10,7 @@ The solution was the Proud Smart learning platform which fulfilled the mvp crite
 
 User stories for the whole application
 A workflow diagram of the user journey/s:
-![alt text](./proudsmartImagesForDocs/journeys/userjourney.png)
+![alt text](docs/proudsmartImagesForDocs/journeys/userjourney.png)
 
 Standard user and Educators journey:
 Admin journey:
