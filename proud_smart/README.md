@@ -108,7 +108,11 @@ The Admins main function is to approve and edit courses as well as approve appli
 
 The project plan and effort estimation was based on the below gantt chart.
 
+Initial
 ![](../docs/proudsmartImagesForDocs/clientCommunication/GanttChart.jpg)
+
+Final
+![](../docs/proudsmartImagesForDocs/projectMagagement/FinalGantt.jpg)
 
 ### Data Flow Diagram
 
@@ -155,6 +159,10 @@ Client communication was conducted both by email and by skype meetings.
 ![](../docs/proudsmartImagesForDocs/clientCommunication/email2.png)
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/email3.png)
+
+### Final Survey
+
+![](../docs/proudsmartImagesForDocs/clientCommunication/survey.png)
 
 # Answers to short questions
 
