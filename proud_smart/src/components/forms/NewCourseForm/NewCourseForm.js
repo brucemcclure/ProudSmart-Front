@@ -34,14 +34,14 @@ class NewCourseForm extends Component {
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
     values.prerequisites = Object.keys(values.prerequisites);
-    console.log(values);
-    values.courseProfilePictureURL =
-      values.courseProfilePictureURL &&
+    
+    values.courseProfilePictureUrl =
+      values.courseProfilePictureUrl ||
       "https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/profile_pictures/academia-1563926224405.jpg";
     LocalAPI.post("courses", values)
-      // .then(data => this.props.history.push("/"))
-      .then(data => console.log(data))
+      .then(data => this.props.history.push("/"))
       .catch(err => console.log(err));
+    console.log(values);
   };
 
   render() {
