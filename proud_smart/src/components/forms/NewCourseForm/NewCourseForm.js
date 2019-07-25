@@ -25,7 +25,7 @@ class NewCourseForm extends Component {
   }
 
   onSubmit = values => {
-    console.log(values);
+    // console.log(values);
     // Manipulating submitted form data so that is the format expected by the backend
     // Seperating key key concepts and placing them into an array
     values.keyConcepts = values.keyConcepts.split("#");
@@ -33,14 +33,15 @@ class NewCourseForm extends Component {
     values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
-    values.prerequisites = Object.keys(values.prerequisites);
-    console.log(values);
-    values.courseProfilePictureURL =
-      values.courseProfilePictureURL &&
+    values.prerequisites = values.prerequisites && Object.keys(values.prerequisites);
+    
+    values.courseProfilePictureUrl =
+      values.courseProfilePictureUrl ||
       "https://proudsmarts3bucket.s3.ap-southeast-2.amazonaws.com/profile_pictures/academia-1563926224405.jpg";
     LocalAPI.post("courses", values)
       .then(data => this.props.history.push("/"))
       .catch(err => console.log(err));
+    // console.log(values);
   };
 
   render() {

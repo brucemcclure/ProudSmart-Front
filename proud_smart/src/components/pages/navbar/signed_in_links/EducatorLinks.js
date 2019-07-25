@@ -9,9 +9,6 @@ class EducatorLinks extends Component {
           <NavLink to="/users/dashboard">Purchased Courses</NavLink>
         </li>
         <li>
-          <NavLink to="/educators/dashboard">Taught Courses</NavLink>
-        </li>
-        <li>
           <NavLink to="/courses/new">Create a Course</NavLink>
         </li>
       </>

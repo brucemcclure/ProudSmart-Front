@@ -1,4 +1,4 @@
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button} from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthToken, setUser, setPurchasedCoursesIds } from "./../../actions";
@@ -15,17 +15,17 @@ class LoginForm extends Component {
         LocalAPI.post(`/auth/login`, { email, password })
           .then(response => {
             const { token, userInfo, purchasedCoursesIds } = response.data;
-            console.log("response.data");
+            // console.log("response.data");
             
-            console.log(response.data);
-            console.log("response.data");
+            // console.log(response.data);
+            // console.log("response.data");
             this.props.setAuthToken(token);
             this.props.setUser(userInfo);
             this.props.setPurchasedCoursesIds(purchasedCoursesIds);
             this.props.history.push("/users/dashboard");
           })
           .catch(err => console.log(err));
-        console.log("Received values of form: ", values);
+        // console.log("Received values of form: ", values);
       }
     });
   };
@@ -56,13 +56,6 @@ class LoginForm extends Component {
           )}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator("remember", {
-            valuePropName: "checked",
-            initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
           <Button
             type="primary"
             htmlType="submit"
@@ -70,7 +63,7 @@ class LoginForm extends Component {
           >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <a href="/auth/register">register now!</a>
         </Form.Item>
       </Form>
     );

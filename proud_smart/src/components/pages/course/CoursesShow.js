@@ -105,7 +105,7 @@ class CoursesShow extends Component {
               </div>
             </Content>
             <Sider style={{ backgroundColor: "rgb(255, 255, 255)" }}>
-              <img src={course.courseProfilePictureUrl} width="100%" />
+              <img src={course.courseProfilePictureUrl} width="100%" alt={course.title} />
               <div style={{ textAlign: "center", marginTop: "15px" }}>
                 <Link
                   to={{

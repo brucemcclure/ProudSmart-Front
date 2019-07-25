@@ -37,8 +37,8 @@ class EducatorsProfile extends Component {
               <Divider orientation="left">{profile.firstName}'s Courses</Divider>
               {courses.map(course => {
                 return (
-                  <Link to={`/courses/show/${course._id}`} >
-                    <SquareCard course={course} />
+                  <Link to={`/courses/show/${course._id}`} key={`educator profile course link ${course._id}`} >
+                    <SquareCard course={course} key={`educator profile course card ${course._id}`}/>
                   </Link>
                 )
               })}

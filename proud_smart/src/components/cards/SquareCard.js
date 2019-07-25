@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
 
 const linkStye = {
@@ -55,7 +53,7 @@ class SquareCard extends Component {
             {" "}
           </div>
           <div style={informationSection}>
-            {console.log(this.props.course.title)}
+            {/* {console.log(this.props.course.title)} */}
             <h6 style={{ color: "#F7F7F8" }}>
               {this.props.course.title.slice(0, 12) + "..."}
             </h6>

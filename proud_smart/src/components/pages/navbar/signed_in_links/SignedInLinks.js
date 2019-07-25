@@ -23,7 +23,7 @@ class SignedInLinks extends Component {
         {userType === "educator" && <EducatorLinks />}
         {userType === "user" && <UserLinks />}
         <li>
-          <NavLink onClick={this.onLogoutButtonClick}>Logout</NavLink>
+          <NavLink to="/" onClick={this.onLogoutButtonClick}>Logout</NavLink>
         </li>
       </>
     );

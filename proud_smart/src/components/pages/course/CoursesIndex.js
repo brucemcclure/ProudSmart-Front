@@ -8,7 +8,7 @@ class CoursesIndex extends Component {
 
   componentDidMount() {
     LocalAPI("/courses").then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({ courses: response.data });
     });
   }
@@ -40,6 +40,7 @@ class CoursesIndex extends Component {
                 body={course.description}
                 photo={course.courseProfilePictureUrl}
                 deleteFunction={this.onCourseDeleteClick}
+                key={`course index ${course._id}`}
               />
             );
           })}

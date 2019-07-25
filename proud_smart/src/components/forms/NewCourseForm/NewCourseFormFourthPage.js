@@ -8,6 +8,11 @@ import ReactPlayer from "react-player"; //Joshua
 import renderFile from "../formHelpers/renderFile";
 import { connect } from "react-redux";
 
+const required = (event, value) => (
+  event, 
+  value ? undefined : "Required"
+  );
+
 class NewCourseFormFourthPage extends Component {
   constructor(props) {
     super(props);
@@ -15,11 +20,12 @@ class NewCourseFormFourthPage extends Component {
     this.state = {
       uploading: false,
       selectedVideoFile: null,
-      selectedVideoNameArray: [],
+      selectedVideoNames: {},
       videoFile: null,
-      videoUrlArray: []
+      videoUrls: {}
     };
   }
+  
 
   addTest = (stateObject, index, url) => {
     this.props.change(`${stateObject}.${index}`, url);
@@ -32,18 +38,18 @@ class NewCourseFormFourthPage extends Component {
    * Joshua single video file upload
    */
 
-  videoFileChangeHandler = event => {
-    console.log(event.target.files); //this will show you whats inside the event target.
-    const { selectedVideoNameArray } = this.state;
-    selectedVideoNameArray.push(event.target.files[0].name);
+  videoFileChangeHandler = (event, topic, index) => {
+    // console.log(event.target.files); //this will show you whats inside the event target.
+    const { selectedVideoNames } = this.state;
+    selectedVideoNames[`${topic+index}`] = event.target.files[0].name;
     this.setState({
       [event.target.name]: event.target.files[0],
-      selectedVideoNameArray
+      selectedVideoNames
     });
     //console.log(this.state.selectedVideoFile);
   };
 
-  singleVideoFileUploadHandler = (event, topic) => {
+  singleVideoFileUploadHandler = (event, topic, index) => {
     event.preventDefault();
     this.setState({
       uploading: true
@@ -73,7 +79,7 @@ class NewCourseFormFourthPage extends Component {
               if (response.data.error.code === "LIMIT_FILE_SIZE") {
                 this.ocShowAlert("Max size: 100MB", "red");
               } else {
-                console.log(response.data);
+                // console.log(response.data);
                 // If not the given file type
                 this.ocShowAlert(response.data.error, "red");
               }
@@ -83,11 +89,16 @@ class NewCourseFormFourthPage extends Component {
                 uploading: false //when uploading finised, the state turns into false
               });
               let fileData = response.data;
-              let { videoUrlArray } = this.state;
-              videoUrlArray.push(fileData.location);
-              this.setState({ videoFile: fileData, videoUrlArray });
-              console.log("video name", fileData.video); //video name is here
-              console.log("video url", fileData.location); //video url is here
+              let { videoUrls } = this.state;
+              if (videoUrls[`${topic + index}`]) {
+                videoUrls[`${topic + index}`].push(fileData.location)
+              } else {
+                videoUrls[`${topic + index}`] = [fileData.location]
+              }
+              // videoUrlArray.push(fileData.location);
+              this.setState({ videoFile: fileData, videoUrls });
+              // console.log("video name", fileData.video); //video name is here
+              // console.log("video url", fileData.location); //video url is here
               // JOSH THIS IS WHERE WE PUSH VIDEO URL TO REDUX FORM STATE - BILLY
               this.props.change(`${topic}.videoUrl`, fileData.location);
               // this.props.change(`${topic}.fileName`, fileData.video);
@@ -120,28 +131,11 @@ class NewCourseFormFourthPage extends Component {
   };
   ///////////Above is upload related content
 
-  // Can we kill this handleSubmit????????????????
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      const { chapters } = values;
-      if (!err) {
-        LocalAPI.post(``, { chapters })
-          .then(response => {
-            this.props.setAuthToken(response.data);
-            this.props.history.push("");
-          })
-          .catch(err => console.log(err));
-        console.log("Received values of form: ", values);
-      }
-    });
-  };
-
   render() {
-    console.log("....................");
-    console.log(this.props);
-    console.log("!!!!!!!!!!!");
-    console.log(this.state);
+    // console.log("....................");
+    // console.log(this.props);
+    // console.log("!!!!!!!!!!!");
+    // console.log(this.state);
     const renderChapters = ({ fields, meta: { error, submitFailed } }) => (
       <ul>
         <li>
@@ -163,14 +157,15 @@ class NewCourseFormFourthPage extends Component {
               type="text"
               component={renderField}
               label="Chapter Title"
+              validate={required}
             />
             <Field
               name={`${chapter}.description`}
               type="textarea"
               component={renderField}
               label="Chapter Description"
+              validate={required}
             />
-            {this.addTest(chapter, index, "testing")}
             <FieldArray name={`${chapter}.topics`} component={renderTopics} />
           </li>
         ))}
@@ -182,8 +177,8 @@ class NewCourseFormFourthPage extends Component {
         videoFile,
         uploading,
         selectedVideoFile,
-        videoUrlArray,
-        selectedVideoNameArray
+        videoUrls,
+        selectedVideoNames
       } = this.state;
       return (
         <ul>
@@ -204,12 +199,14 @@ class NewCourseFormFourthPage extends Component {
                 type="text"
                 component={renderField}
                 label={`Topic #${index + 1}`}
+                validate={required}
               />
               <Field
                 name={`${topic}.description`}
                 type="textarea"
                 component={renderField}
                 label="topic Description"
+                validate={required}
               />
               {/**Joshua changes this part */}
               <div>
@@ -218,7 +215,7 @@ class NewCourseFormFourthPage extends Component {
                 {videoFile === null ? (
                   <></>
                 ) : (
-                  <ReactPlayer url={videoUrlArray[index]} controls={true} />
+                  <ReactPlayer url={videoUrls[`${topic + index}`]} controls={true} />
                 )}
                 {/**?? the latter topic's video url will replace the former one's video url */}
                 <div id={videoFile && videoFile.video}>
@@ -232,11 +229,11 @@ class NewCourseFormFourthPage extends Component {
                     ref={this.selectedVideoInput}
                     type="file"
                     name="selectedVideoFile"
-                    onChange={this.videoFileChangeHandler}
+                    onChange={(e) => this.videoFileChangeHandler(e, topic, index)}
                     style={{ display: "none" }}
                   />
                   {/** this button element is to invoke the input element above, and do exactly what that input element would do, we need to change the state name of "selectedVideoInput" for another topic input   */}
-                  <p>{selectedVideoFile && selectedVideoNameArray[index]}</p>
+                  
                   <button
                     onClick={event => {
                       event.preventDefault();
@@ -250,7 +247,7 @@ class NewCourseFormFourthPage extends Component {
                 <button
                   className="btn btn-info"
                   onClick={event =>
-                    this.singleVideoFileUploadHandler(event, topic)
+                    this.singleVideoFileUploadHandler(event, topic, index)
                   }
                 >
                   Upload a video!
