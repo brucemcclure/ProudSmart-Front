@@ -108,6 +108,8 @@ The project plan and effort estimation was based on the below gantt chart.
 
 ### Data Flow Diagram
 
+![](../docs/proudsmartImagesForDocs/DataFlow.jpg)
+
 ### OOD
 
 ![](../docs/proudsmartImagesForDocs/OODChart.jpg)
