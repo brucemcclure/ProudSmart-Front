@@ -98,6 +98,8 @@ The Admins main function is to approve and edit courses as well as approve appli
 
 ## Object Relational Diagram (ORD)
 
+![](../docs/proudsmartImagesForDocs/ORM.jpg)
+
 ## Project plan and effort estimation
 
 The project plan and effort estimation was based on the below gantt chart.
@@ -105,10 +107,6 @@ The project plan and effort estimation was based on the below gantt chart.
 ![](../docs/proudsmartImagesForDocs/clientCommunication/GanttChart.jpg)
 
 ### Data Flow Diagram
-
-### ORM
-
-![](../docs/proudsmartImagesForDocs/ORM.jpg)
 
 ### OOD
 
