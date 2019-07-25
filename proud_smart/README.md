@@ -28,26 +28,31 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-###User stories for the application:
+### User stories for the application:
+
 ![A workflow diagram of the user journey](../docs/proudsmartImagesForDocs/userStories.png)
 
-###Standard user and Educators journey:
+### Standard user and Educators journey:
+
 A workflow diagram of the user journey/s:
 ![A workflow diagram of the user journey](../docs/proudsmartImagesForDocs/journeys/userjourney.png)
 
-###A admin diagram of the user journey:
+### A admin diagram of the user journey:
+
 ![A workflow diagram of the admin journey](../docs/proudsmartImagesForDocs/journeys/adminJourney.png)
 
-##Design Porcess:
+## Design Porcess:
 
 The design process included drawing inspiration from other learning platforms such as coursera and udemy. Thereafter wireframes were constructed as seen in the images below, alongside the pages from which they were inspired. A screenshot was processed through Canvas colour palette generator and implemented into the build.
 
-##Colour palette:
+## Colour palette:
+
 ![](../docs/proudsmartImagesForDocs/wireframes/colors.png)
 
 Wireframes for all main pages of your app
 
-##User Wireframes:
+## User Wireframes:
+
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user1.png)
 
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user2.png)
@@ -64,7 +69,8 @@ Wireframes for all main pages of your app
 
 ![](../docs/proudsmartImagesForDocs/wireframes/user/user8.png)
 
-###Educator Wireframes:
+### Educator Wireframes:
+
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator1.png)
 
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator2.png)
@@ -73,21 +79,21 @@ Wireframes for all main pages of your app
 
 ![](../docs/proudsmartImagesForDocs/wireframes/educator/educator4.png)
 
-###Admin Wireframes:
+### Admin Wireframes:
 
 ![](../docs/proudsmartImagesForDocs/wireframes/admin/admin1.png)
 
 ![](../docs/proudsmartImagesForDocs/wireframes/admin/admin2.png)
 
-##Object Relational Diagram (ORD)
+## Object Relational Diagram (ORD)
 
-##Project plan and effort estimation
+## Project plan and effort estimation
 
 The project plan and effort estimation was based on the below gantt chart.
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/GanttChart.jpg)
 
-###Client communication:
+### Client communication:
 
 Client communication was conducted both by email and by skype meetings.
 ![](../docs/proudsmartImagesForDocs/clientCommunication/1stemail.png)
@@ -96,6 +102,6 @@ Client communication was conducted both by email and by skype meetings.
 
 ![](../docs/proudsmartImagesForDocs/clientCommunication/email3.png)
 
-###Data Flow Diagram
+### Data Flow Diagram
 
-###OO design documentation
+### OO design documentation
