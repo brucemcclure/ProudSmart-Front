@@ -9,7 +9,6 @@ import AuthLogin from "./components/pages/auth/AuthLogin";
 import AuthRegister from "./components/pages/auth/AuthRegister";
 import AuthEducatorApplication from "./components/pages/auth/AuthEducatorApplication";
 import AdminTeachers from "./components/pages/admin/AdminTeachers";
-import AdminUsers from "./components/pages/admin/AdminUsers";
 import UsersDashboard from "./components/pages/user/UsersDashboard";
 import UsersEdit from "./components/pages/user/UsersEdit";
 import CoursesIndex from "./components/pages/course/CoursesIndex";
@@ -59,7 +58,6 @@ class App extends Component {
             component={AuthEducatorApplication}
           />
           <AdminRoute exact path="/admin/educators" component={AdminTeachers} />
-          <AdminRoute exact path="/admin/users" component={AdminUsers} />
           <AdminRoute
             exact
             path="/admin/course-applications"
