@@ -55,7 +55,7 @@ class SquareCard extends Component {
             {" "}
           </div>
           <div style={informationSection}>
-            {console.log(this.props.course.title)}
+            {/* {console.log(this.props.course.title)} */}
             <h6 style={{ color: "#F7F7F8" }}>
               {this.props.course.title.slice(0, 12) + "..."}
             </h6>

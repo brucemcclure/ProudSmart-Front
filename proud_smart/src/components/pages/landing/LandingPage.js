@@ -46,7 +46,7 @@ class LandingPage extends Component {
 
   componentDidMount() {
     LocalAPI("/courses").then(response => {
-      console.log(response.data);
+      // console.log(response.data);
       this.setState({ courses: response.data });
     });
   }
@@ -96,8 +96,9 @@ class LandingPage extends Component {
                       }
                     }}
                     style={LinkStyle}
+                    key={`landing page link ${course._id}`}
                   >
-                    <SquareCard course={course} />
+                    <SquareCard course={course} key={`landing page square card ${course._id}`}/>
                   </Link>
                 );
               })}
