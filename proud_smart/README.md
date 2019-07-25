@@ -54,9 +54,9 @@ The design process included drawing inspiration from other learning platforms su
 
 ![](../docs/proudsmartImagesForDocs/wireframes/colors.png)
 
-Wireframes for all main pages of your app
+## Main features wireframes:
 
-## User Wireframes:
+### User Wireframes:
 
 The users main function is to buy and use the courses.
 
@@ -106,7 +106,11 @@ The project plan and effort estimation was based on the below gantt chart.
 
 ### Data Flow Diagram
 
-### OO design documentation
+### OOD
+
+![](../docs/proudsmartImagesForDocs/OODChart.jpg)
+
+##design documentation
 
 ## Details of Project Management & Planning process
 
@@ -229,7 +233,8 @@ Our knowledge of coding libraries also proved very important as we used many dif
 
 One of the most interesting challenges we encountered was api documentation. The team of four was divided into a front end team and a back end team. The front end team used a local json server to fake the different end points and correctly display the data to the screen. The back end team was simultaneously working on the real end points to be accessed at a later stage. Unfortunately despite our best efforts the integration between the real apis and the react app was not seamless and we ran into several teething issues. In future we will use “swagger” to document our apis.
 
-Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+## Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+
 Our knowledge and skills surrounding the MERN stack were sound at the beginning of the project, however this project was the first time we used these technologies to build a project from the ground up so there were some teething issues. As an evaluation of our knowledge and skills we would consider ourselves to be at the level of a mid level developer.
 
 Upon commencement of the project the decision was made to tackle a problem we knew very little about i.e. video streaming from an S3 bucket. Considering our lack of knowledge on the subject we managed to incorporate this feature into our project and have a fully functional product. Considering our lack of knowledge on the subject one could objectively say that our knowledge and skills greatly increased with regards to this. That said, because the implementation of this feature was so time consuming I would recommend exploring the youtube API instead and using the private or unlisted features to protect the educators IP. As an evaluation of our skills and knowledge of amazon web services we would say we achieved a professional level of efficiency.
