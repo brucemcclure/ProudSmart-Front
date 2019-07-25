@@ -33,7 +33,7 @@ class NewCourseForm extends Component {
     values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
-    values.prerequisites = Object.keys(values.prerequisites);
+    values.prerequisites = values.prerequisites && Object.keys(values.prerequisites);
     
     values.courseProfilePictureUrl =
       values.courseProfilePictureUrl ||

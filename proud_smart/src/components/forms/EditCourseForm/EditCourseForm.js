@@ -31,7 +31,7 @@ class EditCourseForm extends Component {
     values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
-    values.prerequisites = Object.keys(values.prerequisites);
+    values.prerequisites = values.prerequisites && Object.keys(values.prerequisites);
 
     // HAVE HARD CODED IN A COURSE PROFILE PICTURE URL NEED TO ADD THIS FEATURE WITH LOCAL STORAGE!!!!!!!!!!!!!!!!!!
     values.courseProfilePictureUrl = "www.PleaseAddThisFeatureJoshOrBruce";
