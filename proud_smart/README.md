@@ -157,39 +157,52 @@ The users perspective is, of course, slightly different. The most important aspe
 
 ##What libraries are being used in the app and why?
 
-Express - Was used to run the server
-https://www.npmjs.com/package/express
-Mongoose - Wrapper around MongoDB. It is an Object modeling tool designed to work asynchronously.
-https://www.npmjs.com/package/mongoose
-Passport - Authentication and authorization. Passport does not mount routes or assume any particular database schema, which maximizes flexibility making it the correct choice for this project.
-https://www.npmjs.com/package/passport
-Passport-local-mongoose - Passport-Local Mongoose is a Mongoose plugin that simplifies building username and password login with Passport.
-https://www.npmjs.com/package/passport-local-mongoose
-jsonwebtoken - used to generate JWT which in turn is used for authentication purposes.
-https://www.npmjs.com/package/jsonwebtoken
-Celebrate - celebrate is an express middleware function that wraps the joi validation library.
-https://www.npmjs.com/package/celebrate
-Multer - middleware for handling form data, used to handle file types
-aws-skd - Provides JavaScript objects for AWS services including Amazon S3
-https://www.npmjs.com/package/aws-sdk
-React - front end library for building single page applications. Which greatly improves performance.
-https://www.npmjs.com/package/react
-React-router-dom - DOM bindings for React Router
-https://www.npmjs.com/package/react-router-dom
-React-player - video playback
-https://www.npmjs.com/package/react-player
-Redux - Redux is a predictable state container for JavaScript apps which manages global state store.
-https://www.npmjs.com/package/redux
-Redux-form - A very good package to handle form state. It also has solutions for multi page forms and form arrays
-https://www.npmjs.com/package/redux-form
-Axios - handles HTTP requests between the express app and react.
-https://www.npmjs.com/package/axios
-Redux-thunk - extends Redux Actions by handling functions instead of just objects
-Materialize - styling library
-https://materializecss.com/
-Ant design - component library
-https://ant.design/
-Jest - testing library (front end and back end)
+1. Express - Was used to run the server
+   https://www.npmjs.com/package/express
+
+2. Mongoose - Wrapper around MongoDB. It is an Object modeling tool designed to work asynchronously.
+   https://www.npmjs.com/package/mongoose
+
+3. Passport - Authentication and authorization. Passport does not mount routes or assume any particular database schema, which maximizes flexibility making it the correct choice for this project.
+   https://www.npmjs.com/package/passport
+
+4. Passport-local-mongoose - Passport-Local Mongoose is a Mongoose plugin that simplifies building username and password login with Passport.
+   https://www.npmjs.com/package/passport-local-mongoose
+
+5. jsonwebtoken - used to generate JWT which in turn is used for authentication purposes.
+   https://www.npmjs.com/package/jsonwebtoken
+   Celebrate - celebrate is an express middleware function that wraps the joi validation library.
+   https://www.npmjs.com/package/celebrate
+
+6. Multer - middleware for handling form data, used to handle file types
+   aws-skd - Provides JavaScript objects for AWS services including Amazon S3
+   https://www.npmjs.com/package/aws-sdk
+
+7. React - front end library for building single page applications. Which greatly improves performance.
+   https://www.npmjs.com/package/react
+
+8. React-router-dom - DOM bindings for React Router
+   https://www.npmjs.com/package/react-router-dom
+   React-player - video playback
+   https://www.npmjs.com/package/react-player
+
+9. Redux - Redux is a predictable state container for JavaScript apps which manages global state store.
+   https://www.npmjs.com/package/redux
+
+10. Redux-form - A very good package to handle form state. It also has solutions for multi page forms and form arrays
+    https://www.npmjs.com/package/redux-form
+
+11. Axios - handles HTTP requests between the express app and react.
+    https://www.npmjs.com/package/axios
+
+12. Redux-thunk - extends Redux Actions by handling functions instead of just objects
+    Materialize - styling library
+    https://materializecss.com/
+
+13. Ant design - component library
+    https://ant.design/
+
+14. Jest - testing library (front end and back end)
 
 ## A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 
