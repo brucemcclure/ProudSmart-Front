@@ -25,7 +25,7 @@ class NewCourseForm extends Component {
   }
 
   onSubmit = values => {
-    console.log(values);
+    // console.log(values);
     // Manipulating submitted form data so that is the format expected by the backend
     // Seperating key key concepts and placing them into an array
     values.keyConcepts = values.keyConcepts.split("#");
@@ -41,7 +41,7 @@ class NewCourseForm extends Component {
     LocalAPI.post("courses", values)
       .then(data => this.props.history.push("/"))
       .catch(err => console.log(err));
-    console.log(values);
+    // console.log(values);
   };
 
   render() {
