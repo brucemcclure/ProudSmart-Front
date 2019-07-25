@@ -10,8 +10,8 @@ class CourseApplications extends Component {
   componentDidMount = () => {
     LocalAPI("/admin/course-applications")
       .then(response => {
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        console.log(response.data)
+        // console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        // console.log(response.data)
         this.setState({courses: response.data});
       })
   };
@@ -22,7 +22,7 @@ class CourseApplications extends Component {
       .then(response => {
         courses.splice(index,1);
         this.setState({courses});
-        console.log(this.state)
+        // console.log(this.state)
       })
       .catch(err => console.log(err))
   };
@@ -31,7 +31,7 @@ class CourseApplications extends Component {
     const {courses} = this.state;
     LocalAPI.put("/admin/deny-application", {type: "course", document})
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         courses.splice(index,1);
         this.setState({courses});
       });
@@ -66,6 +66,7 @@ class CourseApplications extends Component {
               approvalFunction={this.onCourseApprovalClick}
               denialFunction={this.onCourseDenialClick}
               documentStatus={course.approvalStatus}
+              key={`applications course card ${course._id}`}
             />
           );
         })}
