@@ -15,6 +15,10 @@ The tech stack used for the app was MongoDB, ExpressJs, ReactJs and NodeJs. Peri
 
 ### Deployment and available scripts:
 
+### `npm i`
+
+Installs all packages
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
