@@ -10,22 +10,22 @@ const number = value =>
   value && isNaN(Number(value)) ? "Must be a number" : undefined;
 
 const correctAutofillForValidation = value => {
-  console.log(value);
-  if (value[0][0] != "#") {
+  // console.log(value);
+  if (value[0][0] !== "#") {
     let arrayLength = value.length;
 
     for (let i = 0; i < arrayLength; i++) {
       value[i] = "#" + value[i] + " ";
     }
-    console.log(value.join(""));
+    // console.log(value.join(""));
     return value.join("");
   }
 };
 
 const KeyConceptsValidation = value => {
-  console.log(value);
+  // console.log(value);
   let arr = value.split(",");
-  console.log(arr);
+  // console.log(arr);
   let arrayLength = arr.length;
   for (let i = 0; i < arrayLength; i++) {
     if (arr[i][0] === "#") {

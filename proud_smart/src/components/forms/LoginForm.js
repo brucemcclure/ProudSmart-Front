@@ -1,4 +1,4 @@
-import { Form, Icon, Input, Button, Checkbox } from "antd";
+import { Form, Icon, Input, Button} from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setAuthToken, setUser, setPurchasedCoursesIds } from "./../../actions";

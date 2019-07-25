@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import EditCourseForm from "../../forms/EditCourseForm/EditCourseForm";
 
 class CoursesEdit extends Component {
+  remove_character(str_to_remove, str) {
+    let reg = new RegExp(str_to_remove)
+    return str.replace(reg, '')
+  }
+  
   render() {
-    console.log(this.props.location.state.course);
     let course = this.props.location.state.course;
+    course.keyConcepts = "#" + course.keyConcepts.join(" #"); 
     return (
       <>
         <h1>Edit Course</h1>

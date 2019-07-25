@@ -28,11 +28,11 @@ class EditCourseFormSecondPage extends Component {
   };
 
   singleFileChangedHandler = event => {
-    console.log(event.target.files); //this will show you whats inside the event target.
+    // console.log(event.target.files); //this will show you whats inside the event target.
     this.setState({
       selectedFile: event.target.files[0]
     });
-    console.log(this.state.selectedFile);
+    // console.log(this.state.selectedFile);
   };
 
   singleFileUploadHandler = event => {
@@ -60,7 +60,7 @@ class EditCourseFormSecondPage extends Component {
               if (response.data.error.code === "LIMIT_FILE_SIZE") {
                 this.ocShowAlert("Max size: 2MB", "red");
               } else {
-                console.log(response.data);
+                // console.log(response.data);
                 // If not the given file type
                 this.ocShowAlert(response.data.error, "red");
               }
@@ -70,8 +70,8 @@ class EditCourseFormSecondPage extends Component {
               let fileData = response.data;
               this.props.change("courseProfilePictureUrl", fileData.location);
               this.setState({ file: fileData });
-              console.log("file data image name", fileData.image); //joshua file.image
-              console.log("file data image location", fileData.location);
+              // console.log("file data image name", fileData.image); //joshua file.image
+              // console.log("file data image location", fileData.location);
               this.ocShowAlert("File Uploaded", "#3089cf");
             }
           }
@@ -91,7 +91,7 @@ class EditCourseFormSecondPage extends Component {
     this.setState({
       selectedFiles: event.target.files
     });
-    console.log(this.state.selectedFiles);
+    // console.log(this.state.selectedFiles);
   };
 
   multipleFileUploadHandler = event => {
@@ -111,7 +111,7 @@ class EditCourseFormSecondPage extends Component {
         }
       })
         .then(response => {
-          console.log("res", response);
+          // console.log("res", response);
           if (200 === response.status) {
             // If file size is larger than expected.
             if (response.data.error) {
@@ -128,8 +128,8 @@ class EditCourseFormSecondPage extends Component {
               let filesData = response.data;
               this.props.change("materialsUrl", filesData.locationArray);
               this.setState({ files: filesData });
-              console.log("files names array", filesData.filesArray); //course profile image name from s3
-              console.log("files locations array", filesData.locationArray); //course profile image url from s3
+              // console.log("files names array", filesData.filesArray); //course profile image name from s3
+              // console.log("files locations array", filesData.locationArray); //course profile image url from s3
               this.ocShowAlert("Files Uploaded", "#3089cf");
             }
           }

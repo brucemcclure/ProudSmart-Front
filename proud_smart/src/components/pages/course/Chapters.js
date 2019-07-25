@@ -13,7 +13,7 @@ class Chapters extends Component {
   };
 
   render() {
-    const { course, onTopicVideoClick } = this.props;
+    const { course } = this.props;
     return (
       <Menu
         style={{ width: "100%" }}

@@ -8,7 +8,6 @@ import LandingPage from "./components/pages/landing/LandingPage";
 import AuthLogin from "./components/pages/auth/AuthLogin";
 import AuthRegister from "./components/pages/auth/AuthRegister";
 import AuthEducatorApplication from "./components/pages/auth/AuthEducatorApplication";
-import AdminDashboard from "./components/pages/admin/AdminDashboard";
 import AdminTeachers from "./components/pages/admin/AdminTeachers";
 import AdminUsers from "./components/pages/admin/AdminUsers";
 import UsersDashboard from "./components/pages/user/UsersDashboard";
