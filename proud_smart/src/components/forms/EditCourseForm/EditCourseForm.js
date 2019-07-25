@@ -4,6 +4,7 @@ import EditCourseFormSecondPage from "./EditCourseFormSecondPage";
 import EditCourseFormThirdPage from "./EditCourseFormThirdPage";
 import EditCourseFormFourthPage from "./EditCourseFormFourthPage";
 import LocalAPI from "../../../apis/Local";
+import { withRouter } from "react-router-dom";
 
 class EditCourseForm extends Component {
   constructor(props) {
@@ -30,23 +31,23 @@ class EditCourseForm extends Component {
     values.keyConcepts = values.keyConcepts.map(el => el.trim());
 
     // Turning prerequisites into an array (at the moment they are in an object literal)
-    values.prerequisites = Object.keys(values.prerequisites);
+    values.prerequisites = values.prerequisites && Object.keys(values.prerequisites);
 
     // HAVE HARD CODED IN A COURSE PROFILE PICTURE URL NEED TO ADD THIS FEATURE WITH LOCAL STORAGE!!!!!!!!!!!!!!!!!!
     values.courseProfilePictureUrl = "www.PleaseAddThisFeatureJoshOrBruce";
-    console.log(values);
+    // console.log(values);
 
-    // LocalAPI.put(`/courses/${this.props.course._id}`, {
-    //   course: this.props.course,
-    //   values
-    // })
-    //   .then(data => console.log(data))
-    //   .catch(err => console.log(err));
+    LocalAPI.put(`/courses/${this.props.course._id}`, {
+      course: this.props.course,
+      values
+    })
+      .then(data => this.props.history.push("/"))
+      .catch(err => console.log(err));
   };
 
   render() {
     const { page } = this.state;
-    console.log(this.props.course, "This");
+    // console.log(this.props.course, "This");
     return (
       <div className="container">
         {page === 1 && (
@@ -78,4 +79,4 @@ class EditCourseForm extends Component {
   }
 }
 
-export default EditCourseForm;
+export default withRouter(EditCourseForm);

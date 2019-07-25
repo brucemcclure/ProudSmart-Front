@@ -1,6 +1,6 @@
 function KeyConceptsValidation(str) {
   let arr = str.split(" ");
-  console.log(arr);
+  // console.log(arr);
   let arrayLength = arr.length;
 
   for (let i = 0; i < arrayLength; i++) {

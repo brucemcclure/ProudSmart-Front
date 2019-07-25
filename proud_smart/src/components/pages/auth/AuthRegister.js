@@ -3,7 +3,7 @@ import WrappedRegistrationForm from "./../../forms/UserRegistrationForm";
 
 class AuthRegister extends Component {
   componentDidMount = () => {
-    console.log(this.props);
+    // console.log(this.props);
   };
   render() {
     return (

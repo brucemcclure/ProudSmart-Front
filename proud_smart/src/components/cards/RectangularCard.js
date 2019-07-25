@@ -63,12 +63,12 @@ class RectangularCard extends Component {
       educatorId,
       course
     } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div key={title}>
         <div style={rectangularCardHolder} className="rectangularCardHolder">
           {educatorId ? (
-            <Link onClick={this.onEducatorButtonClick} style={linkStye}>
+            <Link to="/admin/educators" onClick={this.onEducatorButtonClick} style={linkStye}>
               <div
                 style={{
                   backgroundImage: `url(${photo})`,
@@ -103,7 +103,7 @@ class RectangularCard extends Component {
             <p>{body}</p>
           </div>
 
-          {this.checkOwnerOrAdmin() && (
+          {this.checkOwnerOrAdmin() && editUrl && (
             <button>
               <Link
                 to={{
@@ -119,7 +119,7 @@ class RectangularCard extends Component {
           {this.props.userType === "admin" && deleteFunction && (
             <button
               onClick={() => {
-                console.log(deleteFunction);
+                // console.log(deleteFunction);
                 deleteFunction(documentId, index);
               }}
             >

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import RectangularCard from "./../../cards/RectangularCard";
 import LocalAPI from "./../../../apis/Local";
-import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
 
 class AdminTeachers extends Component {
   state = {
@@ -16,11 +14,11 @@ class AdminTeachers extends Component {
       document: educator
     })
       .then(response => {
-        console.log(`educators b4`);
-        console.log(educators);
+        // console.log(`educators b4`);
+        // console.log(educators);
         educators[`${index}`] = response.data;
-        console.log(`educators after`);
-        console.log(educators);
+        // console.log(`educators after`);
+        // console.log(educators);
         this.setState({ educators });
       })
       .catch(err => console.log(err));
@@ -33,7 +31,7 @@ class AdminTeachers extends Component {
       document: educator
     })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         educators[`${index}`] = response.data;
         this.setState({ educators });
       })
@@ -45,13 +43,13 @@ class AdminTeachers extends Component {
   componentDidMount = async () => {
     LocalAPI("/educators").then(response => {
       this.setState({ educators: response.data });
-      console.log(response.data);
+      // console.log(response.data);
     });
   };
 
   render() {
     const { educators } = this.state;
-    console.log(educators);
+    // console.log(educators);
     return (
       <div className="container">
         <h1>ProudSmart Educators</h1>
@@ -62,7 +60,6 @@ class AdminTeachers extends Component {
                 <RectangularCard
                   documentId={educator._id}
                   showUrl={`/educators/profile`}
-                  editUrl={`/educators/profile/${educator._id}`}
                   title={educator.firstName + " " + educator.lastName}
                   body={educator.aboutMe}
                   photo={educator.profilePhotoUrl}
@@ -72,6 +69,7 @@ class AdminTeachers extends Component {
                   document={educator}
                   index={index}
                   educatorId={educator._id}
+                  key={`admin educators ${educator._id}`}
                 />
               );
             })}

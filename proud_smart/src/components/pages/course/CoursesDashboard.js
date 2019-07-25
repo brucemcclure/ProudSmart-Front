@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Divider, Row, List, Col } from "antd";
+import { Layout, Divider, List } from "antd";
 import Chapters from "./Chapters";
 import LocalAPI from "./../../../apis/Local";
 import ReactPlayer from "react-player";
@@ -79,7 +79,7 @@ class CoursesDashboard extends Component {
                   <Divider />
                 </div>
                 <div className="row">
-                  <Link onClick={this.onEducatorButtonClick}>
+                  <Link to="/educator/profile" onClick={this.onEducatorButtonClick}>
                     <h5>About {course.educator}</h5>
                   </Link>
                   <p>

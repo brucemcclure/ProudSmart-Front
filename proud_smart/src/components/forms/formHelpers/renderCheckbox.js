@@ -2,14 +2,14 @@ import React from "react";
 import { Checkbox } from "antd";
 
 const renderCheckbox = ({ input, label }) => (
-  <container>
+  <span>
     <label>{label}</label>
     <Checkbox
       label={label}
       checked={input.value ? true : false}
       onChange={input.onChange}
     />
-  </container>
+  </span>
 );
 
 export default renderCheckbox;

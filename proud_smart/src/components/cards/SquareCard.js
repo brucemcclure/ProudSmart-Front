@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "antd";
 import Image from "./../images/GoLang.jpeg";
 
 const linkStye = {
@@ -55,7 +53,7 @@ class SquareCard extends Component {
             {" "}
           </div>
           <div style={informationSection}>
-            {console.log(this.props.course.title)}
+            {/* {console.log(this.props.course.title)} */}
             <h6 style={{ color: "#F7F7F8" }}>
               {this.props.course.title.slice(0, 12) + "..."}
             </h6>
@@ -64,19 +62,8 @@ class SquareCard extends Component {
             </p>
 
             {this.props.course.price && (
-              <p>Price: {this.props.course.price}$</p>
+              <p>Price: ${this.props.course.price}</p>
             )}
-
-            <Link
-              to={{
-                pathname: `/courses/edit/${this.props.course._id}`,
-                state: {
-                  course: this.props.course
-                }
-              }}
-            >
-              Edit this course
-            </Link>
           </div>
         </div>
       </>

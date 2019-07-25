@@ -31,7 +31,7 @@ class EditCourseFormFourthPage extends Component {
    * Joshua single video file upload
    */
   videoFileChangeHandler = event => {
-    console.log(event.target.files); //this will show you whats inside the event target.
+    // console.log(event.target.files); //this will show you whats inside the event target.
     const { selectedVideoNameArray } = this.state;
     selectedVideoNameArray.push(event.target.files[0].name);
     this.setState({
@@ -71,7 +71,7 @@ class EditCourseFormFourthPage extends Component {
               if (response.data.error.code === "LIMIT_FILE_SIZE") {
                 this.ocShowAlert("Max size: 100MB", "red");
               } else {
-                console.log(response.data);
+                // console.log(response.data);
                 // If not the given file type
                 this.ocShowAlert(response.data.error, "red");
               }
@@ -84,8 +84,8 @@ class EditCourseFormFourthPage extends Component {
               let { videoUrlArray } = this.state;
               videoUrlArray.push(fileData.location);
               this.setState({ videoFile: fileData, videoUrlArray });
-              console.log("video name", fileData.video); //video name is here
-              console.log("video url", fileData.location); //video url is here
+              // console.log("video name", fileData.video); //video name is here
+              // console.log("video url", fileData.location); //video url is here
               // JOSH THIS IS WHERE WE PUSH VIDEO URL TO REDUX FORM STATE - BILLY
               this.props.change(`${topic}.videoUrl`, fileData.location);
               // this.props.change(`${topic}.fileName`, fileData.video);
@@ -118,22 +118,6 @@ class EditCourseFormFourthPage extends Component {
   };
   ///////////Above is upload related content
 
-  // Can we kill this handleSubmit????????????????
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      const { chapters } = values;
-      if (!err) {
-        LocalAPI.post(``, { chapters })
-          .then(response => {
-            this.props.setAuthToken(response.data);
-            this.props.history.push("");
-          })
-          .catch(err => console.log(err));
-        console.log("Received values of form: ", values);
-      }
-    });
-  };
 
   render() {
     const renderChapters = ({ fields, meta: { error, submitFailed } }) => (

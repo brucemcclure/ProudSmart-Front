@@ -11,7 +11,7 @@ const number = value =>
 
 const KeyConceptsValidation = value => {
   let arr = value.split(" ");
-  console.log(arr);
+  // console.log(arr);
   let arrayLength = arr.length;
   for (let i = 0; i < arrayLength; i++) {
     if (arr[i][0] === "#") {
