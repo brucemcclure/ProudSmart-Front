@@ -79,7 +79,7 @@ class CoursesDashboard extends Component {
                   <Divider />
                 </div>
                 <div className="row">
-                  <Link onClick={this.onEducatorButtonClick}>
+                  <Link to="/educator/profile" onClick={this.onEducatorButtonClick}>
                     <h5>About {course.educator}</h5>
                   </Link>
                   <p>

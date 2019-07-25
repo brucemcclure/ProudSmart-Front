@@ -53,8 +53,9 @@ class UsersDashboard extends Component {
                     <Link
                       style={LinkStyle}
                       to={`/courses/dashboard/${course.courseId}`}
+                      key={`users dashboard link ${course.courseId}`}
                     >
-                      <SquareCard course={course} />
+                      <SquareCard course={course} key={`users dashboard card ${course.courseId}`}/>
                     </Link>
                   );
                 })}
