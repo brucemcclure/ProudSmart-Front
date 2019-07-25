@@ -9,6 +9,7 @@ Our client is the CFO of Proud Smart technologies, an incredibly successful inte
 The solution was the Proud Smart learning platform which fulfilled the mvp criteria mentioned above.
 
 User stories for the application:
+![A workflow diagram of the user journey](../docs/proudsmartImagesForDocs/userStories.png)
 
 Standard user and Educators journey:
 A workflow diagram of the user journey/s:
