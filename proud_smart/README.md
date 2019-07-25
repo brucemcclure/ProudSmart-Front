@@ -10,7 +10,7 @@ The solution was the Proud Smart learning platform which fulfilled the mvp crite
 
 User stories for the whole application
 A workflow diagram of the user journey/s:
-![alt text](docs/proudsmartImagesForDocs/journeys/userjourney.png)
+![alt text](./docs/proudsmartImagesForDocs/journeys/userjourney.png)
 
 Standard user and Educators journey:
 Admin journey:
